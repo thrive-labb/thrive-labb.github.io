@@ -208,6 +208,18 @@
             box-shadow: var(--shadow-green);
         }
 
+        .btn-outline {
+            background-color: transparent;
+            color: var(--fern-green);
+            border: 2px solid var(--fern-green);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--fern-green);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
         /* ===== Navigation ===== */
         .navbar {
             position: fixed;
@@ -376,6 +388,170 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* ===== What's New Section ===== */
+        .news-section {
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
+            padding: var(--space-xxl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-section::before {
+            content: 'NEW';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: var(--tiger-orange);
+            color: var(--white);
+            padding: 0.5rem 4rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+            letter-spacing: 2px;
+            box-shadow: var(--shadow-md);
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+                transform: rotate(45deg) scale(1);
+            }
+            50% {
+                opacity: 0.9;
+                transform: rotate(45deg) scale(1.05);
+                background-color: var(--tiger-orange-dark);
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(45deg) scale(1);
+            }
+        }
+
+        .news-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .news-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--transition-normal);
+            border: 3px solid var(--tiger-orange);
+        }
+
+        .news-image:hover {
+            transform: scale(1.02);
+        }
+
+        .news-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform var(--transition-normal);
+        }
+
+        .news-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .news-image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+            padding: var(--space-lg) var(--space-md) var(--space-md);
+            text-align: center;
+        }
+
+        .news-image-caption i {
+            color: var(--tiger-orange);
+            margin-right: var(--space-xs);
+        }
+
+        .news-content {
+            padding: var(--space-lg);
+        }
+
+        .news-badge {
+            display: inline-block;
+            background-color: var(--tiger-orange);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            animation: flash 1.5s infinite;
+        }
+
+        @keyframes flash {
+            0%, 50%, 100% {
+                opacity: 1;
+            }
+            25%, 75% {
+                opacity: 0.7;
+                background-color: var(--tiger-orange-dark);
+            }
+        }
+
+        .news-title {
+            font-size: 2.2rem;
+            color: var(--fern-green);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        .news-subtitle {
+            font-size: 1.2rem;
+            color: var(--tiger-orange);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-md);
+            border-bottom: 2px dashed var(--gray-300);
+        }
+
+        .news-description {
+            color: var(--gray-700);
+            margin-bottom: var(--space-lg);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .news-highlight {
+            background-color: rgba(79, 121, 66, 0.1);
+            border-left: 4px solid var(--fern-green);
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .news-highlight p {
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        .news-highlight i {
+            color: var(--fern-green);
+            margin-right: var(--space-xs);
+        }
+
+        .news-buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
         }
 
         /* ===== About Section ===== */
@@ -1000,6 +1176,18 @@
                 grid-template-columns: 1fr;
             }
             
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-content {
+                text-align: center;
+            }
+            
+            .news-buttons {
+                justify-content: center;
+            }
+            
             .footer-content {
                 grid-template-columns: 1fr;
             }
@@ -1040,6 +1228,10 @@
             
             .section-title {
                 font-size: 2rem;
+            }
+            
+            .news-title {
+                font-size: 1.8rem;
             }
             
             .research-grid,
@@ -1086,6 +1278,11 @@
             .about-stats {
                 grid-template-columns: 1fr;
             }
+            
+            .news-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -1102,6 +1299,7 @@
             </button>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#news" class="nav-link">What's New</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#research" class="nav-link">Research</a></li>
                 <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
@@ -1136,6 +1334,40 @@
                 <div class="hero-buttons">
                     <a href="#research" class="btn btn-primary">Explore Our Research</a>
                     <a href="#join" class="btn btn-secondary">Join Our Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's New Section -->
+    <section id="news" class="news-section">
+        <div class="news-container">
+            <div class="news-image">
+                <img src="https://github.com/thrive-labb/thrive-labb.github.io/blob/main/assests/Clean%20Slate%20White%20Paper%20Launch.jpg?raw=true" alt="Clean Slate Clinic White Paper Launch Event">
+                <div class="news-image-caption">
+                    <i class="fas fa-calendar-alt"></i> Clean Slate Clinic White Paper Launch Event
+                </div>
+            </div>
+            <div class="news-content">
+                <span class="news-badge"><i class="fas fa-bolt"></i> JUST ANNOUNCED</span>
+                <h2 class="news-title">Clean Slate Clinic White Paper Launch</h2>
+                <div class="news-subtitle">
+                    <i class="fas fa-user-tie"></i> Our P.I., Dr. Faith Matcham, was invited as a panelist
+                </div>
+                <div class="news-description">
+                    <p>We're thrilled to announce that Dr. Faith Matcham participated as a distinguished panelist at the Clean Slate Clinic White Paper Launch Event, contributing her expertise in digital mental health and cognitive resilience to this important initiative.</p>
+                </div>
+                <div class="news-highlight">
+                    <p><i class="fas fa-quote-left"></i> The Clean Slate Clinic represents a transformative approach to mental health care, and I'm honored to contribute to this important conversation about the future of accessible, evidence-based interventions.</p>
+                    <p style="margin-top: var(--space-xs); font-weight: 600;">— Dr. Faith Matcham</p>
+                </div>
+                <div class="news-buttons">
+                    <a href="https://github.com/thrive-labb/thrive-labb.github.io/blob/main/assests/Final_Clean%20Slate%20Clinic_White%20Paper.pdf?raw=true" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-file-pdf"></i> Read the White Paper
+                    </a>
+                    <a href="#team" class="btn btn-outline">
+                        <i class="fas fa-users"></i> Meet Our Team
+                    </a>
                 </div>
             </div>
         </div>
@@ -1404,83 +1636,107 @@
                 <button class="filter-btn" data-filter="2021">2021</button>
                 <button class="filter-btn" data-filter="tools">Tools</button>
             </div>
-            
+         
             <div class="publications-list">
-                <div class="publication-card" data-year="2023" data-tags="tools">
-                    <div class="pub-badge">Tool</div>
-                    <h3 class="pub-title">NeuroKit2: A Python toolbox for neurophysiological signal processing</h3>
-                    <p class="pub-authors">Makowski, D., Pham, T., Lau, Z. J., <strong>Chen, S.</strong>, &amp; members of the Thrive Lab</p>
-                    <p class="pub-journal">Behavior Research Methods, 2023</p>
-                    <div class="pub-links">
-                        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> Paper</a>
-                        <a href="#" class="pub-link"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" class="pub-link"><i class="fas fa-book"></i> Documentation</a>
-                    </div>
-                </div>
-                
-                <div class="publication-card" data-year="2023">
-                    <div class="pub-badge">2023</div>
-                    <h3 class="pub-title">Digital interventions for cognitive resilience in depression: A systematic review</h3>
-                    <p class="pub-authors"><strong>Matcham, F.</strong>, Lee, J., Rodriguez, T., &amp; Kim, M.</p>
-                    <p class="pub-journal">Journal of Affective Disorders, 2023</p>
-                    <div class="pub-links">
-                        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> Paper</a>
-                        <a href="#" class="pub-link"><i class="fas fa-chart-bar"></i> Data</a>
-                    </div>
-                </div>
-                
-                <div class="publication-card" data-year="2022">
-                    <div class="pub-badge">2022</div>
-                    <h3 class="pub-title">Mindfulness training enhances prefrontal regulation of amygdala in high-stress individuals</h3>
-                    <p class="pub-authors">Rodriguez, T., <strong>Matcham, F.</strong>, &amp; Chen, S.</p>
-                    <p class="pub-journal">Biological Psychiatry: Cognitive Neuroscience and Neuroimaging, 2022</p>
-                    <div class="pub-links">
-                        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> Paper</a>
-                    </div>
-                </div>
-                
-                <div class="publication-card" data-year="2022" data-tags="tools">
-                    <div class="pub-badge">Tool</div>
-                    <h3 class="pub-title">PyPulse: A flexible Python library for physiological data collection</h3>
-                    <p class="pub-authors"><strong>Chen, S.</strong>, Williams, C., &amp; Lee, J.</p>
-                    <p class="pub-journal">Journal of Open Source Software, 2022</p>
-                    <div class="pub-links">
-                        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> Paper</a>
-                        <a href="#" class="pub-link"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-                
-                <div class="publication-card" data-year="2021">
-                    <div class="pub-badge">2021</div>
-                    <h3 class="pub-title">Longitudinal trajectories of cognitive function in chronic conditions</h3>
-                    <p class="pub-authors"><strong>Matcham, F.</strong>, Kim, M., &amp; Lee, J.</p>
-                    <p class="pub-journal">Psychological Medicine, 2021</p>
-                    <div class="pub-links">
-                        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> Paper</a>
-                        <a href="#" class="pub-link"><i class="fas fa-chart-bar"></i> Data</a>
-                    </div>
-                </div>
-                
-                <div class="publication-card" data-year="2021">
-                    <div class="pub-badge">2021</div>
-                    <h3 class="pub-title">Bayesian approaches to modeling individual differences in cognitive resilience</h3>
-                    <p class="pub-authors">Lee, J., <strong>Matcham, F.</strong>, &amp; Chen, S.</p>
-                    <p class="pub-journal">Computational Brain &amp; Behavior, 2021</p>
-                    <div class="pub-links">
-                        <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> Paper</a>
-                        <a href="#" class="pub-link"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="publications-footer">
-                <a href="#" class="btn btn-secondary">
-                    <i class="fas fa-book-open"></i> View All Publications
-                </a>
-                <p class="pub-note">For a complete list, visit our <a href="#">Google Scholar profile</a> or <a href="#">OSF page</a>.</p>
-            </div>
+    <!-- 2026 Publications -->
+    <div class="publication-card" data-year="2026">
+        <div class="pub-badge">2026</div>
+        <h3 class="pub-title">Smart wearable sensing systems mediating the digital monitoring of Loneliness – A review</h3>
+        <p class="pub-authors">Mexia N, Molteni E, Ratcliffe J, <strong>Matcham F</strong>, et al.</p>
+        <p class="pub-journal">Materials Today Electronics, Elsevier BV, Feb 2026</p>
+        <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.mtelec.2026.100202" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
         </div>
-    </section>
+    </div>
+
+    <div class="publication-card" data-year="2026">
+        <div class="pub-badge">2026</div>
+        <h3 class="pub-title">Understanding caregiver stress to inform community-based stress monitoring and supportive interventions: a qualitative, descriptive study</h3>
+        <p class="pub-authors">Sian S, Emily F, Chee SA, <strong>Matcham F</strong>, et al.</p>
+        <p class="pub-journal">Health & Social Care in the Community, John Wiley & Sons Ltd, Jan 2026</p>
+        <div class="pub-links">
+            <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> Publisher Link</a>
+        </div>
+    </div>
+
+    <div class="publication-card" data-year="2026">
+        <div class="pub-badge">2026</div>
+        <h3 class="pub-title">Development and user-centered evaluation of smart systems for loneliness monitoring in older adults: mixed methods study</h3>
+        <p class="pub-authors">Zhou Y, Rees J, <strong>Matcham F</strong>, et al.</p>
+        <p class="pub-journal">Journal of Medical Internet Research, 28, JMIR Publications Inc., Jan 2026</p>
+        <div class="pub-links">
+            <a href="https://doi.org/10.2196/81027" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        </div>
+    </div>
+
+    <div class="publication-card" data-year="2026">
+        <div class="pub-badge">2026</div>
+        <h3 class="pub-title">Systematic evaluation of commercially available pain-management mHealth apps for chronic pain in the United Kingdom</h3>
+        <p class="pub-authors">Harding R, Gillett JL, Passaportis M, <strong>Matcham F</strong>, et al.</p>
+        <p class="pub-journal">British Journal of Health Psychology, 31(1), Wiley, Jan 2026</p>
+        <div class="pub-links">
+            <a href="https://doi.org/10.1111/bjhp.70053" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        </div>
+    </div>
+
+    <!-- 2025 Publications -->
+    <div class="publication-card" data-year="2025">
+        <div class="pub-badge">2025</div>
+        <h3 class="pub-title">Barriers and facilitators of engagement with app-based pain self-management strategies among chronic pain patients (CPPs)</h3>
+        <p class="pub-authors">Harding R, Passaportis M, Miles E, <strong>Matcham F</strong></p>
+        <p class="pub-journal">Journal of Health Psychology, SAGE, Jan 2026 (Online 2025)</p>
+        <div class="pub-links">
+            <a href="https://doi.org/10.1177/13591053251406436" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        </div>
+    </div>
+
+    <div class="publication-card" data-year="2025">
+        <div class="pub-badge">2025</div>
+        <h3 class="pub-title">"What does the word loneliness mean to you?" Reflections on co-developing public engagement workshops... with older adults from ethnically diverse groups</h3>
+        <p class="pub-authors">Rees J, Sajid M, Steele C, <strong>Matcham F</strong>, et al.</p>
+        <p class="pub-journal">Research Involvement and Engagement, 11(1), Springer, Dec 2025</p>
+        <div class="pub-links">
+            <a href="https://doi.org/10.1186/s40900-025-00800-5" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        </div>
+    </div>
+
+    <div class="publication-card" data-year="2025">
+        <div class="pub-badge">2025</div>
+        <h3 class="pub-title">Exploring biases related to the use of large language models in a multilingual depression corpus</h3>
+        <p class="pub-authors">Perez-Toro PA, Dineley J, Iniesta R, <strong>Matcham F</strong>, et al.</p>
+        <p class="pub-journal">Scientific Reports, 15(1), Springer, Dec 2025</p>
+        <div class="pub-links">
+            <a href="https://doi.org/10.1038/s41598-025-19980-x" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        </div>
+    </div>
+
+    <div class="publication-card" data-year="2025" data-tags="preprint">
+        <div class="pub-badge">Preprint</div>
+        <h3 class="pub-title">Multilingual Lexical Feature Analysis of Spoken Language for Predicting Major Depression Symptom Severity</h3>
+        <p class="pub-authors">Tokareva A, Dineley J, Firth Z, <strong>Matcham F</strong>, et al.</p>
+        <p class="pub-journal">arXiv, Nov 2025</p>
+        <div class="pub-links">
+            <a href="https://doi.org/10.48550/arxiv.2511.07011" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+        </div>
+    </div>
+
+    <div class="publication-card" data-year="2025">
+        <div class="pub-badge">2025</div>
+        <h3 class="pub-title">Adherence to actigraphic devices in elementary school–aged children: systematic review and meta-analysis</h3>
+        <p class="pub-authors">Morris AC, Seker A, Telesia L, <strong>Matcham F</strong>, et al.</p>
+        <p class="pub-journal">Journal of Medical Internet Research, 27, JMIR Publications Inc., Nov 2025</p>
+        <div class="pub-links">
+            <a href="https://doi.org/10.2196/79718" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        </div>
+    </div>
+</div>
 
     <!-- Join Us Section -->
     <section id="join" class="section join-section">
@@ -1600,8 +1856,6 @@
             <div class="footer-bottom">
                 <p class="copyright">&copy; 2026 Thrive Lab, University of Sussex. This website is open source.</p>
                 <div class="footer-legal">
-                    <a href="#" class="legal-link">Privacy Policy</a>
-                    <a href="#" class="legal-link">Accessibility</a>
                     <a href="https://github.com/thrive-labb/thrive-labb.github.io" class="legal-link" target="_blank">GitHub Repository</a>
                 </div>
             </div>
