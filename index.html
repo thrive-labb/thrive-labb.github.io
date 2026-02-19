@@ -139,6 +139,284 @@
         .research-tags { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
         .tag { background-color: var(--tiger-orange-light); color: var(--tiger-orange-dark); padding: 0.3rem 0.8rem; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500; }
 
+        /* ===== Upcoming Events Section ===== */
+.events-section {
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+    padding: var(--space-xxl) 0;
+    position: relative;
+}
+
+.events-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--tiger-orange), var(--fern-green));
+}
+
+.events-grid {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.event-card {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-lg);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-xl);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    border: 1px solid var(--gray-200);
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.event-card.featured {
+    border-left: 5px solid var(--tiger-orange);
+    background: linear-gradient(to right, var(--white), var(--gray-50));
+}
+
+.event-calendar {
+    background: linear-gradient(135deg, var(--fern-green), var(--fern-green-dark));
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    text-align: center;
+    color: var(--white);
+    min-width: 120px;
+    height: fit-content;
+    box-shadow: var(--shadow-md);
+}
+
+.calendar-month {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-xs);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.calendar-date {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+    color: var(--white);
+}
+
+.calendar-year {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.event-content {
+    flex: 1;
+}
+
+.event-badge {
+    display: inline-block;
+    background-color: var(--tiger-orange);
+    color: var(--white);
+    padding: 0.3rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+}
+
+.event-title {
+    font-size: 2rem;
+    color: var(--fern-green);
+    margin-bottom: var(--space-xs);
+    line-height: 1.3;
+}
+
+.event-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-600);
+    margin-bottom: var(--space-md);
+    font-weight: 400;
+}
+
+.event-details {
+    background-color: var(--gray-50);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    border: 1px solid var(--gray-200);
+}
+
+.event-detail {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    color: var(--gray-700);
+}
+
+.event-detail:last-child {
+    margin-bottom: 0;
+}
+
+.event-detail i {
+    color: var(--fern-green);
+    width: 20px;
+    font-size: 1.1rem;
+}
+
+.event-detail strong {
+    color: var(--fern-green);
+    margin-right: var(--space-xs);
+}
+
+.event-description {
+    color: var(--gray-700);
+    margin-bottom: var(--space-lg);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    padding: var(--space-md) 0;
+    border-top: 1px dashed var(--gray-300);
+    border-bottom: 1px dashed var(--gray-300);
+}
+
+.event-poster {
+    margin-bottom: var(--space-lg);
+    background-color: var(--gray-50);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    text-align: center;
+}
+
+.event-poster h4 {
+    color: var(--fern-green);
+    margin-bottom: var(--space-sm);
+    font-size: 1.2rem;
+}
+
+.event-poster h4 i {
+    color: var(--tiger-orange);
+    margin-right: var(--space-xs);
+}
+
+.poster-link {
+    display: inline-block;
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal);
+}
+
+.poster-link:hover {
+    transform: scale(1.02);
+}
+
+.poster-thumbnail {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 2px solid var(--white);
+}
+
+.poster-caption {
+    display: block;
+    margin-top: var(--space-xs);
+    color: var(--fern-green);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.event-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-top: var(--space-lg);
+}
+
+.events-note {
+    text-align: center;
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+}
+
+.events-note i {
+    color: var(--tiger-orange);
+    margin-right: var(--space-xs);
+}
+
+.events-note a {
+    color: var(--fern-green);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.events-note a:hover {
+    color: var(--tiger-orange);
+}
+
+/* Responsive adjustments for events section */
+@media (max-width: 768px) {
+    .event-card {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+    
+    .event-calendar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-sm);
+        min-width: auto;
+        padding: var(--space-sm);
+    }
+    
+    .calendar-month, .calendar-date, .calendar-year {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+    
+    .calendar-date {
+        font-size: 2rem;
+    }
+    
+    .calendar-month::after {
+        content: ',';
+        margin-right: var(--space-xs);
+    }
+    
+    .event-title {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .event-actions {
+        flex-direction: column;
+    }
+    
+    .event-actions .btn {
+        width: 100%;
+    }
+    
+    .event-poster .poster-link {
+        max-width: 100%;
+    }
+}
+
         .team-section { background-color: var(--gray-50); }
         .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-lg); margin-top: var(--space-xl); }
         .team-card { background-color: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: all var(--transition-normal); display: flex; flex-direction: column; position: relative; }
@@ -301,6 +579,71 @@
                         <i class="fas fa-users"></i> Meet Our Team
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Upcoming Events Section -->
+    <section id="events" class="events-section">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            
+            <div class="events-grid">
+                <!-- Featured Event Card -->
+                <div class="event-card featured">
+                    <div class="event-calendar">
+                        <div class="calendar-month">FEB</div>
+                        <div class="calendar-date">23</div>
+                        <div class="calendar-year">2026</div>
+                    </div>
+                    
+                    <div class="event-content">
+                        <span class="event-badge"><i class="fas fa-microphone-alt"></i> Invited Speaker</span>
+                        <h3 class="event-title">Psychology Society Conference</h3>
+                        <p class="event-subtitle">University of Sussex</p>
+                        
+                        <div class="event-details">
+                            <div class="event-detail">
+                                <i class="fas fa-user-tie"></i>
+                                <span><strong>Speaker:</strong> Dr. Faith Matcham, Founder of THRIVE Lab</span>
+                            </div>
+                            <div class="event-detail">
+                                <i class="fas fa-clock"></i>
+                                <span><strong>Time:</strong> 23rd February 2026</span>
+                            </div>
+                            <div class="event-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span><strong>Location:</strong> Sussex University Campus</span>
+                            </div>
+                        </div>
+
+                        <div class="event-description">
+                            <p>Dr. Faith Matcham has been invited as a featured speaker at the Psychology Society Conference, where she will present the latest research from THRIVE Lab on digital mental health interventions and the role of technology in understanding everyday wellbeing.</p>
+                        </div>
+
+                        <div class="event-poster">
+                            <h4><i class="fas fa-image"></i> Conference Poster</h4>
+                            <a href="https://github.com/thrive-labb/thrive-labb.github.io/blob/main/assests/Poster-%20Conference.jpeg?raw=true" target="_blank" class="poster-link">
+                                <img src="https://github.com/thrive-labb/thrive-labb.github.io/blob/main/assests/Poster-%20Conference.jpeg?raw=true" alt="Psychology Society Conference Poster" class="poster-thumbnail">
+                                <span class="poster-caption">Click to view full poster</span>
+                            </a>
+                        </div>
+
+                        <div class="event-actions">
+                            <a href="https://github.com/thrive-labb/thrive-labb.github.io/blob/main/assests/Poster-%20Conference.jpeg?raw=true" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-download"></i> Download Poster
+                            </a>
+                            <a href="#" class="btn btn-outline">
+                                <i class="fas fa-calendar-plus"></i> Add to Calendar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Events Note -->
+            <div class="events-note">
+                <p><i class="fas fa-info-circle"></i> More events will be announced soon. Follow us on <a href="https://bsky.app/profile/thrivelab.bsky.social" target="_blank">Bluesky</a> for updates.</p>
             </div>
         </div>
     </section>
