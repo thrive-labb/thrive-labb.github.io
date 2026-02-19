@@ -9,20 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* ===== CSS Variables for Thrive Lab Color Scheme ===== */
+        /* ===== CSS Variables ===== */
         :root {
-            /* Primary Colors - YOUR COLORS */
-            --tiger-orange: #E97A29;    /* Bright orange */
-            --fern-green: #4F7942;      /* Earthy green */
-            --white: #FFFFFF;           /* Pure white */
-            
-            /* Color Variations */
+            --tiger-orange: #E97A29;
+            --fern-green: #4F7942;
+            --white: #FFFFFF;
             --tiger-orange-light: #F5A15C;
             --tiger-orange-dark: #C1621D;
             --fern-green-light: #6B9C5A;
             --fern-green-dark: #3A5C30;
-            
-            /* Neutrals */
             --gray-50: #FAFAFA;
             --gray-100: #F5F5F5;
             --gray-200: #EEEEEE;
@@ -33,1390 +28,207 @@
             --gray-700: #616161;
             --gray-800: #424242;
             --gray-900: #212121;
-            
-            /* Typography */
             --font-primary: 'Inter', sans-serif;
             --font-secondary: 'Merriweather', serif;
-            
-            /* Spacing */
             --space-xs: 0.5rem;
             --space-sm: 1rem;
             --space-md: 1.5rem;
             --space-lg: 2rem;
             --space-xl: 3rem;
             --space-xxl: 4rem;
-            
-            /* Border Radius */
             --radius-sm: 0.25rem;
             --radius-md: 0.5rem;
             --radius-lg: 1rem;
             --radius-xl: 1.5rem;
-            
-            /* Shadows */
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
             --shadow-orange: 0 4px 14px rgba(233, 122, 41, 0.3);
             --shadow-green: 0 4px 14px rgba(79, 121, 66, 0.3);
-            
-            /* Transitions */
             --transition-fast: 0.2s ease;
             --transition-normal: 0.3s ease;
             --transition-slow: 0.5s ease;
         }
 
-        /* ===== Base Styles ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            font-family: var(--font-primary);
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--gray-800);
-            background-color: var(--white);
-            overflow-x: hidden;
-            opacity: 1;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-
-        .section {
-            padding: var(--space-xxl) 0;
-        }
-
-        .section-title {
-            font-family: var(--font-secondary);
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--fern-green);
-            margin-bottom: var(--space-lg);
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--tiger-orange);
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--gray-600);
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto var(--space-xl);
-            line-height: 1.7;
-        }
-
-        /* ===== Typography ===== */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 600;
-            line-height: 1.3;
-            color: var(--fern-green);
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-        }
-
-        h3 {
-            font-size: 1.8rem;
-        }
-
-        h4 {
-            font-size: 1.4rem;
-        }
-
-        p {
-            margin-bottom: var(--space-md);
-        }
-
-        a {
-            color: var(--tiger-orange);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-
-        a:hover {
-            color: var(--tiger-orange-dark);
-        }
-
-        /* ===== Buttons ===== */
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            font-family: var(--font-primary);
-            font-size: 1rem;
-            font-weight: 600;
-            text-align: center;
-            border-radius: var(--radius-md);
-            border: none;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background-color: var(--tiger-orange);
-            color: var(--white);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--tiger-orange-dark);
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-orange);
-        }
-
-        .btn-secondary {
-            background-color: var(--fern-green);
-            color: var(--white);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--fern-green-dark);
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-green);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--fern-green);
-            border: 2px solid var(--fern-green);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--fern-green);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-
-        /* ===== Navigation ===== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--white);
-            box-shadow: var(--shadow-sm);
-            z-index: 1000;
-            padding: var(--space-sm) 0;
-            transition: background-color var(--transition-normal), backdrop-filter var(--transition-normal);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: var(--space-xs);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--fern-green);
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        .logo-text {
-            color: var(--fern-green);
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: var(--space-lg);
-            align-items: center;
-        }
-
-        .nav-item {
-            list-style: none;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: var(--gray-700);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: var(--tiger-orange);
-        }
-
-        .nav-link.active {
-            color: var(--tiger-orange);
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--tiger-orange);
-        }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--fern-green);
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        /* ===== Hero Section ===== */
-        .hero {
-            background: linear-gradient(135deg, rgba(233, 122, 41, 0.1) 0%, rgba(79, 121, 66, 0.1) 100%);
-            padding-top: 120px;
-            padding-bottom: var(--space-xxl);
-        }
-
-        .hero-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-            gap: var(--space-xl);
-        }
-
-        .hero-content {
-            flex: 1;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            color: var(--fern-green);
-            margin-bottom: var(--space-md);
-            line-height: 1.2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-sm);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .hero-logo {
-            height: 80px;
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--gray-700);
-            margin-bottom: var(--space-lg);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .hero-tagline {
-            margin-bottom: var(--space-xl);
-        }
-
-        .tagline-text {
-            font-family: var(--font-secondary);
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--tiger-orange);
-            border-left: 4px solid var(--fern-green);
-            padding-left: var(--space-md);
-            display: inline-block;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: var(--space-md);
-            flex-wrap: wrap;
-            justify-content: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        /* ===== What's New Section ===== */
-        .news-section {
-            background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
-            padding: var(--space-xxl) 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .news-section::before {
-            content: 'NEW';
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background-color: var(--tiger-orange);
-            color: var(--white);
-            padding: 0.5rem 4rem;
-            font-size: 1.2rem;
-            font-weight: 700;
-            transform: rotate(45deg);
-            letter-spacing: 2px;
-            box-shadow: var(--shadow-md);
-            z-index: 10;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-                transform: rotate(45deg) scale(1);
-            }
-            50% {
-                opacity: 0.9;
-                transform: rotate(45deg) scale(1.05);
-                background-color: var(--tiger-orange-dark);
-            }
-            100% {
-                opacity: 1;
-                transform: rotate(45deg) scale(1);
-            }
-        }
-
-        .news-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-
-        .news-image {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            transition: transform var(--transition-normal);
-            border: 3px solid var(--tiger-orange);
-        }
-
-        .news-image:hover {
-            transform: scale(1.02);
-        }
-
-        .news-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform var(--transition-normal);
-        }
-
-        .news-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .news-image-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: var(--white);
-            padding: var(--space-lg) var(--space-md) var(--space-md);
-            text-align: center;
-        }
-
-        .news-image-caption i {
-            color: var(--tiger-orange);
-            margin-right: var(--space-xs);
-        }
-
-        .news-content {
-            padding: var(--space-lg);
-        }
-
-        .news-badge {
-            display: inline-block;
-            background-color: var(--tiger-orange);
-            color: var(--white);
-            padding: 0.3rem 1rem;
-            border-radius: var(--radius-md);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: var(--space-md);
-            animation: flash 1.5s infinite;
-        }
-
-        @keyframes flash {
-            0%, 50%, 100% {
-                opacity: 1;
-            }
-            25%, 75% {
-                opacity: 0.7;
-                background-color: var(--tiger-orange-dark);
-            }
-        }
-
-        .news-title {
-            font-size: 2.2rem;
-            color: var(--fern-green);
-            margin-bottom: var(--space-sm);
-            line-height: 1.3;
-        }
-
-        .news-subtitle {
-            font-size: 1.2rem;
-            color: var(--tiger-orange);
-            font-weight: 500;
-            margin-bottom: var(--space-md);
-            padding-bottom: var(--space-md);
-            border-bottom: 2px dashed var(--gray-300);
-        }
-
-        .news-description {
-            color: var(--gray-700);
-            margin-bottom: var(--space-lg);
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .news-highlight {
-            background-color: rgba(79, 121, 66, 0.1);
-            border-left: 4px solid var(--fern-green);
-            padding: var(--space-md);
-            margin-bottom: var(--space-lg);
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        }
-
-        .news-highlight p {
-            margin-bottom: 0;
-            font-style: italic;
-        }
-
-        .news-highlight i {
-            color: var(--fern-green);
-            margin-right: var(--space-xs);
-        }
-
-        .news-buttons {
-            display: flex;
-            gap: var(--space-md);
-            flex-wrap: wrap;
-        }
-
-        /* ===== About Section ===== */
-        .about-section {
-            background-color: var(--white);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: var(--space-xl);
-        }
-
-        .about-text p {
-            margin-bottom: var(--space-md);
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-md);
-        }
-
-        .stat-card {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--space-lg);
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            border-top: 4px solid var(--tiger-orange);
-            transition: transform var(--transition-normal);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--fern-green);
-            margin-bottom: var(--space-xs);
-        }
-
-        .stat-label {
-            color: var(--gray-600);
-            font-weight: 500;
-        }
-
-        /* ===== Thrive Overview Section ===== */
-        .thrive-overview {
-            background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
-            padding: var(--space-xxl) 0;
-        }
-
-        .thrive-mission-card {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--space-xl);
-            box-shadow: var(--shadow-lg);
-            border-left: 5px solid var(--tiger-orange);
-            margin-bottom: var(--space-xl);
-        }
-
-        .thrive-quote {
-            font-family: var(--font-secondary);
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: var(--gray-700);
-            padding: var(--space-lg);
-            background-color: rgba(79, 121, 66, 0.05);
-            border-radius: var(--radius-lg);
-            position: relative;
-            margin: var(--space-xl) 0;
-        }
-
-        .thrive-quote i {
-            color: var(--fern-green);
-            opacity: 0.3;
-            font-size: 2rem;
-            position: absolute;
-            top: var(--space-sm);
-            left: var(--space-sm);
-        }
-
-        .thrive-quote p {
-            margin-bottom: var(--space-sm);
-            padding-left: var(--space-xl);
-        }
-
-        .thrive-quote-author {
-            font-weight: 600;
-            color: var(--tiger-orange);
-            text-align: right;
-        }
-
-        .mission-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-lg);
-            margin: var(--space-xl) 0;
-        }
-
-        .mission-item {
-            background-color: var(--white);
-            padding: var(--space-lg);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            text-align: center;
-            transition: transform var(--transition-normal);
-            border-bottom: 3px solid var(--fern-green);
-        }
-
-        .mission-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .mission-item i {
-            font-size: 2.5rem;
-            color: var(--tiger-orange);
-            margin-bottom: var(--space-md);
-        }
-
-        .mission-item h4 {
-            color: var(--fern-green);
-            margin-bottom: var(--space-sm);
-        }
-
-        .mission-item p {
-            color: var(--gray-700);
-            margin-bottom: 0;
-            font-size: 0.95rem;
-        }
-
-        /* ===== Research Themes ===== */
-        .research-section {
-            background-color: var(--white);
-        }
-
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--space-lg);
-            margin-top: var(--space-xl);
-        }
-
-        .research-card {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--space-xl);
-            box-shadow: var(--shadow-md);
-            border-left: 5px solid var(--tiger-orange);
-            transition: all var(--transition-normal);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .research-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .research-icon {
-            font-size: 2.5rem;
-            color: var(--fern-green);
-            margin-bottom: var(--space-md);
-        }
-
-        .research-title {
-            font-size: 1.5rem;
-            margin-bottom: var(--space-md);
-            color: var(--fern-green);
-        }
-
-        .research-desc {
-            color: var(--gray-700);
-            margin-bottom: var(--space-lg);
-            flex-grow: 1;
-        }
-
-        .research-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-xs);
-        }
-
-        .tag {
-            background-color: var(--tiger-orange-light);
-            color: var(--tiger-orange-dark);
-            padding: 0.3rem 0.8rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* ===== Team Section ===== */
-        .team-section {
-            background-color: var(--gray-50);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--space-lg);
-            margin-top: var(--space-xl);
-        }
-
-        .team-card {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all var(--transition-normal);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-green);
-        }
-
-        .team-card.director-card {
-            border: 3px solid var(--tiger-orange);
-        }
-
-        .pi-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--tiger-orange);
-            color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-md);
-            font-size: 0.9rem;
-            font-weight: 600;
-            z-index: 2;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .team-photo {
-            height: 250px;
-            background: linear-gradient(135deg, var(--fern-green-light) 0%, var(--fern-green) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .photo-placeholder {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background-color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: var(--fern-green);
-            position: relative;
-        }
-
-        .team-info {
-            padding: var(--space-lg);
-            flex-grow: 1;
-        }
-
-        .team-name {
-            color: var(--fern-green);
-            margin-bottom: var(--space-xs);
-            font-size: 1.3rem;
-        }
-
-        .team-title {
-            color: var(--tiger-orange);
-            font-weight: 600;
-            margin-bottom: var(--space-md);
-            font-size: 1rem;
-        }
-
-        .team-bio {
-            color: var(--gray-700);
-            margin-bottom: var(--space-md);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .team-links {
-            display: flex;
-            gap: var(--space-sm);
-            margin-top: var(--space-md);
-        }
-
-        .team-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: var(--gray-100);
-            border-radius: 50%;
-            color: var(--fern-green);
-            transition: all var(--transition-fast);
-            position: relative;
-            text-decoration: none;
-        }
-
-        .team-link:hover {
-            background-color: var(--fern-green);
-            color: var(--white);
-            transform: scale(1.1);
-        }
-
-        .team-link .tooltip {
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--gray-800);
-            color: var(--white);
-            padding: 0.3rem 0.6rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity var(--transition-fast);
-            margin-bottom: 5px;
-            pointer-events: none;
-        }
-
-        .team-link:hover .tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .team-note {
-            margin-top: var(--space-xl);
-            padding: var(--space-lg);
-            background-color: var(--fern-green-light);
-            color: var(--white);
-            border-radius: var(--radius-lg);
-            text-align: center;
-        }
-
-        .team-note a {
-            color: var(--white);
-            text-decoration: underline;
-            font-weight: 600;
-        }
-
-        /* ===== Publications Section ===== */
-        .publications-section {
-            background-color: var(--white);
-        }
-
-        .publications-controls {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-xl);
-        }
-
-        .filter-btn {
-            padding: 0.6rem 1.5rem;
-            background-color: var(--gray-100);
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 500;
-            color: var(--gray-700);
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .filter-btn:hover {
-            background-color: var(--gray-200);
-        }
-
-        .filter-btn.active {
-            background-color: var(--tiger-orange);
-            color: var(--white);
-        }
-
-        .publications-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: var(--space-lg);
-        }
-
-        .publication-card {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--space-lg);
-            box-shadow: var(--shadow-md);
-            border-left: 5px solid var(--fern-green);
-            transition: transform var(--transition-normal), opacity var(--transition-normal);
-            position: relative;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .publication-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .pub-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--fern-green);
-            color: var(--white);
-            padding: 0.3rem 0.8rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .pub-title {
-            font-size: 1.2rem;
-            color: var(--fern-green);
-            margin-bottom: var(--space-sm);
-            padding-right: 80px;
-        }
-
-        .pub-authors {
-            color: var(--gray-700);
-            font-size: 0.95rem;
-            margin-bottom: var(--space-xs);
-        }
-
-        .pub-journal {
-            color: var(--tiger-orange);
-            font-weight: 500;
-            margin-bottom: var(--space-md);
-            font-size: 0.9rem;
-        }
-
-        .pub-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-md);
-        }
-
-        .pub-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.9rem;
-            color: var(--fern-green);
-            font-weight: 500;
-            text-decoration: none;
-        }
-
-        .pub-link:hover {
-            color: var(--tiger-orange);
-        }
-
-        .publications-footer {
-            margin-top: var(--space-xl);
-            text-align: center;
-        }
-
-        .pub-note {
-            margin-top: var(--space-md);
-            color: var(--gray-600);
-        }
-
-        /* ===== Join Us Section ===== */
-        .join-section {
-            background-color: var(--gray-50);
-        }
-
-        .opportunities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-lg);
-            margin-bottom: var(--space-xl);
-        }
-
-        .opportunity-card {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--space-xl);
-            box-shadow: var(--shadow-md);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border-top: 5px solid var(--fern-green);
-        }
-
-        .opportunity-title {
-            color: var(--fern-green);
-            margin-bottom: var(--space-md);
-        }
-
-        .opportunity-desc {
-            color: var(--gray-700);
-            margin-bottom: var(--space-lg);
-            flex-grow: 1;
-        }
-
-        .opportunity-list {
-            list-style: none;
-            margin-bottom: var(--space-lg);
-        }
-
-        .opportunity-list li {
-            margin-bottom: var(--space-sm);
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-xs);
-        }
-
-        .opportunity-list i {
-            color: var(--fern-green);
-            margin-top: 3px;
-        }
-
-        .lab-culture {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--space-xl);
-            box-shadow: var(--shadow-md);
-        }
-
-        .lab-culture h3 {
-            text-align: center;
-            margin-bottom: var(--space-lg);
-        }
-
-        .lab-culture > p {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto var(--space-xl);
-            color: var(--gray-700);
-        }
-
-        .culture-values {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-lg);
-        }
-
-        .value-item {
-            text-align: center;
-            padding: var(--space-md);
-        }
-
-        .value-item i {
-            font-size: 2.5rem;
-            color: var(--tiger-orange);
-            margin-bottom: var(--space-sm);
-        }
-
-        .value-item h4 {
-            color: var(--fern-green);
-            margin-bottom: var(--space-xs);
-        }
-
-        .value-item p {
-            color: var(--gray-700);
-            font-size: 0.95rem;
-        }
-
-        /* ===== Industry Collaboration Section ===== */
-        .industry-section {
-            background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
-            padding: var(--space-xxl) 0;
-        }
-
-        .industry-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .industry-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--gray-700);
-        }
-
-        .industry-highlight {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--space-xl);
-            margin: var(--space-xl) 0;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--gray-200);
-        }
-
-        .industry-partners {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--space-lg);
-            margin-top: var(--space-xl);
-        }
-
-        .partner-tag {
-            background-color: var(--gray-100);
-            color: var(--fern-green);
-            padding: 0.5rem 1.5rem;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 1rem;
-            border: 1px solid var(--gray-200);
-        }
-
-        /* ===== Footer ===== */
-        .footer {
-            background-color: var(--fern-green);
-            color: var(--white);
-            padding: var(--space-xxl) 0 var(--space-lg);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-md);
-        }
-
-        .footer-logo-container {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-        }
-
-        .footer-logo-img {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-        }
-
-        .footer-logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .footer-mission {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: var(--space-sm);
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            transition: all var(--transition-fast);
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            background-color: var(--tiger-orange);
-            transform: translateY(-3px);
-        }
-
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-lg);
-        }
-
-        .footer-column {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-        }
-
-        .footer-heading {
-            color: var(--white);
-            font-size: 1.2rem;
-            margin-bottom: var(--space-sm);
-            font-weight: 600;
-        }
-
-        .footer-link {
-            color: rgba(255, 255, 255, 0.8);
-            transition: color var(--transition-fast);
-            text-decoration: none;
-        }
-
-        .footer-link:hover {
-            color: var(--tiger-orange-light);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: var(--space-lg);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-md);
-        }
-
-        .copyright {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .footer-legal {
-            display: flex;
-            gap: var(--space-lg);
-        }
-
-        .legal-link {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            text-decoration: none;
-        }
-
-        .legal-link:hover {
-            color: var(--white);
-        }
-
-        /* ===== Responsive Design ===== */
-        @media (max-width: 992px) {
-            .hero-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-title {
-                justify-content: center;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .news-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .news-content {
-                text-align: center;
-            }
-            
-            .news-buttons {
-                justify-content: center;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                flex-direction: column;
-                background-color: var(--white);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: var(--shadow-lg);
-                padding: var(--space-xl) 0;
-                gap: var(--space-lg);
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .mobile-toggle {
-                display: block;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-                flex-direction: column;
-                gap: var(--space-xs);
-            }
-            
-            .hero-logo {
-                height: 60px;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .news-title {
-                font-size: 1.8rem;
-            }
-            
-            .research-grid,
-            .team-grid,
-            .opportunities-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .publications-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-links {
-                grid-template-columns: 1fr;
-                gap: var(--space-xl);
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .publications-controls {
-                gap: var(--space-xs);
-            }
-            
-            .filter-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-            
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .news-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: var(--font-primary); font-size: 16px; line-height: 1.6; color: var(--gray-800); background-color: var(--white); overflow-x: hidden; opacity: 1; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
+        .section { padding: var(--space-xxl) 0; }
+        .section-title { font-family: var(--font-secondary); font-size: 2.5rem; font-weight: 700; color: var(--fern-green); margin-bottom: var(--space-lg); text-align: center; position: relative; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--tiger-orange); border-radius: 2px; }
+        .section-subtitle { font-size: 1.2rem; color: var(--gray-600); text-align: center; max-width: 800px; margin: 0 auto var(--space-xl); line-height: 1.7; }
+        h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.3; color: var(--fern-green); }
+        h1 { font-size: 3.5rem; font-weight: 700; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+        h4 { font-size: 1.4rem; }
+        p { margin-bottom: var(--space-md); }
+        a { color: var(--tiger-orange); text-decoration: none; transition: color var(--transition-fast); }
+        a:hover { color: var(--tiger-orange-dark); }
+
+        .btn { display: inline-block; padding: 0.8rem 1.8rem; font-family: var(--font-primary); font-size: 1rem; font-weight: 600; text-align: center; border-radius: var(--radius-md); border: none; cursor: pointer; transition: all var(--transition-normal); text-decoration: none; }
+        .btn-primary { background-color: var(--tiger-orange); color: var(--white); box-shadow: var(--shadow-sm); }
+        .btn-primary:hover { background-color: var(--tiger-orange-dark); color: var(--white); transform: translateY(-3px); box-shadow: var(--shadow-orange); }
+        .btn-secondary { background-color: var(--fern-green); color: var(--white); box-shadow: var(--shadow-sm); }
+        .btn-secondary:hover { background-color: var(--fern-green-dark); color: var(--white); transform: translateY(-3px); box-shadow: var(--shadow-green); }
+        .btn-outline { background-color: transparent; color: var(--fern-green); border: 2px solid var(--fern-green); }
+        .btn-outline:hover { background-color: var(--fern-green); color: var(--white); transform: translateY(-3px); }
+
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--white); box-shadow: var(--shadow-sm); z-index: 1000; padding: var(--space-sm) 0; transition: background-color var(--transition-normal), backdrop-filter var(--transition-normal); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
+        .nav-logo { display: flex; align-items: center; gap: var(--space-xs); font-size: 1.5rem; font-weight: 700; color: var(--fern-green); text-decoration: none; }
+        .logo-img { height: 40px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+        .logo-text { color: var(--fern-green); }
+        .nav-menu { display: flex; list-style: none; gap: var(--space-lg); align-items: center; }
+        .nav-item { list-style: none; }
+        .nav-link { font-weight: 500; color: var(--gray-700); text-decoration: none; transition: color var(--transition-fast); position: relative; }
+        .nav-link:hover { color: var(--tiger-orange); }
+        .nav-link.active { color: var(--tiger-orange); }
+        .nav-link.active::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background-color: var(--tiger-orange); }
+        .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--fern-green); cursor: pointer; padding: 0.5rem; }
+
+        .hero { background: linear-gradient(135deg, rgba(233, 122, 41, 0.1) 0%, rgba(79, 121, 66, 0.1) 100%); padding-top: 120px; padding-bottom: var(--space-xxl); }
+        .hero-container { display: flex; align-items: center; justify-content: center; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); gap: var(--space-xl); }
+        .hero-content { flex: 1; text-align: center; }
+        .hero-title { font-size: 3.5rem; color: var(--fern-green); margin-bottom: var(--space-md); line-height: 1.2; display: flex; align-items: center; justify-content: center; gap: var(--space-sm); opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .hero-logo { height: 80px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+        .hero-subtitle { font-size: 1.3rem; color: var(--gray-700); margin-bottom: var(--space-lg); max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .hero-tagline { margin-bottom: var(--space-xl); }
+        .tagline-text { font-family: var(--font-secondary); font-size: 1.5rem; font-style: italic; color: var(--tiger-orange); border-left: 4px solid var(--fern-green); padding-left: var(--space-md); display: inline-block; }
+        .hero-buttons { display: flex; gap: var(--space-md); flex-wrap: wrap; justify-content: center; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+
+        .news-section { background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%); padding: var(--space-xxl) 0; position: relative; overflow: hidden; }
+        .news-section::before { content: 'NEW'; position: absolute; top: 20px; right: -30px; background-color: var(--tiger-orange); color: var(--white); padding: 0.5rem 4rem; font-size: 1.2rem; font-weight: 700; transform: rotate(45deg); letter-spacing: 2px; box-shadow: var(--shadow-md); z-index: 10; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; transform: rotate(45deg) scale(1); } 50% { opacity: 0.9; transform: rotate(45deg) scale(1.05); background-color: var(--tiger-orange-dark); } 100% { opacity: 1; transform: rotate(45deg) scale(1); } }
+        .news-container { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
+        .news-image { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); transition: transform var(--transition-normal); border: 3px solid var(--tiger-orange); }
+        .news-image:hover { transform: scale(1.02); }
+        .news-image img { width: 100%; height: auto; display: block; transition: transform var(--transition-normal); }
+        .news-image:hover img { transform: scale(1.05); }
+        .news-image-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: var(--white); padding: var(--space-lg) var(--space-md) var(--space-md); text-align: center; }
+        .news-image-caption i { color: var(--tiger-orange); margin-right: var(--space-xs); }
+        .news-content { padding: var(--space-lg); }
+        .news-badge { display: inline-block; background-color: var(--tiger-orange); color: var(--white); padding: 0.3rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 600; margin-bottom: var(--space-md); animation: flash 1.5s infinite; }
+        @keyframes flash { 0%, 50%, 100% { opacity: 1; } 25%, 75% { opacity: 0.7; background-color: var(--tiger-orange-dark); } }
+        .news-title { font-size: 2.2rem; color: var(--fern-green); margin-bottom: var(--space-sm); line-height: 1.3; }
+        .news-subtitle { font-size: 1.2rem; color: var(--tiger-orange); font-weight: 500; margin-bottom: var(--space-md); padding-bottom: var(--space-md); border-bottom: 2px dashed var(--gray-300); }
+        .news-description { color: var(--gray-700); margin-bottom: var(--space-lg); font-size: 1.1rem; line-height: 1.8; }
+        .news-buttons { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+
+        .thrive-overview { background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%); padding: var(--space-xxl) 0; }
+        .thrive-mission-card { background-color: var(--white); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: var(--shadow-lg); border-left: 5px solid var(--tiger-orange); margin-bottom: var(--space-xl); }
+        .thrive-quote { font-family: var(--font-secondary); font-size: 1.3rem; line-height: 1.8; color: var(--gray-700); padding: var(--space-lg); background-color: rgba(79, 121, 66, 0.05); border-radius: var(--radius-lg); position: relative; margin: var(--space-xl) 0; }
+        .thrive-quote i { color: var(--fern-green); opacity: 0.3; font-size: 2rem; position: absolute; top: var(--space-sm); left: var(--space-sm); }
+        .thrive-quote p { margin-bottom: var(--space-sm); padding-left: var(--space-xl); }
+        .thrive-quote-author { font-weight: 600; color: var(--tiger-orange); text-align: right; }
+        .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-lg); margin: var(--space-xl) 0; }
+        .mission-item { background-color: var(--white); padding: var(--space-lg); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); text-align: center; transition: transform var(--transition-normal); border-bottom: 3px solid var(--fern-green); }
+        .mission-item:hover { transform: translateY(-5px); }
+        .mission-item i { font-size: 2.5rem; color: var(--tiger-orange); margin-bottom: var(--space-md); }
+        .mission-item h4 { color: var(--fern-green); margin-bottom: var(--space-sm); }
+        .mission-item p { color: var(--gray-700); margin-bottom: 0; font-size: 0.95rem; }
+
+        .research-section { background-color: var(--white); }
+        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); margin-top: var(--space-xl); }
+        .research-card { background-color: var(--white); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: var(--shadow-md); border-left: 5px solid var(--tiger-orange); transition: all var(--transition-normal); height: 100%; display: flex; flex-direction: column; }
+        .research-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+        .research-icon { font-size: 2.5rem; color: var(--fern-green); margin-bottom: var(--space-md); }
+        .research-title { font-size: 1.5rem; margin-bottom: var(--space-md); color: var(--fern-green); }
+        .research-desc { color: var(--gray-700); margin-bottom: var(--space-lg); flex-grow: 1; }
+        .research-tags { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+        .tag { background-color: var(--tiger-orange-light); color: var(--tiger-orange-dark); padding: 0.3rem 0.8rem; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 500; }
+
+        .team-section { background-color: var(--gray-50); }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-lg); margin-top: var(--space-xl); }
+        .team-card { background-color: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: all var(--transition-normal); display: flex; flex-direction: column; position: relative; }
+        .team-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-green); }
+        .team-card.director-card { border: 3px solid var(--tiger-orange); }
+        .pi-badge { position: absolute; top: 15px; right: 15px; background-color: var(--tiger-orange); color: var(--white); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 600; z-index: 2; box-shadow: var(--shadow-sm); }
+        .team-photo { height: 250px; background: linear-gradient(135deg, var(--fern-green-light) 0%, var(--fern-green) 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+        .photo-placeholder { width: 180px; height: 180px; border-radius: 50%; background-color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 5rem; color: var(--fern-green); }
+        .team-info { padding: var(--space-lg); flex-grow: 1; }
+        .team-name { color: var(--fern-green); margin-bottom: var(--space-xs); font-size: 1.3rem; }
+        .team-title { color: var(--tiger-orange); font-weight: 600; margin-bottom: var(--space-md); font-size: 1rem; }
+        .team-bio { color: var(--gray-700); margin-bottom: var(--space-md); line-height: 1.7; font-size: 0.95rem; }
+        .team-links { display: flex; gap: var(--space-sm); margin-top: var(--space-md); flex-wrap: wrap; }
+        .team-link { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background-color: var(--gray-100); border-radius: 50%; color: var(--fern-green); transition: all var(--transition-fast); position: relative; text-decoration: none; font-size: 1rem; }
+        .team-link:hover { background-color: var(--fern-green); color: var(--white); transform: scale(1.1); }
+        .team-link .tooltip { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background-color: var(--gray-800); color: var(--white); padding: 0.3rem 0.6rem; border-radius: var(--radius-sm); font-size: 0.8rem; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity var(--transition-fast); margin-bottom: 5px; pointer-events: none; }
+        .team-link:hover .tooltip { opacity: 1; visibility: visible; }
+        .team-note { margin-top: var(--space-xl); padding: var(--space-lg); background-color: var(--fern-green-light); color: var(--white); border-radius: var(--radius-lg); text-align: center; }
+        .team-note a { color: var(--white); text-decoration: underline; font-weight: 600; }
+
+        .publications-section { background-color: var(--white); }
+        .publications-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-sm); margin-bottom: var(--space-xl); }
+        .filter-btn { padding: 0.6rem 1.5rem; background-color: var(--gray-100); border: none; border-radius: var(--radius-md); font-weight: 500; color: var(--gray-700); cursor: pointer; transition: all var(--transition-fast); }
+        .filter-btn:hover { background-color: var(--gray-200); }
+        .filter-btn.active { background-color: var(--tiger-orange); color: var(--white); }
+        .publications-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--space-lg); }
+        .publication-card { background-color: var(--white); border-radius: var(--radius-lg); padding: var(--space-lg); box-shadow: var(--shadow-md); border-left: 5px solid var(--fern-green); transition: transform var(--transition-normal), opacity var(--transition-normal); position: relative; opacity: 1; transform: translateY(0); }
+        .publication-card:hover { transform: translateY(-5px); }
+        .pub-badge { position: absolute; top: 15px; right: 15px; background-color: var(--fern-green); color: var(--white); padding: 0.3rem 0.8rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; }
+        .pub-title { font-size: 1.2rem; color: var(--fern-green); margin-bottom: var(--space-sm); padding-right: 80px; }
+        .pub-authors { color: var(--gray-700); font-size: 0.95rem; margin-bottom: var(--space-xs); }
+        .pub-journal { color: var(--tiger-orange); font-weight: 500; margin-bottom: var(--space-md); font-size: 0.9rem; }
+        .pub-links { display: flex; flex-wrap: wrap; gap: var(--space-md); }
+        .pub-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.9rem; color: var(--fern-green); font-weight: 500; text-decoration: none; }
+        .pub-link:hover { color: var(--tiger-orange); }
+        .publications-footer { margin-top: var(--space-xl); text-align: center; }
+        .pub-note { margin-top: var(--space-md); color: var(--gray-600); }
+
+        .join-section { background-color: var(--gray-50); }
+        .opportunities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+        .opportunity-card { background-color: var(--white); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: var(--shadow-md); display: flex; flex-direction: column; height: 100%; border-top: 5px solid var(--fern-green); }
+        .opportunity-title { color: var(--fern-green); margin-bottom: var(--space-md); }
+        .opportunity-desc { color: var(--gray-700); margin-bottom: var(--space-lg); flex-grow: 1; }
+        .opportunity-list { list-style: none; margin-bottom: var(--space-lg); }
+        .opportunity-list li { margin-bottom: var(--space-sm); display: flex; align-items: flex-start; gap: var(--space-xs); }
+        .opportunity-list i { color: var(--fern-green); margin-top: 3px; }
+        .lab-culture { background-color: var(--white); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: var(--shadow-md); }
+        .lab-culture h3 { text-align: center; margin-bottom: var(--space-lg); }
+        .lab-culture > p { text-align: center; max-width: 800px; margin: 0 auto var(--space-xl); color: var(--gray-700); }
+        .culture-values { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-lg); }
+        .value-item { text-align: center; padding: var(--space-md); }
+        .value-item i { font-size: 2.5rem; color: var(--tiger-orange); margin-bottom: var(--space-sm); }
+        .value-item h4 { color: var(--fern-green); margin-bottom: var(--space-xs); }
+        .value-item p { color: var(--gray-700); font-size: 0.95rem; }
+
+        .industry-section { background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%); padding: var(--space-xxl) 0; }
+        .industry-content { max-width: 900px; margin: 0 auto; text-align: center; }
+        .industry-content p { font-size: 1.1rem; line-height: 1.8; color: var(--gray-700); }
+        .industry-highlight { background-color: var(--white); border-radius: var(--radius-lg); padding: var(--space-xl); margin: var(--space-xl) 0; box-shadow: var(--shadow-lg); border: 1px solid var(--gray-200); }
+        .industry-partners { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-lg); margin-top: var(--space-xl); }
+        .partner-tag { background-color: var(--gray-100); color: var(--fern-green); padding: 0.5rem 1.5rem; border-radius: var(--radius-md); font-weight: 600; font-size: 1rem; border: 1px solid var(--gray-200); }
+
+        .footer { background-color: var(--fern-green); color: var(--white); padding: var(--space-xxl) 0 var(--space-lg); }
+        .footer-content { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-xl); margin-bottom: var(--space-xl); }
+        .footer-brand { display: flex; flex-direction: column; gap: var(--space-md); }
+        .footer-logo-container { display: flex; align-items: center; gap: var(--space-sm); }
+        .footer-logo-img { height: 50px; width: auto; object-fit: contain; filter: brightness(0) invert(1); }
+        .footer-logo-text { font-size: 1.8rem; font-weight: 700; color: var(--white); }
+        .footer-mission { color: rgba(255, 255, 255, 0.8); line-height: 1.7; }
+        .footer-social { display: flex; gap: var(--space-sm); }
+        .social-link { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; color: var(--white); transition: all var(--transition-fast); text-decoration: none; }
+        .social-link:hover { background-color: var(--tiger-orange); transform: translateY(-3px); }
+        .footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+        .footer-column { display: flex; flex-direction: column; gap: var(--space-sm); }
+        .footer-heading { color: var(--white); font-size: 1.2rem; margin-bottom: var(--space-sm); font-weight: 600; }
+        .footer-link { color: rgba(255, 255, 255, 0.8); transition: color var(--transition-fast); text-decoration: none; }
+        .footer-link:hover { color: var(--tiger-orange-light); }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: var(--space-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md); }
+        .copyright { color: rgba(255, 255, 255, 0.7); }
+        .footer-legal { display: flex; gap: var(--space-lg); }
+        .legal-link { color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-decoration: none; }
+        .legal-link:hover { color: var(--white); }
+
+        @media (max-width: 992px) { .hero-container { flex-direction: column; } .hero-title { justify-content: center; } .about-content { grid-template-columns: 1fr; } .news-container { grid-template-columns: 1fr; } .news-content { text-align: center; } .news-buttons { justify-content: center; } .footer-content { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .nav-menu { position: fixed; top: 70px; left: -100%; flex-direction: column; background-color: var(--white); width: 100%; transition: 0.3s; box-shadow: var(--shadow-lg); padding: var(--space-xl) 0; gap: var(--space-lg); } .nav-menu.active { left: 0; } .mobile-toggle { display: block; } .hero-title { font-size: 2.5rem; flex-direction: column; gap: var(--space-xs); } .hero-logo { height: 60px; } .section-title { font-size: 2rem; } .news-title { font-size: 1.8rem; } .research-grid, .team-grid, .opportunities-grid { grid-template-columns: 1fr; } .publications-list { grid-template-columns: 1fr; } .footer-links { grid-template-columns: 1fr; gap: var(--space-xl); } .footer-bottom { flex-direction: column; text-align: center; } }
+        @media (max-width: 576px) { .hero-buttons { flex-direction: column; align-items: center; } .btn { width: 100%; max-width: 300px; } .publications-controls { gap: var(--space-xs); } .filter-btn { padding: 0.5rem 1rem; font-size: 0.9rem; } .about-stats { grid-template-columns: 1fr; } .news-buttons { flex-direction: column; align-items: center; } }
     </style>
 </head>
 <body>
-    <!-- Navigation Menu -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
@@ -1436,20 +248,15 @@
                 <li class="nav-item"><a href="#join" class="nav-link">Join Us</a></li>
                 <li class="nav-item"><a href="#industry" class="nav-link">Collaborate</a></li>
                 <li class="nav-item">
-                    <a href="https://github.com/thrive-labb/thrive-labb.github.io" class="nav-link" target="_blank">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
+                    <a href="https://github.com/thrive-labb/thrive-labb.github.io" class="nav-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://bsky.app/profile/thrivelab.bsky.social" class="nav-link" target="_blank">
-                        <i class="fab fa-bluesky"></i> Bluesky
-                    </a>
+                    <a href="https://bsky.app/profile/thrivelab.bsky.social" class="nav-link" target="_blank"><i class="fab fa-bluesky"></i> Bluesky</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
@@ -1469,7 +276,6 @@
         </div>
     </section>
 
-    <!-- What's New Section -->
     <section id="news" class="news-section">
         <div class="news-container">
             <div class="news-image">
@@ -1487,8 +293,6 @@
                 <div class="news-description">
                     <p>We're thrilled to announce that Dr. Faith Matcham participated as a distinguished panelist at the Clean Slate Clinic White Paper Launch Event, contributing her expertise in digital mental health and cognitive resilience to this important initiative.</p>
                 </div>
-                <div class="news-highlight">
-                </div>
                 <div class="news-buttons">
                     <a href="https://github.com/thrive-labb/thrive-labb.github.io/blob/main/assests/Final_Clean%20Slate%20Clinic_White%20Paper.pdf?raw=true" class="btn btn-primary" target="_blank">
                         <i class="fas fa-file-pdf"></i> Read the White Paper
@@ -1496,52 +300,30 @@
                     <a href="#team" class="btn btn-outline">
                         <i class="fas fa-users"></i> Meet Our Team
                     </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section with THRIVE Overview -->
     <section id="about" class="thrive-overview">
         <div class="container">
             <h2 class="section-title">Welcome to THRIVE</h2>
-            
             <div class="thrive-mission-card">
                 <p style="font-size: 1.2rem; line-height: 1.8;">THRIVE (Technology for Healthcare Research and Intervention in Everyday Life) is a research group dedicated to understanding and improving mental and physical health through digital innovation. We design, evaluate, and implement technologies that make health support more personalised, timely, and reflective of people's real lives. Our work spans digital sensing, wearable and smartphone data, human-centred design, behaviour change, and lived-experience-driven intervention development across the lifespan.</p>
-                
                 <p style="font-size: 1.2rem; line-height: 1.8; margin-top: var(--space-lg);">At THRIVE, we believe that technology should fit into everyday routines, not the other way around. Our research combines psychological science with data analytics, engineering, design, and community partnership to create tools and systems that genuinely work for the people who use them.</p>
             </div>
-
             <div class="thrive-quote">
                 <i class="fas fa-quote-left"></i>
                 <p>"Technology gives us an unprecedented window into people's daily lives; but its true value emerges only when we build it with empathy, curiosity, and a commitment to equity. THRIVE is about creating health technologies that understand people, not the other way around."</p>
                 <p class="thrive-quote-author">— Dr Faith Matcham, Founder of THRIVE</p>
             </div>
-
             <h3 style="text-align: center; margin-bottom: var(--space-lg); color: var(--fern-green);">Our Mission</h3>
-            
             <div class="mission-grid">
-                <div class="mission-item">
-                    <i class="fas fa-chart-line"></i>
-                    <h4>Deepen Understanding</h4>
-                    <p>To use digital data to deepen understanding of health, wellbeing, and everyday behaviour</p>
-                </div>
-                <div class="mission-item">
-                    <i class="fas fa-hand-holding-heart"></i>
-                    <h4>Co-design Interventions</h4>
-                    <p>To co-design interventions that are acceptable, accessible, and effective for diverse communities</p>
-                </div>
-                <div class="mission-item">
-                    <i class="fas fa-link"></i>
-                    <h4>Bridge Disciplines</h4>
-                    <p>To bridge psychological science, data science, engineering, and real-world lived experience</p>
-                </div>
-                <div class="mission-item">
-                    <i class="fas fa-heart"></i>
-                    <h4>Improve Outcomes</h4>
-                    <p>To improve mental and physical health outcomes across all ages and contexts</p>
-                </div>
+                <div class="mission-item"><i class="fas fa-chart-line"></i><h4>Deepen Understanding</h4><p>To use digital data to deepen understanding of health, wellbeing, and everyday behaviour</p></div>
+                <div class="mission-item"><i class="fas fa-hand-holding-heart"></i><h4>Co-design Interventions</h4><p>To co-design interventions that are acceptable, accessible, and effective for diverse communities</p></div>
+                <div class="mission-item"><i class="fas fa-link"></i><h4>Bridge Disciplines</h4><p>To bridge psychological science, data science, engineering, and real-world lived experience</p></div>
+                <div class="mission-item"><i class="fas fa-heart"></i><h4>Improve Outcomes</h4><p>To improve mental and physical health outcomes across all ages and contexts</p></div>
             </div>
-
             <div style="background-color: var(--white); border-radius: var(--radius-lg); padding: var(--space-xl); margin-top: var(--space-xl);">
                 <h3 style="color: var(--tiger-orange); margin-bottom: var(--space-md);">The Journey to THRIVE</h3>
                 <p>THRIVE is the culmination of more than a decade of work at the intersection of mental health, physical health, and digital technology.</p>
@@ -1554,284 +336,195 @@
         </div>
     </section>
 
-    <!-- Research Themes -->
     <section id="research" class="section research-section">
         <div class="container">
             <h2 class="section-title">Our Research Focus</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto var(--space-xl); color: var(--gray-700);">THRIVE supports work across a diverse range of interconnected research areas</p>
-            
             <div class="research-grid">
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="research-title">Digital Sensing in Long-term Conditions</h3>
-                    <p class="research-desc">Using smartphones and wearables to monitor symptoms, predict relapse, and understand daily experiences in chronic illness.</p>
-                    <div class="research-tags">
-                        <span class="tag">Wearables</span>
-                        <span class="tag">Remote Monitoring</span>
-                        <span class="tag">Chronic Illness</span>
-                    </div>
-                </div>
-
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3 class="research-title">AI-Augmented Digital Interventions</h3>
-                    <p class="research-desc">Developing and evaluating interventions enhanced by artificial intelligence to provide personalised, adaptive support.</p>
-                    <div class="research-tags">
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Personalisation</span>
-                        <span class="tag">Adaptive Systems</span>
-                    </div>
-                </div>
-
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3 class="research-title">Human-Centred Design for Loneliness & Ageing</h3>
-                    <p class="research-desc">Co-designing smart systems with older adults to detect and address loneliness through acceptable, integrated technologies.</p>
-                    <div class="research-tags">
-                        <span class="tag">Co-design</span>
-                        <span class="tag">Ageing</span>
-                        <span class="tag">Loneliness</span>
-                    </div>
-                </div>
-
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3 class="research-title">Just-in-Time Adaptive Interventions (JITAIs)</h3>
-                    <p class="research-desc">Creating interventions that deliver support at the right moment, adapted to an individual's changing context and needs.</p>
-                    <div class="research-tags">
-                        <span class="tag">Real-time</span>
-                        <span class="tag">Context-aware</span>
-                        <span class="tag">Behaviour Change</span>
-                    </div>
-                </div>
-
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3 class="research-title">Smartphone & Wearable Prediction Modelling</h3>
-                    <p class="research-desc">Building predictive models from passive sensing data to forecast health outcomes and enable proactive care.</p>
-                    <div class="research-tags">
-                        <span class="tag">Predictive Analytics</span>
-                        <span class="tag">Passive Sensing</span>
-                        <span class="tag">Digital Biomarkers</span>
-                    </div>
-                </div>
-
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="research-title">Community-Co-Developed Approaches</h3>
-                    <p class="research-desc">Working alongside communities to tackle loneliness and health inequalities through culturally appropriate, participatory methods.</p>
-                    <div class="research-tags">
-                        <span class="tag">Community Engagement</span>
-                        <span class="tag">Health Inequalities</span>
-                        <span class="tag">Participatory</span>
-                    </div>
-                </div>
-
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="research-title">Applied Machine Learning for Symptom Tracking</h3>
-                    <p class="research-desc">Using advanced analytics to understand symptom patterns and support rehabilitation in neurological and mental health conditions.</p>
-                    <div class="research-tags">
-                        <span class="tag">Symptom Tracking</span>
-                        <span class="tag">Rehabilitation</span>
-                        <span class="tag">Neurology</span>
-                    </div>
-                </div>
-
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-clipboard-check"></i>
-                    </div>
-                    <h3 class="research-title">Mixed-Methods Evaluations</h3>
-                    <p class="research-desc">Combining quantitative and qualitative approaches to evaluate digital health tools in real-world contexts.</p>
-                    <div class="research-tags">
-                        <span class="tag">Mixed Methods</span>
-                        <span class="tag">Real-world Evidence</span>
-                        <span class="tag">Implementation</span>
-                    </div>
-                </div>
+                <div class="research-card"><div class="research-icon"><i class="fas fa-mobile-alt"></i></div><h3 class="research-title">Digital Sensing in Long-term Conditions</h3><p class="research-desc">Using smartphones and wearables to monitor symptoms, predict relapse, and understand daily experiences in chronic illness.</p><div class="research-tags"><span class="tag">Wearables</span><span class="tag">Remote Monitoring</span><span class="tag">Chronic Illness</span></div></div>
+                <div class="research-card"><div class="research-icon"><i class="fas fa-robot"></i></div><h3 class="research-title">AI-Augmented Digital Interventions</h3><p class="research-desc">Developing and evaluating interventions enhanced by artificial intelligence to provide personalised, adaptive support.</p><div class="research-tags"><span class="tag">Machine Learning</span><span class="tag">Personalisation</span><span class="tag">Adaptive Systems</span></div></div>
+                <div class="research-card"><div class="research-icon"><i class="fas fa-paint-brush"></i></div><h3 class="research-title">Human-Centred Design for Loneliness & Ageing</h3><p class="research-desc">Co-designing smart systems with older adults to detect and address loneliness through acceptable, integrated technologies.</p><div class="research-tags"><span class="tag">Co-design</span><span class="tag">Ageing</span><span class="tag">Loneliness</span></div></div>
+                <div class="research-card"><div class="research-icon"><i class="fas fa-clock"></i></div><h3 class="research-title">Just-in-Time Adaptive Interventions (JITAIs)</h3><p class="research-desc">Creating interventions that deliver support at the right moment, adapted to an individual's changing context and needs.</p><div class="research-tags"><span class="tag">Real-time</span><span class="tag">Context-aware</span><span class="tag">Behaviour Change</span></div></div>
+                <div class="research-card"><div class="research-icon"><i class="fas fa-chart-pie"></i></div><h3 class="research-title">Smartphone & Wearable Prediction Modelling</h3><p class="research-desc">Building predictive models from passive sensing data to forecast health outcomes and enable proactive care.</p><div class="research-tags"><span class="tag">Predictive Analytics</span><span class="tag">Passive Sensing</span><span class="tag">Digital Biomarkers</span></div></div>
+                <div class="research-card"><div class="research-icon"><i class="fas fa-users"></i></div><h3 class="research-title">Community-Co-Developed Approaches</h3><p class="research-desc">Working alongside communities to tackle loneliness and health inequalities through culturally appropriate, participatory methods.</p><div class="research-tags"><span class="tag">Community Engagement</span><span class="tag">Health Inequalities</span><span class="tag">Participatory</span></div></div>
+                <div class="research-card"><div class="research-icon"><i class="fas fa-brain"></i></div><h3 class="research-title">Applied Machine Learning for Symptom Tracking</h3><p class="research-desc">Using advanced analytics to understand symptom patterns and support rehabilitation in neurological and mental health conditions.</p><div class="research-tags"><span class="tag">Symptom Tracking</span><span class="tag">Rehabilitation</span><span class="tag">Neurology</span></div></div>
+                <div class="research-card"><div class="research-icon"><i class="fas fa-clipboard-check"></i></div><h3 class="research-title">Mixed-Methods Evaluations</h3><p class="research-desc">Combining quantitative and qualitative approaches to evaluate digital health tools in real-world contexts.</p><div class="research-tags"><span class="tag">Mixed Methods</span><span class="tag">Real-world Evidence</span><span class="tag">Implementation</span></div></div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
     <section id="team" class="section team-section">
         <div class="container">
             <h2 class="section-title">Our Thriving Team</h2>
             <p class="section-subtitle">We bring together researchers from diverse backgrounds united by a passion for understanding human potential</p>
-            
+
             <div class="team-grid">
-                <!-- Principal Investigator - Dr. Faith Matcham -->
+                <!-- Dr. Faith Matcham -->
                 <div class="team-card director-card">
                     <div class="pi-badge">Principal Investigator</div>
                     <div class="team-photo">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-user-md"></i>
-                        </div>
+                        <img src="https://github.com/thrive-labb/thrive-labb.github.io/blob/main/assests/FaithMatcham-1.JPG?raw=true" alt="Dr. Faith Matcham">
                     </div>
                     <div class="team-info">
                         <h3 class="team-name">Dr. Faith Matcham</h3>
                         <p class="team-title">Founder & Principal Investigator</p>
-                        <p class="team-bio">Leading research in digital mental health, psychological interventions, and cognitive resilience. Expert in longitudinal studies and mixed-methods approaches to understanding mental health outcomes. Over 100 peer-reviewed publications and £3.8M in collaborative funding.</p>
+                        <p class="team-bio">Leading research in digital mental health, psychological interventions, and cognitive resilience. Over 100 peer-reviewed publications and £3.8M in collaborative funding.</p>
                         <div class="team-links">
-                            <a href="mailto:F.Matcham@sussex.ac.uk" class="team-link" title="Email">
-                                <i class="fas fa-envelope"></i>
-                                <span class="tooltip">Email</span>
-                            </a>
-                            <a href="https://profiles.sussex.ac.uk/p199181-faith-matcham" class="team-link" target="_blank" title="University Profile">
-                                <i class="fas fa-university"></i>
-                                <span class="tooltip">University Profile</span>
-                            </a>
-                            <a href="https://www.linkedin.com/in/faith-matcham-75519732/?originalSubdomain=uk" class="team-link" target="_blank" title="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                                <span class="tooltip">LinkedIn</span>
-                            </a>
-                            <a href="https://orcid.org/0000-0002-4055-904X" class="team-link" target="_blank" title="ORCID">
-                                <i class="fab fa-orcid"></i>
-                                <span class="tooltip">ORCID</span>
-                            </a>
+                            <a href="mailto:F.Matcham@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                            <a href="https://profiles.sussex.ac.uk/p199181-faith-matcham" class="team-link" target="_blank" title="University Profile"><i class="fas fa-university"></i><span class="tooltip">Profile</span></a>
+                            <a href="https://www.linkedin.com/in/faith-matcham-75519732/" class="team-link" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i><span class="tooltip">LinkedIn</span></a>
+                            <a href="https://orcid.org/0000-0002-4055-904X" class="team-link" target="_blank" title="ORCID"><i class="fab fa-orcid"></i><span class="tooltip">ORCID</span></a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Postdoctoral Researcher -->
+
+                <!-- Rebecca Harding -->
                 <div class="team-card">
                     <div class="team-photo">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
+                        <img src="https://profiles.sussex.ac.uk/p601480-bex-harding/thumbnail" alt="Rebecca Harding">
                     </div>
                     <div class="team-info">
-                        <h3 class="team-name">Dr. Jordan Lee</h3>
-                        <p class="team-title">Postdoctoral Researcher</p>
-                        <p class="team-bio">Expert in EEG signal processing and computational modeling of neural dynamics. Focuses on machine learning applications in cognitive neuroscience and digital phenotyping.</p>
+                        <h3 class="team-name">Rebecca Harding</h3>
+                        <p class="team-title">PhD Student & Doctoral Tutor in Psychology</p>
+                        <p class="team-bio">Investigating digital interventions and engagement in chronic pain management. Trainee Health Psychologist with experience in systematic reviews, qualitative research, and ecological momentary assessments.</p>
                         <div class="team-links">
-                            <a href="#" class="team-link" title="Email">
-                                <i class="fas fa-envelope"></i>
-                                <span class="tooltip">Email</span>
-                            </a>
-                            <a href="#" class="team-link" title="GitHub">
-                                <i class="fab fa-github"></i>
-                                <span class="tooltip">GitHub</span>
-                            </a>
+                            <a href="mailto:rh600@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                            <a href="https://profiles.sussex.ac.uk/p601480-bex-harding" class="team-link" target="_blank" title="University Profile"><i class="fas fa-university"></i><span class="tooltip">Profile</span></a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Research Scientist -->
+
+                <!-- Jess Vazzaz -->
                 <div class="team-card">
                     <div class="team-photo">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-flask"></i>
-                        </div>
+                        <img src="https://profiles.sussex.ac.uk/p604458-jess-vazzaz/thumbnail" alt="Jess Vazzaz">
                     </div>
                     <div class="team-info">
-                        <h3 class="team-name">Dr. Sam Chen</h3>
-                        <p class="team-title">Research Scientist</p>
-                        <p class="team-bio">Develops open-source tools for psychophysiological data analysis and visualization. Specializes in reproducible research practices and digital biomarker development.</p>
+                        <h3 class="team-name">Jess Vazzaz</h3>
+                        <p class="team-title">PhD Student & Doctoral Tutor in Psychology</p>
+                        <p class="team-bio">Researching digital interventions for sleep and wellbeing. Focuses on the intersection of technology, behaviour change, and mental health.</p>
                         <div class="team-links">
-                            <a href="#" class="team-link" title="Email">
-                                <i class="fas fa-envelope"></i>
-                                <span class="tooltip">Email</span>
-                            </a>
-                            <a href="#" class="team-link" title="GitHub">
-                                <i class="fab fa-github"></i>
-                                <span class="tooltip">GitHub</span>
-                            </a>
+                            <a href="mailto:J.Vazzaz@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                            <a href="https://profiles.sussex.ac.uk/p604458-jess-vazzaz" class="team-link" target="_blank" title="University Profile"><i class="fas fa-university"></i><span class="tooltip">Profile</span></a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- PhD Candidate 1 -->
+
+                <!-- Fatai Olamide Azeez -->
                 <div class="team-card">
                     <div class="team-photo">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
+                        <img src="https://profiles.sussex.ac.uk/p657480-fatai-olamide-azeez/thumbnail" alt="Fatai Olamide Azeez">
                     </div>
                     <div class="team-info">
-                        <h3 class="team-name">Taylor Rodriguez</h3>
-                        <p class="team-title">PhD Candidate</p>
-                        <p class="team-bio">Investigates the effects of mindfulness interventions on cognitive resilience in high-stress populations using neuroimaging and wearable sensing methods.</p>
+                        <h3 class="team-name">Fatai Olamide Azeez</h3>
+                        <p class="team-title">PhD Student & Doctoral Tutor in Informatics</p>
+                        <p class="team-bio">Developing machine learning approaches for digital phenotyping and predictive modelling in mental health. Expertise in data science and computational methods.</p>
                         <div class="team-links">
-                            <a href="#" class="team-link" title="Email">
-                                <i class="fas fa-envelope"></i>
-                                <span class="tooltip">Email</span>
-                            </a>
-                            <a href="#" class="team-link" title="Academic Profile">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span class="tooltip">Academic Profile</span>
-                            </a>
+                            <a href="mailto:F.Azeez@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                            <a href="https://profiles.sussex.ac.uk/p657480-fatai-olamide-azeez" class="team-link" target="_blank" title="University Profile"><i class="fas fa-university"></i><span class="tooltip">Profile</span></a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- PhD Candidate 2 -->
+
+                <!-- Hai Tran -->
                 <div class="team-card">
                     <div class="team-photo">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
+                        <img src="https://profiles.sussex.ac.uk/p532098-hai-tran/thumbnail" alt="Hai Tran">
                     </div>
                     <div class="team-info">
-                        <h3 class="team-name">Morgan Kim</h3>
-                        <p class="team-title">PhD Candidate</p>
-                        <p class="team-bio">Studies developmental neuroplasticity and cognitive growth in children from diverse backgrounds using longitudinal designs and digital sensing.</p>
+                        <h3 class="team-name">Hai Tran</h3>
+                        <p class="team-title">PhD Student & Doctoral Tutor in Psychology</p>
+                        <p class="team-bio">Investigating relationships between pain and common mental health problems in young people using systematic reviews and longitudinal twin datasets.</p>
                         <div class="team-links">
-                            <a href="#" class="team-link" title="Email">
-                                <i class="fas fa-envelope"></i>
-                                <span class="tooltip">Email</span>
-                            </a>
-                            <a href="#" class="team-link" title="ResearchGate">
-                                <i class="fab fa-researchgate"></i>
-                                <span class="tooltip">ResearchGate</span>
-                            </a>
+                            <a href="mailto:tt402@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                            <a href="https://profiles.sussex.ac.uk/p532098-hai-tran" class="team-link" target="_blank" title="University Profile"><i class="fas fa-university"></i><span class="tooltip">Profile</span></a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Lab Manager -->
+
+                <!-- Mahima Das -->
                 <div class="team-card">
                     <div class="team-photo">
-                        <div class="photo-placeholder">
-                            <i class="fas fa-clipboard-list"></i>
-                        </div>
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQEwBwwW_SPe5A/profile-displayphoto-shrink_400_400/B56Zb5gE18HgAo-/0/1747942658288?e=1773273600&v=beta&t=Zn9b9tivNf_5NpVuZmjxdM2-DqLGO9EAsv2zr5Z6Uto" alt="Mahima Das">
                     </div>
                     <div class="team-info">
-                        <h3 class="team-name">Casey Williams</h3>
-                        <p class="team-title">Lab Manager & Research Coordinator</p>
-                        <p class="team-bio">Ensures smooth lab operations and coordinates participant recruitment across all studies. Manages ethics applications, data management, and community partnerships.</p>
+                        <h3 class="team-name">Mahima Das</h3>
+                        <p class="team-title">MRes Student</p>
+                        <p class="team-bio">Researching digital health interventions and user engagement. Interested in co-design approaches and patient-centred outcomes.</p>
                         <div class="team-links">
-                            <a href="#" class="team-link" title="Email">
-                                <i class="fas fa-envelope"></i>
-                                <span class="tooltip">Email</span>
-                            </a>
+                            <a href="mailto:dasmahima12270993@gmail.com" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                            <a href="https://www.linkedin.com/in/mahima-das-880876210/" class="team-link" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i><span class="tooltip">LinkedIn</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yasmin Lavictoire -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="photo-placeholder"><i class="fas fa-user-graduate"></i></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Yasmin Lavictoire</h3>
+                        <p class="team-title">MRes Student</p>
+                        <p class="team-bio">Exploring digital approaches to mental health support. Focuses on qualitative methods and lived experience perspectives.</p>
+                        <div class="team-links">
+                            <a href="mailto:yl761@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Victoria Olivieri-Maalouf -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="photo-placeholder"><i class="fas fa-hands-helping"></i></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Victoria Olivieri-Maalouf</h3>
+                        <p class="team-title">Volunteer Researcher</p>
+                        <p class="team-bio">Contributing to research on digital mental health interventions and supporting community engagement activities.</p>
+                        <div class="team-links">
+                            <a href="mailto:vo65@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tessa Lapelyte -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="photo-placeholder"><i class="fas fa-user-graduate"></i></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Tessa Lapelyte</h3>
+                        <p class="team-title">UG Placement Student</p>
+                        <p class="team-bio">Supporting research projects in digital health and gaining experience in quantitative and qualitative research methods.</p>
+                        <div class="team-links">
+                            <a href="mailto:rl485@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enoch Baiden -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="photo-placeholder"><i class="fas fa-user-graduate"></i></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Enoch Baiden</h3>
+                        <p class="team-title">UG Placement Student</p>
+                        <p class="team-bio">Assisting with digital health research projects and developing skills in data analysis and research coordination.</p>
+                        <div class="team-links">
+                            <a href="mailto:jb2090@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="team-note">
                 <p>We collaborate with researchers from psychology, neuroscience, computer science, engineering, and public health. Interested in joining our team? <a href="#join">See opportunities below</a>.</p>
             </div>
         </div>
     </section>
 
-    <!-- Publications Section -->
     <section id="publications" class="section publications-section">
         <div class="container">
             <h2 class="section-title">Recent Publications</h2>
@@ -1843,418 +536,167 @@
                     <i class="fas fa-external-link-alt"></i> View All (200+)
                 </a>
             </div>
-         
+
             <div class="publications-list">
-                <!-- 2026 Publications -->
-                <div class="publication-card" data-year="2026">
-                    <div class="pub-badge">2026</div>
-                    <h3 class="pub-title">Smart wearable sensing systems mediating the digital monitoring of Loneliness – A review</h3>
-                    <p class="pub-authors">Mexia N, Molteni E, Ratcliffe J, <strong>Matcham F</strong>, et al.</p>
-                    <p class="pub-journal">Materials Today Electronics, Elsevier BV, Feb 2026</p>
-                    <div class="pub-links">
-                        <a href="https://doi.org/10.1016/j.mtelec.2026.100202" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
-                    </div>
-                </div>
-
-                <div class="publication-card" data-year="2026">
-                    <div class="pub-badge">2026</div>
-                    <h3 class="pub-title">Development and user-centered evaluation of smart systems for loneliness monitoring in older adults: mixed methods study</h3>
-                    <p class="pub-authors">Zhou Y, Rees J, <strong>Matcham F</strong>, et al.</p>
-                    <p class="pub-journal">Journal of Medical Internet Research, 28, JMIR Publications Inc., Jan 2026</p>
-                    <div class="pub-links">
-                        <a href="https://doi.org/10.2196/81027" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
-                    </div>
-                </div>
-
-                <div class="publication-card" data-year="2026">
-                    <div class="pub-badge">2026</div>
-                    <h3 class="pub-title">Systematic evaluation of commercially available pain-management mHealth apps for chronic pain in the United Kingdom</h3>
-                    <p class="pub-authors">Harding R, Gillett JL, Passaportis M, <strong>Matcham F</strong>, et al.</p>
-                    <p class="pub-journal">British Journal of Health Psychology, 31(1), Wiley, Jan 2026</p>
-                    <div class="pub-links">
-                        <a href="https://doi.org/10.1111/bjhp.70053" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
-                    </div>
-                </div>
-
-                <!-- 2025 Publications -->
-                <div class="publication-card" data-year="2025">
-                    <div class="pub-badge">2025</div>
-                    <h3 class="pub-title">Barriers and facilitators of engagement with app-based pain self-management strategies among chronic pain patients (CPPs)</h3>
-                    <p class="pub-authors">Harding R, Passaportis M, Miles E, <strong>Matcham F</strong></p>
-                    <p class="pub-journal">Journal of Health Psychology, SAGE, Jan 2026 (Online 2025)</p>
-                    <div class="pub-links">
-                        <a href="https://doi.org/10.1177/13591053251406436" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
-                    </div>
-                </div>
-
-                <div class="publication-card" data-year="2025">
-                    <div class="pub-badge">2025</div>
-                    <h3 class="pub-title">"What does the word loneliness mean to you?" Reflections on co-developing public engagement workshops... with older adults from ethnically diverse groups</h3>
-                    <p class="pub-authors">Rees J, Sajid M, Steele C, <strong>Matcham F</strong>, et al.</p>
-                    <p class="pub-journal">Research Involvement and Engagement, 11(1), Springer, Dec 2025</p>
-                    <div class="pub-links">
-                        <a href="https://doi.org/10.1186/s40900-025-00800-5" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
-                    </div>
-                </div>
-
-                <div class="publication-card" data-year="2025">
-                    <div class="pub-badge">2025</div>
-                    <h3 class="pub-title">Exploring biases related to the use of large language models in a multilingual depression corpus</h3>
-                    <p class="pub-authors">Perez-Toro PA, Dineley J, Iniesta R, <strong>Matcham F</strong>, et al.</p>
-                    <p class="pub-journal">Scientific Reports, 15(1), Springer, Dec 2025</p>
-                    <div class="pub-links">
-                        <a href="https://doi.org/10.1038/s41598-025-19980-x" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
-                    </div>
-                </div>
-
-                <div class="publication-card" data-year="2025" data-tags="preprint">
-                    <div class="pub-badge">Preprint</div>
-                    <h3 class="pub-title">Multilingual Lexical Feature Analysis of Spoken Language for Predicting Major Depression Symptom Severity</h3>
-                    <p class="pub-authors">Tokareva A, Dineley J, Firth Z, <strong>Matcham F</strong>, et al.</p>
-                    <p class="pub-journal">arXiv, Nov 2025</p>
-                    <div class="pub-links">
-                        <a href="https://doi.org/10.48550/arxiv.2511.07011" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
-                    </div>
-                </div>
-
-                <div class="publication-card" data-year="2025">
-                    <div class="pub-badge">2025</div>
-                    <h3 class="pub-title">Adherence to actigraphic devices in elementary school–aged children: systematic review and meta-analysis</h3>
-                    <p class="pub-authors">Morris AC, Seker A, Telesia L, <strong>Matcham F</strong>, et al.</p>
-                    <p class="pub-journal">Journal of Medical Internet Research, 27, JMIR Publications Inc., Nov 2025</p>
-                    <div class="pub-links">
-                        <a href="https://doi.org/10.2196/79718" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
-                    </div>
-                </div>                
+                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Smart wearable sensing systems mediating the digital monitoring of Loneliness – A review</h3><p class="pub-authors">Mexia N, Molteni E, Ratcliffe J, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Materials Today Electronics, Elsevier BV, Feb 2026</p><div class="pub-links"><a href="https://doi.org/10.1016/j.mtelec.2026.100202" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
+                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Development and user-centered evaluation of smart systems for loneliness monitoring in older adults: mixed methods study</h3><p class="pub-authors">Zhou Y, Rees J, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Journal of Medical Internet Research, 28, JMIR Publications Inc., Jan 2026</p><div class="pub-links"><a href="https://doi.org/10.2196/81027" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
+                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Systematic evaluation of commercially available pain-management mHealth apps for chronic pain in the United Kingdom</h3><p class="pub-authors">Harding R, Gillett JL, Passaportis M, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">British Journal of Health Psychology, 31(1), Wiley, Jan 2026</p><div class="pub-links"><a href="https://doi.org/10.1111/bjhp.70053" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
+                <div class="publication-card" data-year="2025"><div class="pub-badge">2025</div><h3 class="pub-title">Barriers and facilitators of engagement with app-based pain self-management strategies among chronic pain patients (CPPs)</h3><p class="pub-authors">Harding R, Passaportis M, Miles E, <strong>Matcham F</strong></p><p class="pub-journal">Journal of Health Psychology, SAGE, Jan 2026 (Online 2025)</p><div class="pub-links"><a href="https://doi.org/10.1177/13591053251406436" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
+                <div class="publication-card" data-year="2025"><div class="pub-badge">2025</div><h3 class="pub-title">"What does the word loneliness mean to you?" Reflections on co-developing public engagement workshops...</h3><p class="pub-authors">Rees J, Sajid M, Steele C, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Research Involvement and Engagement, 11(1), Springer, Dec 2025</p><div class="pub-links"><a href="https://doi.org/10.1186/s40900-025-00800-5" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
+                <div class="publication-card" data-year="2025"><div class="pub-badge">2025</div><h3 class="pub-title">Exploring biases related to the use of large language models in a multilingual depression corpus</h3><p class="pub-authors">Perez-Toro PA, Dineley J, Iniesta R, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Scientific Reports, 15(1), Springer, Dec 2025</p><div class="pub-links"><a href="https://doi.org/10.1038/s41598-025-19980-x" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
+                <div class="publication-card" data-year="2025" data-tags="preprint"><div class="pub-badge">Preprint</div><h3 class="pub-title">Multilingual Lexical Feature Analysis of Spoken Language for Predicting Major Depression Symptom Severity</h3><p class="pub-authors">Tokareva A, Dineley J, Firth Z, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">arXiv, Nov 2025</p><div class="pub-links"><a href="https://doi.org/10.48550/arxiv.2511.07011" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
+                <div class="publication-card" data-year="2025"><div class="pub-badge">2025</div><h3 class="pub-title">Adherence to actigraphic devices in elementary school–aged children: systematic review and meta-analysis</h3><p class="pub-authors">Morris AC, Seker A, Telesia L, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Journal of Medical Internet Research, 27, JMIR Publications Inc., Nov 2025</p><div class="pub-links"><a href="https://doi.org/10.2196/79718" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
             </div>
-            
             <div class="publications-footer">
                 <p class="pub-note">For a complete and up-to-date list of our 200+ publications, visit Dr. Matcham's <a href="https://profiles.sussex.ac.uk/p199181-faith-matcham/publications" target="_blank">University of Sussex profile</a>.</p>
             </div>
         </div>
     </section>
 
-    <!-- Industry Collaboration Section -->
     <section id="industry" class="industry-section">
         <div class="container">
             <h2 class="section-title">Industry Collaboration at THRIVE</h2>
-            
             <div class="industry-content">
                 <p>A defining feature of THRIVE is its commitment to meaningful, reciprocal collaboration with industry partners. Across her career, Dr Faith Matcham has worked with organisations ranging from digital health start-ups to global pharmaceutical companies, providing expertise in behaviour change, remote monitoring, intervention design, user engagement, and real-world evaluation.</p>
-                
                 <div class="industry-highlight">
                     <h3 style="color: var(--fern-green); margin-bottom: var(--space-md);">How We Collaborate</h3>
                     <p>THRIVE builds on this foundation by working closely with companies developing digital therapeutics, wearable technologies, sensing systems, health platforms, and AI-enabled tools. Our collaborations span:</p>
-                    
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
-                        <div style="text-align: left;">
-                            <ul style="list-style: none;">
-                                <li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> Co-design of digital health products</li>
-                                <li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> Evaluation of feasibility and acceptability</li>
-                                <li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> Behavioural science for engagement</li>
-                            </ul>
-                        </div>
-                        <div style="text-align: left;">
-                            <ul style="list-style: none;">
-                                <li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> End-to-end research support</li>
-                                <li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> Implementation science approaches</li>
-                                <li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> User testing and impact assessment</li>
-                            </ul>
-                        </div>
+                        <div style="text-align: left;"><ul style="list-style: none;"><li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> Co-design of digital health products</li><li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> Evaluation of feasibility and acceptability</li><li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> Behavioural science for engagement</li></ul></div>
+                        <div style="text-align: left;"><ul style="list-style: none;"><li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> End-to-end research support</li><li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> Implementation science approaches</li><li style="margin-bottom: var(--space-sm);"><i class="fas fa-check-circle" style="color: var(--fern-green); margin-right: var(--space-xs);"></i> User testing and impact assessment</li></ul></div>
                     </div>
-                    
                     <p style="margin-top: var(--space-lg);">Our industry partners value THRIVE's ability to combine human-centred design, rigorous scientific methods, and practical insight into how people engage with technology in their daily lives. We specialise in bridging the gap between innovative ideas and usable, effective tools that make a genuine difference to health and wellbeing.</p>
-                    
-                    <div style="margin-top: var(--space-xl);">
-                        <p style="font-style: italic; color: var(--tiger-orange); font-weight: 600;">If you are an industry collaborator interested in evidence-based development, user experience refinement, or robust evaluation of digital health products, THRIVE offers a uniquely interdisciplinary and impact-focused partnership model.</p>
-                    </div>
-                    
-                    <div style="margin-top: var(--space-xl);">
-                        <a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary">
-                            <i class="fas fa-handshake"></i> Discuss Collaboration
-                        </a>
-                    </div>
+                    <div style="margin-top: var(--space-xl);"><p style="font-style: italic; color: var(--tiger-orange); font-weight: 600;">If you are an industry collaborator interested in evidence-based development, user experience refinement, or robust evaluation of digital health products, THRIVE offers a uniquely interdisciplinary and impact-focused partnership model.</p></div>
+                    <div style="margin-top: var(--space-xl);"><a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary"><i class="fas fa-handshake"></i> Discuss Collaboration</a></div>
                 </div>
-                
                 <div class="industry-partners">
-                    <span class="partner-tag">Pfizer</span>
-                    <span class="partner-tag">Clean Slate Clinic</span>
-                    <span class="partner-tag">RADAR-CNS</span>
-                    <span class="partner-tag">Digital Health Start-ups</span>
+                    <span class="partner-tag">Pfizer</span><span class="partner-tag">Clean Slate Clinic</span><span class="partner-tag">RADAR-CNS</span><span class="partner-tag">Digital Health Start-ups</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Join Us Section -->
     <section id="join" class="section join-section">
         <div class="container">
             <h2 class="section-title">Join the THRIVE Lab</h2>
             <p class="section-subtitle">We're always looking for passionate researchers at all levels</p>
-            
             <div class="opportunities-grid">
-                <div class="opportunity-card">
-                    <h3 class="opportunity-title">Postdoctoral Positions</h3>
-                    <p class="opportunity-desc">We have openings for postdocs in digital health, computational modeling, human-centred design, and intervention development.</p>
-                    <ul class="opportunity-list">
-                        <li><i class="fas fa-check"></i> 2-year positions with possible extension</li>
-                        <li><i class="fas fa-check"></i> Competitive salary and benefits</li>
-                        <li><i class="fas fa-check"></i> Interdisciplinary collaboration</li>
-                    </ul>
-                    <a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary">Apply Now</a>
-                </div>
-                
-                <div class="opportunity-card">
-                    <h3 class="opportunity-title">PhD Studentships</h3>
-                    <p class="opportunity-desc">We accept PhD students through the Cognitive Science, Psychology, and Neuroscience graduate programs.</p>
-                    <ul class="opportunity-list">
-                        <li><i class="fas fa-check"></i> Fully-funded positions</li>
-                        <li><i class="fas fa-check"></i> Mentorship from multiple faculty</li>
-                        <li><i class="fas fa-check"></i> Access to cutting-edge methods</li>
-                    </ul>
-                    <a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary">Learn More</a>
-                </div>
-                
-                <div class="opportunity-card">
-                    <h3 class="opportunity-title">Research Assistants</h3>
-                    <p class="opportunity-desc">Undergraduate and master's students can gain research experience through volunteer or paid positions.</p>
-                    <ul class="opportunity-list">
-                        <li><i class="fas fa-check"></i> Flexible hours</li>
-                        <li><i class="fas fa-check"></i> Training in research methods</li>
-                        <li><i class="fas fa-check"></i> Potential for authorship</li>
-                    </ul>
-                    <a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary">Contact Us</a>
-                </div>
+                <div class="opportunity-card"><h3 class="opportunity-title">Postdoctoral Positions</h3><p class="opportunity-desc">We have openings for postdocs in digital health, computational modeling, human-centred design, and intervention development.</p><ul class="opportunity-list"><li><i class="fas fa-check"></i> 2-year positions with possible extension</li><li><i class="fas fa-check"></i> Competitive salary and benefits</li><li><i class="fas fa-check"></i> Interdisciplinary collaboration</li></ul><a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary">Apply Now</a></div>
+                <div class="opportunity-card"><h3 class="opportunity-title">PhD Studentships</h3><p class="opportunity-desc">We accept PhD students through the Cognitive Science, Psychology, and Neuroscience graduate programs.</p><ul class="opportunity-list"><li><i class="fas fa-check"></i> Fully-funded positions</li><li><i class="fas fa-check"></i> Mentorship from multiple faculty</li><li><i class="fas fa-check"></i> Access to cutting-edge methods</li></ul><a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary">Learn More</a></div>
+                <div class="opportunity-card"><h3 class="opportunity-title">Research Assistants</h3><p class="opportunity-desc">Undergraduate and master's students can gain research experience through volunteer or paid positions.</p><ul class="opportunity-list"><li><i class="fas fa-check"></i> Flexible hours</li><li><i class="fas fa-check"></i> Training in research methods</li><li><i class="fas fa-check"></i> Potential for authorship</li></ul><a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary">Contact Us</a></div>
             </div>
-            
             <div class="lab-culture">
                 <h3>Our Lab Culture</h3>
                 <p>At THRIVE, we believe that a supportive, collaborative environment is essential for scientific innovation and personal growth. We value:</p>
                 <div class="culture-values">
-                    <div class="value-item">
-                        <i class="fas fa-hands-helping"></i>
-                        <h4>Collaboration</h4>
-                        <p>We work together across disciplines and experience levels</p>
-                    </div>
-                    <div class="value-item">
-                        <i class="fas fa-lock-open"></i>
-                        <h4>Open Science</h4>
-                        <p>We share data, code, and materials whenever possible</p>
-                    </div>
-                    <div class="value-item">
-                        <i class="fas fa-balance-scale"></i>
-                        <h4>Work-Life Balance</h4>
-                        <p>We prioritize sustainable research practices</p>
-                    </div>
-                    <div class="value-item">
-                        <i class="fas fa-users"></i>
-                        <h4>Diversity & Inclusion</h4>
-                        <p>We actively work to create an inclusive environment</p>
-                    </div>
+                    <div class="value-item"><i class="fas fa-hands-helping"></i><h4>Collaboration</h4><p>We work together across disciplines and experience levels</p></div>
+                    <div class="value-item"><i class="fas fa-lock-open"></i><h4>Open Science</h4><p>We share data, code, and materials whenever possible</p></div>
+                    <div class="value-item"><i class="fas fa-balance-scale"></i><h4>Work-Life Balance</h4><p>We prioritize sustainable research practices</p></div>
+                    <div class="value-item"><i class="fas fa-users"></i><h4>Diversity & Inclusion</h4><p>We actively work to create an inclusive environment</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <div class="footer-logo-container">
-                        <img src="https://raw.githubusercontent.com/thrive-labb/thrive-labb.github.io/refs/heads/main/image.png" alt="Thrive Lab Logo" class="footer-logo-img">
-                        <span class="footer-logo-text">THRIVE Lab</span>
-                    </div>
+                    <div class="footer-logo-container"><img src="https://raw.githubusercontent.com/thrive-labb/thrive-labb.github.io/refs/heads/main/image.png" alt="Thrive Lab Logo" class="footer-logo-img"><span class="footer-logo-text">THRIVE Lab</span></div>
                     <p class="footer-mission">Technology for Healthcare Research and Intervention in Everyday Life • University of Sussex</p>
                     <div class="footer-social">
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="https://github.com/thrive-labb/thrive-labb.github.io" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/faith-matcham-75519732/?originalSubdomain=uk" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/faith-matcham-75519732/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="https://profiles.sussex.ac.uk/p199181-faith-matcham" class="social-link" target="_blank"><i class="fas fa-university"></i></a>
                     </div>
                 </div>
-                
                 <div class="footer-links">
-                    <div class="footer-column">
-                        <h4 class="footer-heading">Research</h4>
-                        <a href="#research" class="footer-link">Projects</a>
-                        <a href="#publications" class="footer-link">Publications</a>
-                        <a href="#" class="footer-link">Tools & Software</a>
-                        <a href="#" class="footer-link">Datasets</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4 class="footer-heading">People</h4>
-                        <a href="#team" class="footer-link">Team Members</a>
-                        <a href="#" class="footer-link">Alumni</a>
-                        <a href="#" class="footer-link">Collaborators</a>
-                        <a href="#join" class="footer-link">Join Us</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4 class="footer-heading">Connect</h4>
-                        <a href="mailto:F.Matcham@sussex.ac.uk" class="footer-link">Contact Information</a>
-                        <a href="https://profiles.sussex.ac.uk/p199181-faith-matcham" class="footer-link" target="_blank">University Profile</a>
-                        <a href="#industry" class="footer-link">Collaborate with Us</a>
-                        <a href="#" class="footer-link">Newsletter</a>
-                    </div>
+                    <div class="footer-column"><h4 class="footer-heading">Research</h4><a href="#research" class="footer-link">Projects</a><a href="#publications" class="footer-link">Publications</a><a href="#" class="footer-link">Tools & Software</a><a href="#" class="footer-link">Datasets</a></div>
+                    <div class="footer-column"><h4 class="footer-heading">People</h4><a href="#team" class="footer-link">Team Members</a><a href="#" class="footer-link">Alumni</a><a href="#" class="footer-link">Collaborators</a><a href="#join" class="footer-link">Join Us</a></div>
+                    <div class="footer-column"><h4 class="footer-heading">Connect</h4><a href="mailto:F.Matcham@sussex.ac.uk" class="footer-link">Contact Information</a><a href="https://profiles.sussex.ac.uk/p199181-faith-matcham" class="footer-link" target="_blank">University Profile</a><a href="#industry" class="footer-link">Collaborate with Us</a><a href="#" class="footer-link">Newsletter</a></div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p class="copyright">&copy; 2026 THRIVE Lab, University of Sussex. This website is open source.</p>
-                <div class="footer-legal">
-                    <a href="https://github.com/thrive-labb/thrive-labb.github.io" class="legal-link" target="_blank">GitHub Repository</a>
-                </div>
+                <div class="footer-legal"><a href="https://github.com/thrive-labb/thrive-labb.github.io" class="legal-link" target="_blank">GitHub Repository</a></div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Navigation Toggle
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navMenu = document.querySelector('.nav-menu');
-        
         if (mobileToggle && navMenu) {
             mobileToggle.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
                 const icon = mobileToggle.querySelector('i');
-                if (icon) {
-                    icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
-                }
+                if (icon) icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
             });
         }
-        
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 if (navMenu && navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
                     const icon = mobileToggle?.querySelector('i');
-                    if (icon) {
-                        icon.className = 'fas fa-bars';
-                    }
+                    if (icon) icon.className = 'fas fa-bars';
                 }
             });
         });
-        
-        // Publication Filtering
         const filterButtons = document.querySelectorAll('.filter-btn');
         const publicationCards = document.querySelectorAll('.publication-card');
-        
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
                 button.classList.add('active');
-                
                 const filterValue = button.getAttribute('data-filter');
-                
                 publicationCards.forEach(card => {
                     const year = card.getAttribute('data-year');
                     const tags = card.getAttribute('data-tags');
-                    
-                    if (filterValue === 'all' || 
-                        filterValue === year || 
-                        (filterValue === 'tools' && tags === 'tools')) {
+                    if (filterValue === 'all' || filterValue === year || (filterValue === 'tools' && tags === 'tools')) {
                         card.style.display = 'block';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 10);
+                        setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 10);
                     } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
+                        card.style.opacity = '0'; card.style.transform = 'translateY(20px)';
+                        setTimeout(() => { card.style.display = 'none'; }, 300);
                     }
                 });
             });
         });
-        
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+                if (targetElement) window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
             });
         });
-        
-        // Navbar background on scroll
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (navbar) {
-                if (window.scrollY > 100) {
-                    navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                    navbar.style.backdropFilter = 'blur(10px)';
-                } else {
-                    navbar.style.backgroundColor = 'var(--white)';
-                    navbar.style.backdropFilter = 'none';
-                }
+                navbar.style.backgroundColor = window.scrollY > 100 ? 'rgba(255, 255, 255, 0.95)' : 'var(--white)';
+                navbar.style.backdropFilter = window.scrollY > 100 ? 'blur(10px)' : 'none';
             }
-        });
-        
-        // Active nav link based on scroll position
-        window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
-            
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
+                if (window.scrollY >= (sectionTop - 150)) current = section.getAttribute('id');
             });
-            
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
             });
         });
-        
-        // Initialize animations on load
         window.addEventListener('load', () => {
-            // Animate hero elements
             const heroTitle = document.querySelector('.hero-title');
             const heroSubtitle = document.querySelector('.hero-subtitle');
             const heroButtons = document.querySelector('.hero-buttons');
-            
-            if (heroTitle) {
-                setTimeout(() => {
-                    heroTitle.style.opacity = '1';
-                    heroTitle.style.transform = 'translateY(0)';
-                }, 300);
-            }
-            
-            if (heroSubtitle) {
-                setTimeout(() => {
-                    heroSubtitle.style.opacity = '1';
-                    heroSubtitle.style.transform = 'translateY(0)';
-                }, 600);
-            }
-            
-            if (heroButtons) {
-                setTimeout(() => {
-                    heroButtons.style.opacity = '1';
-                    heroButtons.style.transform = 'translateY(0)';
-                }, 900);
-            }
+            if (heroTitle) setTimeout(() => { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'translateY(0)'; }, 300);
+            if (heroSubtitle) setTimeout(() => { heroSubtitle.style.opacity = '1'; heroSubtitle.style.transform = 'translateY(0)'; }, 600);
+            if (heroButtons) setTimeout(() => { heroButtons.style.opacity = '1'; heroButtons.style.transform = 'translateY(0)'; }, 900);
         });
     </script>
 </body>
