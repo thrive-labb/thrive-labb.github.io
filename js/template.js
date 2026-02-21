@@ -1,67 +1,26 @@
-// Load Navbar
-fetch('navbar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('navbar-container').innerHTML = data;
-        setActiveNavLink();
-        initializeMobileToggle();
-    });
-
-// Load Footer
-// In template.js
-console.log('Template.js loaded');
-
-fetch('footer.html')
-    .then(response => {
-        console.log('Footer fetch response:', response);
-        return response.text();
-    })
-    .then(data => {
-        console.log('Footer HTML:', data.substring(0, 100)); // Show first 100 chars
-        document.getElementById('footer-container').innerHTML = data;
-    })
-    .catch(error => {
-        console.error('Error loading footer:', error);
-        // Fallback: show footer directly
-        document.getElementById('footer-container').innerHTML = `...your footer html...`;
-    });
-function setActiveNavLink() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage || 
-            (currentPage === 'index.html' && href === 'index.html') ||
-            (currentPage === '' && href === 'index.html')) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-}
-
-function initializeMobileToggle() {
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = mobileToggle.querySelector('i');
-            if (icon) {
-                icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
-            }
-        });
-    }
-    
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            if (navMenu && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                const icon = mobileToggle?.querySelector('i');
-                if (icon) icon.className = 'fas fa-bars';
-            }
-        });
-    });
-}
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+            <img src="https://raw.githubusercontent.com/thrive-labb/thrive-labb.github.io/refs/heads/main/image.png" alt="Thrive Lab Logo" class="logo-img">
+            <span class="logo-text">THRIVE Lab</span>
+        </a>
+        <button class="mobile-toggle" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
+            <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+            <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
+            <li class="nav-item"><a href="join.html" class="nav-link">Join Us</a></li>
+            <li class="nav-item"><a href="collaborate.html" class="nav-link">Collaborate</a></li>
+            <li class="nav-item">
+                <a href="https://github.com/thrive-labb/thrive-labb.github.io" class="nav-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://bsky.app/profile/thrivelab.bsky.social" class="nav-link" target="_blank"><i class="fab fa-bluesky"></i> Bluesky</a>
+            </li>
+        </ul>
+    </div>
+</nav>
