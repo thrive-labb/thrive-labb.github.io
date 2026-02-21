@@ -8,12 +8,23 @@ fetch('navbar.html')
     });
 
 // Load Footer
-fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-    });
+// In template.js
+console.log('Template.js loaded');
 
+fetch('footer.html')
+    .then(response => {
+        console.log('Footer fetch response:', response);
+        return response.text();
+    })
+    .then(data => {
+        console.log('Footer HTML:', data.substring(0, 100)); // Show first 100 chars
+        document.getElementById('footer-container').innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Error loading footer:', error);
+        // Fallback: show footer directly
+        document.getElementById('footer-container').innerHTML = `...your footer html...`;
+    });
 function setActiveNavLink() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-link');
