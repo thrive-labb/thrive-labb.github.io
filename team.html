@@ -9,6 +9,178 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Additional styles for alumni section */
+        .alumni-section {
+            margin-top: var(--space-xxl);
+            padding-top: var(--space-xl);
+            border-top: 3px dashed var(--gray-300);
+        }
+        
+        .alumni-title {
+            font-family: var(--font-secondary);
+            font-size: 2rem;
+            color: var(--gray-600);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+            position: relative;
+        }
+        
+        .alumni-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--gray-400);
+            border-radius: 2px;
+        }
+        
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        
+        .alumni-card {
+            background-color: var(--gray-50);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            opacity: 0.9;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .alumni-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            opacity: 1;
+        }
+        
+        .alumni-photo {
+            height: 200px;
+            background: linear-gradient(135deg, var(--gray-300) 0%, var(--gray-400) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 15px;
+        }
+        
+        .alumni-photo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 3px solid var(--white);
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-normal);
+            filter: grayscale(30%);
+        }
+        
+        .alumni-photo img:hover {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+        
+        .alumni-info {
+            padding: var(--space-lg);
+            flex-grow: 1;
+        }
+        
+        .alumni-name {
+            color: var(--gray-800);
+            margin-bottom: var(--space-xs);
+            font-size: 1.2rem;
+        }
+        
+        .alumni-title-role {
+            color: var(--gray-600);
+            font-weight: 500;
+            margin-bottom: var(--space-xs);
+            font-size: 0.95rem;
+        }
+        
+        .alumni-period {
+            color: var(--tiger-orange);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: var(--space-sm);
+            display: inline-block;
+            background-color: rgba(233, 122, 41, 0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: var(--radius-md);
+        }
+        
+        .alumni-bio {
+            color: var(--gray-700);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        .alumni-links {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+            flex-wrap: wrap;
+        }
+        
+        .alumni-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: var(--white);
+            border-radius: 50%;
+            color: var(--gray-600);
+            transition: all var(--transition-fast);
+            position: relative;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid var(--gray-300);
+        }
+        
+        .alumni-link:hover {
+            background-color: var(--fern-green);
+            color: var(--white);
+            transform: scale(1.1);
+            border-color: var(--fern-green);
+        }
+        
+        .alumni-link .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--gray-800);
+            color: var(--white);
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.7rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-fast);
+            margin-bottom: 5px;
+            pointer-events: none;
+        }
+        
+        .alumni-link:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
 </head>
 <body>
     <div id="navbar-container"></div>
@@ -18,6 +190,7 @@
             <h2 class="section-title">Our Thriving Team</h2>
             <p class="section-subtitle">We bring together researchers from diverse backgrounds united by a passion for understanding human potential</p>
 
+            <!-- Current Team Members -->
             <div class="team-grid">
                 <!-- Dr. Faith Matcham -->
                 <div class="team-card director-card">
@@ -152,16 +325,16 @@
                 <div class="team-card">
                     <div class="team-photo">
                         <img src="https://raw.githubusercontent.com/thrive-labb/thrive-labb.github.io/main/assests/Tessa_L.jpg" alt="Tessa Lapelyte">
-                </div>
-                <div class="team-info">
-                    <h3 class="team-name">Tessa Lapelyte</h3>
-                    <p class="team-title">UG Placement Student</p>
-                    <p class="team-bio">Supporting research projects in digital health and gaining experience in quantitative and qualitative research methods.</p>
-                    <div class="team-links">
-                        <a href="mailto:rl485@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Tessa Lapelyte</h3>
+                        <p class="team-title">UG Placement Student</p>
+                        <p class="team-bio">Supporting research projects in digital health and gaining experience in quantitative and qualitative research methods.</p>
+                        <div class="team-links">
+                            <a href="mailto:rl485@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
                 <!-- Enoch Baiden -->
                 <div class="team-card">
@@ -174,6 +347,44 @@
                         <p class="team-bio">Assisting with digital health research projects and developing skills in data analysis and research coordination.</p>
                         <div class="team-links">
                             <a href="mailto:jb2090@sussex.ac.uk" class="team-link" title="Email"><i class="fas fa-envelope"></i><span class="tooltip">Email</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alumni Section -->
+            <div class="alumni-section">
+                <h3 class="alumni-title">Alumni</h3>
+                <p class="section-subtitle">Former members who have contributed to THRIVE and continue to make an impact</p>
+                
+                <div class="alumni-grid">
+                    <!-- Jessica Rees -->
+                    <div class="alumni-card">
+                        <div class="alumni-photo">
+                            <img src="https://www.qmul.ac.uk/wiph/media/the-wolfson-institute-of-population-health-wiph/images/Jessica-Rees.jpg" alt="Jessica Rees">
+                        </div>
+                        <div class="alumni-info">
+                            <h4 class="alumni-name">Jessica Rees</h4>
+                            <p class="alumni-title-role">Research Fellow</p>
+                            <span class="alumni-period">2021-2024</span>                            
+                            <div class="alumni-links">
+                                <a href="https://www.qmul.ac.uk/wiph/people/profiles/jessica-rees.html" class="alumni-link" target="_blank" title="University Profile"><i class="fas fa-university"></i><span class="tooltip">Profile</span></a>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kami Abdullayev -->
+                    <div class="alumni-card">
+                        <div class="alumni-photo">
+                            <img src="https://media.licdn.com/dms/image/v2/C4E03AQGpUsBLfGDhsA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1659517546229?e=1773273600&v=beta&t=nkOmRrm0_E3PpJL5d1tfNiKgjTbznk-qjke1zzlnQyU" alt="Kami Abdullayev">
+                        </div>
+                        <div class="alumni-info">
+                            <h4 class="alumni-name">Kami Abdullayev</h4>
+                            <p class="alumni-title-role">Research Assistant</p>
+                            <span class="alumni-period">2022-2024</span>
+                            <div class="alumni-links">
+                                <a href="https://www.linkedin.com/in/kamilla-abdullayev-abb5a0239/" class="alumni-link" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i><span class="tooltip">LinkedIn</span></a>
+                            </div>
                         </div>
                     </div>
                 </div>
