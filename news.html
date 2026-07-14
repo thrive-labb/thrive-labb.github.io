@@ -9,6 +9,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- FIX: Remove sticky positioning from archive navigation -->
+    <style>
+        .archive-nav {
+            position: relative !important;
+            top: auto !important;
+            z-index: 1 !important;
+            box-shadow: var(--shadow-sm) !important;
+        }
+    </style>
 </head>
 <body>
     <div id="navbar-container"></div>
@@ -86,35 +96,35 @@
         </div>
     </section>
 
-
-     <!-- Second News Section - KIT 2026 -->
+    <!-- Second News Section - KIT 2026 -->
     <section class="news-section">
         <div class="news-container">
             <div class="news-image">
                 <img src="assests/KIT_Presentation.jpg" alt="Faith Matcham presenting at the Get Digital colloquium">
                 <div class="news-image-caption">
-                <i class="fas fa-newspaper-alt"></i> News!
+                    <i class="fas fa-newspaper-alt"></i> News!
+                </div>
+            </div>
+            <div class="news-content">
+                <h2 class="news-title">THRIVE Lab presents digital phenotyping research for MDD at Get Digital colloquium</h2>
+                <div class="news-subtitle">
+                    <i class="fas fa-user-tie"></i> Faith Matcham (PI) shares insights on predicting daily mood in depression using ambulatory assessment data
+                </div>
+                <div class="news-description">
+                    <p>Last week members of the THRIVE Lab took part in the Get Digital colloquium, where Faith Matcham (PI) presented our research on predicting day‑to‑day mood in Major Depressive Disorder (MDD) using digital phenotyping and ambulatory assessment data.</p>
+                    <p>The meeting brought together researchers from psychology, psychiatry, data science, and digital health, and highlighted both the promise and the growing pains of this rapidly developing field. As access to intensive, real‑world data increases, so too does the need for careful thinking about how these data are analysed, interpreted, and ultimately used.</p>
+                    <p>A recurring message across the discussions was that meaningful progress will depend on stronger shared foundations — particularly around how daily mood and related constructs are defined, measured, and reported over time. For work like ours, which aims to understand and predict mood dynamics in everyday life, these issues are central to ensuring findings are interpretable, comparable, and clinically relevant.</p>
+                    <div class="news-buttons">
+                        <a href="https://www.ecnp.eu/research/ecnp-networks/list-of-ecnp-networks/digital-health-applied-to-the-clinical-research-of-brain-disorders-network/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i> Learn more about the Get Digital series
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="news-content">
-            <h2 class="news-title">THRIVE Lab presents digital phenotyping research for MDD at Get Digital colloquium</h2>
-            <div class="news-subtitle">
-                <i class="fas fa-user-tie"></i> Faith Matcham (PI) shares insights on predicting daily mood in depression using ambulatory assessment data
-            </div>
-            <div class="news-description">
-                <p>Last week members of the THRIVE Lab took part in the Get Digital colloquium, where Faith Matcham (PI) presented our research on predicting day‑to‑day mood in Major Depressive Disorder (MDD) using digital phenotyping and ambulatory assessment data.</p>
-                <p>The meeting brought together researchers from psychology, psychiatry, data science, and digital health, and highlighted both the promise and the growing pains of this rapidly developing field. As access to intensive, real‑world data increases, so too does the need for careful thinking about how these data are analysed, interpreted, and ultimately used.</p>
-                <p>A recurring message across the discussions was that meaningful progress will depend on stronger shared foundations — particularly around how daily mood and related constructs are defined, measured, and reported over time. For work like ours, which aims to understand and predict mood dynamics in everyday life, these issues are central to ensuring findings are interpretable, comparable, and clinically relevant.</p>
-            <div class="news-buttons">
-                <a href="https://www.ecnp.eu/research/ecnp-networks/list-of-ecnp-networks/digital-health-applied-to-the-clinical-research-of-brain-disorders-network/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-external-link-alt"></i> Learn more about the Get Digital series
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-    <!-- Fourth  News Section - ECNP 2026 -->
+    <!-- Fourth News Section - ECNP 2026 -->
     <section class="news-section">
         <div class="news-container">
             <div class="news-image">
@@ -137,15 +147,15 @@
         </div>
     </section>
 
-    <!-- Fifth News Section - Fixed image path -->
+    <!-- Fifth News Section -->
     <section class="news-section">
         <div class="news-container">
-             <div class="news-image">
+            <div class="news-image">
                 <img src="https://github.com/thrive-labb/thrive-labb.github.io/blob/main/assests/News_12_FEB_2026.png?raw=true" alt="News">
                 <div class="news-image-caption">
                     <i class="fas fa-newspaper-alt"></i> News!
                 </div>
-             </div>
+            </div>
             <div class="news-content">
                 <h2 class="news-title">The confidence to apply new tech skills in real research and consultancy work has been the biggest lasting impact</h2>
                 <div class="news-subtitle">
@@ -162,8 +172,8 @@
             </div>
         </div>
     </section>
-    
-    <!-- Sixth News Section - Fixed image path -->
+
+    <!-- Sixth News Section -->
     <section class="news-section">
         <div class="news-container">
             <div class="news-image">
@@ -177,7 +187,7 @@
                 <div class="news-subtitle">
                     <i class="fas fa-user-tie"></i> Our P.I., Dr. Faith Matcham, was invited as a panelist!
                 </div>
-                <div class="news-description"> 
+                <div class="news-description">
                     <p>We're thrilled to announce that Dr. Faith Matcham participated as a distinguished panelist at the Clean Slate Clinic White Paper Launch Event, contributing her expertise in digital mental health and cognitive resilience to this important initiative.</p>
                 </div>
                 <div class="news-buttons">
@@ -192,6 +202,7 @@
         </div>
     </section>
 
+    <div id="footer-container"></div>
 
     <script src="js/template.js"></script>
     <script src="js/main.js"></script>
