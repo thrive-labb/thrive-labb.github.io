@@ -490,3 +490,236 @@ a:hover { color: var(--tiger-orange-dark); }
 @media (max-width: 992px) { .hero-container { flex-direction: column; } .hero-title { justify-content: center; } .news-container { grid-template-columns: 1fr; } .news-content { text-align: center; } .news-buttons { justify-content: center; } .footer-content { grid-template-columns: 1fr; } }
 @media (max-width: 768px) { .nav-menu { position: fixed; top: 70px; left: -100%; flex-direction: column; background-color: var(--white); width: 100%; transition: 0.3s; box-shadow: var(--shadow-lg); padding: var(--space-xl) 0; gap: var(--space-lg); } .nav-menu.active { left: 0; } .mobile-toggle { display: block; } .hero-title { font-size: 2.5rem; flex-direction: column; gap: var(--space-xs); } .hero-logo { height: 60px; } .section-title { font-size: 2rem; } .news-title { font-size: 1.8rem; } .research-grid, .team-grid, .opportunities-grid { grid-template-columns: 1fr; } .publications-list { grid-template-columns: 1fr; } .footer-links { grid-template-columns: 1fr; gap: var(--space-xl); } .footer-bottom { flex-direction: column; text-align: center; } .event-card { grid-template-columns: 1fr; gap: var(--space-md); } .event-calendar { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); min-width: auto; padding: var(--space-sm); } .calendar-month, .calendar-date, .calendar-year { display: inline-block; margin-bottom: 0; } .calendar-date { font-size: 2rem; } .calendar-month::after { content: ','; margin-right: var(--space-xs); } .event-title { font-size: 1.6rem; } }
 @media (max-width: 576px) { .hero-buttons { flex-direction: column; align-items: center; } .btn { width: 100%; max-width: 300px; } .publications-controls { gap: var(--space-xs); } .filter-btn { padding: 0.5rem 1rem; font-size: 0.9rem; } .news-buttons { flex-direction: column; align-items: center; } .event-actions { flex-direction: column; } .event-actions .btn { width: 100%; } .event-poster .poster-link { max-width: 100%; } }
+
+/* ===== Archive Page Styles ===== */
+
+/* Archive Header */
+.archive-header {
+    padding: 120px 0 50px;
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+    border-bottom: 3px solid var(--tiger-orange);
+}
+
+.archive-header-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.archive-badge {
+    display: inline-block;
+    background: var(--fern-green);
+    color: var(--white);
+    padding: 6px 18px;
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+}
+
+.archive-title {
+    font-family: var(--font-secondary);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--fern-green);
+    margin-bottom: var(--space-md);
+}
+
+.archive-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto var(--space-lg);
+}
+
+.archive-meta {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-md);
+}
+
+.archive-meta-item {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+}
+
+.archive-meta-item i {
+    color: var(--tiger-orange);
+    margin-right: 8px;
+}
+
+.archive-search-hint {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    background: var(--white);
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    display: inline-block;
+    box-shadow: var(--shadow-sm);
+}
+
+.archive-search-hint i {
+    color: var(--tiger-orange);
+    margin-right: 8px;
+}
+
+/* Archive Navigation */
+.archive-nav {
+    background: var(--white);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--gray-200);
+    position: sticky;
+    top: 70px;
+    z-index: 99;
+    box-shadow: var(--shadow-sm);
+}
+
+.archive-nav-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.archive-nav-years,
+.archive-nav-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.archive-year-link,
+.archive-cat-link {
+    padding: 6px 16px;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.archive-year-link:hover,
+.archive-cat-link:hover {
+    background: var(--gray-100);
+    color: var(--fern-green);
+}
+
+.archive-year-link.active,
+.archive-cat-link.active {
+    background: var(--tiger-orange);
+    color: var(--white);
+}
+
+.archive-year-link.active:hover,
+.archive-cat-link.active:hover {
+    background: var(--tiger-orange-dark);
+    color: var(--white);
+}
+
+/* Archive Items - subtle distinction from current news */
+.archive-item .news-container {
+    border-left: 4px solid var(--gray-300);
+    padding-left: 20px;
+}
+
+.archive-item:hover .news-container {
+    border-left-color: var(--tiger-orange);
+}
+
+/* Remove the "NEW" badge from archived items */
+.archive-item::before {
+    display: none !important;
+}
+
+/* Archive Footer */
+.archive-footer {
+    padding: var(--space-xl) 0;
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-200);
+    text-align: center;
+}
+
+.archive-footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.archive-footer-content i {
+    font-size: 1.5rem;
+    color: var(--gray-600);
+}
+
+.archive-footer-content p {
+    font-size: 0.95rem;
+    color: var(--gray-700);
+    margin: 0;
+}
+
+.archive-footer-content a {
+    color: var(--fern-green);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.archive-footer-content a:hover {
+    color: var(--tiger-orange);
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .archive-title {
+        font-size: 2.2rem;
+    }
+    
+    .archive-meta {
+        gap: var(--space-sm);
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .archive-nav-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .archive-nav-years,
+    .archive-nav-categories {
+        justify-content: center;
+    }
+    
+    .archive-item .news-container {
+        padding-left: 12px;
+    }
+    
+    .archive-nav {
+        top: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .archive-subtitle {
+        font-size: 1rem;
+    }
+    
+    .archive-meta-item {
+        font-size: 0.8rem;
+    }
+    
+    .archive-year-link,
+    .archive-cat-link {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+    }
+}
