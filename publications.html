@@ -9,6 +9,263 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Publications List Styles */
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
+            padding: var(--space-md) var(--space-lg);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .publication-item:hover {
+            border-color: var(--tiger-orange);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .publication-item.expanded {
+            border-color: var(--tiger-orange);
+            box-shadow: var(--shadow-md);
+        }
+
+        .pub-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+
+        .pub-badge-mini {
+            flex-shrink: 0;
+            background-color: var(--fern-green);
+            color: var(--white);
+            padding: 0.2rem 0.7rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .pub-badge-mini.preprint {
+            background-color: var(--tiger-orange);
+        }
+
+        .pub-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pub-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--fern-green);
+            margin-bottom: var(--space-xs);
+            line-height: 1.4;
+        }
+
+        .pub-title a {
+            color: var(--fern-green);
+            text-decoration: none;
+        }
+
+        .pub-title a:hover {
+            color: var(--tiger-orange);
+        }
+
+        .pub-authors {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            margin-bottom: var(--space-xs);
+        }
+
+        .pub-authors strong {
+            color: var(--fern-green);
+            font-weight: 600;
+        }
+
+        .pub-journal {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            font-style: italic;
+            margin-bottom: var(--space-xs);
+        }
+
+        .pub-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+        }
+
+        .pub-meta .pub-year {
+            color: var(--tiger-orange);
+            font-weight: 600;
+        }
+
+        .pub-expand-btn {
+            background: none;
+            border: none;
+            color: var(--gray-500);
+            cursor: pointer;
+            padding: var(--space-xs);
+            transition: all var(--transition-fast);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .pub-expand-btn:hover {
+            color: var(--tiger-orange);
+        }
+
+        .pub-expand-btn .fa-chevron-down {
+            transition: transform var(--transition-normal);
+        }
+
+        .publication-item.expanded .pub-expand-btn .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Abstract - Hidden by default */
+        .pub-abstract {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            padding: 0 var(--space-lg);
+        }
+
+        .publication-item.expanded .pub-abstract {
+            max-height: 500px;
+            opacity: 1;
+            padding: var(--space-md) var(--space-lg) 0 var(--space-lg);
+        }
+
+        .pub-abstract-content {
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            line-height: 1.7;
+            padding-top: var(--space-md);
+            border-top: 1px dashed var(--gray-300);
+        }
+
+        .pub-abstract-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .pub-links-list {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-top: var(--space-sm);
+        }
+
+        .pub-links-list .pub-link {
+            font-size: 0.85rem;
+            color: var(--fern-green);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .pub-links-list .pub-link:hover {
+            color: var(--tiger-orange);
+        }
+
+        /* Controls */
+        .publications-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            background-color: var(--gray-100);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            color: var(--gray-700);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--gray-200);
+        }
+
+        .filter-btn.active {
+            background-color: var(--tiger-orange);
+            color: var(--white);
+        }
+
+        /* "No results" message */
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: var(--space-xl);
+            color: var(--gray-600);
+        }
+
+        .no-results i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: var(--space-md);
+            color: var(--gray-400);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pub-header {
+                flex-wrap: wrap;
+            }
+
+            .pub-expand-btn {
+                position: absolute;
+                top: var(--space-md);
+                right: var(--space-md);
+            }
+
+            .pub-abstract {
+                padding: 0 var(--space-md);
+            }
+
+            .publication-item.expanded .pub-abstract {
+                padding: var(--space-md) var(--space-md) 0 var(--space-md);
+            }
+
+            .pub-title {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .publications-controls {
+                gap: var(--space-xs);
+            }
+
+            .filter-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="navbar-container"></div>
@@ -26,22 +283,403 @@
             </div>
 
             <div class="publications-list">
-                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Perspectives on Remote Monitoring via Smartphones and Wearables Among Individuals With Lived Experience or at Risk of Eating Disorders (“This Could Go Very, Very Wrong”): Qualitative Interview Study</h3><p class="pub-authors">Kuehne C, Heng Yim S, Ince B, Fordham E, <strong>Matcham F</strong>,  et al.</p><p class="pub-journal">Journal of Medical Internet Research: Formative Research, JMIR Publications Inc., July 2026</p><div class="pub-links"><a href="https://formative.jmir.org/2026/1/e86382" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Sleep and Activity Patterns in Depression From Wearable Data: Unsupervised Clustering Study</h3><p class="pub-authors">Oetzmann C, Zhang Y, Cummins N, <strong>Matcham F</strong>,  et al.</p><p class="pub-journal">Journal of Medical Internet Research, JMIR Publications Inc., June 2026</p><div class="pub-links"><a href="https://www.jmir.org/2026/1/e86900" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">USleep: Efficacy of App-Based Audio Interventions to Improve Sleep Disturbance in Working Adults, a Multi-Arm Randomised Controlled Trial</h3><p class="pub-authors"><strong>Vazzaz J</strong>, <strong>Matcham F</strong>,  Economides M, Bolton H, Cavanagh K.</p><p class="pub-journal">Sleep, Oxford Academic, June 2026</p><div class="pub-links"><a href="https://academic.oup.com/sleep/advance-article/doi/10.1093/sleep/zsag154/8699387" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">A user-centred interface design framework for the DELONELINESS system in older adults: Design indicator development and prioritization</h3><p class="pub-authors">Zhou Y, <strong>Rees J</strong>, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">JMIR Human Factors, JMIR Publications Inc., March 2026</p><div class="pub-links"><a href="https://humanfactors.jmir.org/2026/1/e88263" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Smart textile based wearable sensors for monitoring isolation-related affective states: A step towards loneliness prediction</h3><p class="pub-authors">Liu J, Probst F, Zhou Y, Ratcliffe J, <strong>Rees J</strong>, Molteni E, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Advanced Sensor Research, Wiley, March 2026</p><div class="pub-links"><a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/adsr.202500161" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Understanding caregiver stress to inform community-based stress monitoring and supportive interventions: A qualitative descriptive study</h3><p class="pub-authors">Saha S, Flowers E, Ang CS, Casson AJ, Condell J, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Health & Social Care in the Community, Wiley, Feb 2026</p><div class="pub-links"><a href="https://onlinelibrary.wiley.com/doi/full/10.1155/hsc/2061790/" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Sleep, steps, and screens: Between and within-person effects of digital markers of daily life behaviors on smartphone-based assessments of cognitive functioning in depression</h3><p class="pub-authors">Ross-Adelman M, Aalbers G, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Neuroscience Applied, Elsevier BV, Feb 2026</p><div class="pub-links"><a href="https://doi.org/10.1016/j.nsa.2026.106985" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Smart wearable sensing systems mediating the digital monitoring of Loneliness – A review</h3><p class="pub-authors">Mexia N, Molteni E, Ratcliffe J, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Materials Today Electronics, Elsevier BV, Feb 2026</p><div class="pub-links"><a href="https://doi.org/10.1016/j.mtelec.2026.100202" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Development and user-centered evaluation of smart systems for loneliness monitoring in older adults: mixed methods study</h3><p class="pub-authors">Zhou Y, <strong>Rees J</strong>, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Journal of Medical Internet Research, 28, JMIR Publications Inc., Jan 2026</p><div class="pub-links"><a href="https://doi.org/10.2196/81027" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2026"><div class="pub-badge">2026</div><h3 class="pub-title">Systematic evaluation of commercially available pain-management mHealth apps for chronic pain in the United Kingdom</h3><p class="pub-authors"><strong>Harding R</strong>, Gillett JL, Passaportis M, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">British Journal of Health Psychology, 31(1), Wiley, Jan 2026</p><div class="pub-links"><a href="https://doi.org/10.1111/bjhp.70053" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2025"><div class="pub-badge">2025</div><h3 class="pub-title">Barriers and facilitators of engagement with app-based pain self-management strategies among chronic pain patients (CPPs)</h3><p class="pub-authors"><strong>Harding R</strong>, Passaportis M, Miles E, <strong>Matcham F</strong></p><p class="pub-journal">Journal of Health Psychology, SAGE, Jan 2026 (Online 2025)</p><div class="pub-links"><a href="https://doi.org/10.1177/13591053251406436" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2025"><div class="pub-badge">2025</div><h3 class="pub-title">"What does the word loneliness mean to you?" Reflections on co-developing public engagement workshops...</h3><p class="pub-authors"><strong>Rees J</strong>, Sajid M, Steele C, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Research Involvement and Engagement, 11(1), Springer, Dec 2025</p><div class="pub-links"><a href="https://doi.org/10.1186/s40900-025-00800-5" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2025"><div class="pub-badge">2025</div><h3 class="pub-title">Exploring biases related to the use of large language models in a multilingual depression corpus</h3><p class="pub-authors">Perez-Toro PA, Dineley J, Iniesta R, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Scientific Reports, 15(1), Springer, Dec 2025</p><div class="pub-links"><a href="https://doi.org/10.1038/s41598-025-19980-x" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2025" data-tags="preprint"><div class="pub-badge">Preprint</div><h3 class="pub-title">Multilingual Lexical Feature Analysis of Spoken Language for Predicting Major Depression Symptom Severity</h3><p class="pub-authors">Tokareva A, Dineley J, Firth Z, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">arXiv, Nov 2025</p><div class="pub-links"><a href="https://doi.org/10.48550/arxiv.2511.07011" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
-                <div class="publication-card" data-year="2025"><div class="pub-badge">2025</div><h3 class="pub-title">Adherence to actigraphic devices in elementary school–aged children: systematic review and meta-analysis</h3><p class="pub-authors">Morris AC, Seker A, Telesia L, <strong>Matcham F</strong>, et al.</p><p class="pub-journal">Journal of Medical Internet Research, 27, JMIR Publications Inc., Nov 2025</p><div class="pub-links"><a href="https://doi.org/10.2196/79718" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a></div></div>
+                <!-- Publication 1 -->
+                <div class="publication-item" data-year="2026">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2026</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Perspectives on Remote Monitoring via Smartphones and Wearables Among Individuals With Lived Experience or at Risk of Eating Disorders ("This Could Go Very, Very Wrong"): Qualitative Interview Study</h3>
+                            <p class="pub-authors">Kuehne C, Heng Yim S, Ince B, Fordham E, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">Journal of Medical Internet Research: Formative Research, JMIR Publications Inc., July 2026</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2026</span>
+                                <div class="pub-links-list">
+                                    <a href="https://formative.jmir.org/2026/1/e86382" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This qualitative study explores the perspectives of individuals with lived experience or at risk of eating disorders on remote monitoring via smartphones and wearables. Findings highlight both opportunities and significant concerns around privacy, data security, and the potential for negative psychological impacts. Participants emphasized the need for careful ethical considerations and user-centered design to ensure these technologies are helpful rather than harmful.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 2 -->
+                <div class="publication-item" data-year="2026">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2026</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Sleep and Activity Patterns in Depression From Wearable Data: Unsupervised Clustering Study</h3>
+                            <p class="pub-authors">Oetzmann C, Zhang Y, Cummins N, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">Journal of Medical Internet Research, JMIR Publications Inc., June 2026</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2026</span>
+                                <div class="pub-links-list">
+                                    <a href="https://www.jmir.org/2026/1/e86900" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This study used unsupervised clustering to identify distinct sleep and activity patterns in individuals with depression using wearable device data. Results revealed multiple subgroups with different activity profiles, suggesting that personalized interventions may be needed based on individual activity patterns. The findings have implications for digital monitoring and tailored treatment approaches.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 3 -->
+                <div class="publication-item" data-year="2026">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2026</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">USleep: Efficacy of App-Based Audio Interventions to Improve Sleep Disturbance in Working Adults, a Multi-Arm Randomised Controlled Trial</h3>
+                            <p class="pub-authors"><strong>Vazzaz J</strong>, <strong>Matcham F</strong>, Economides M, Bolton H, Cavanagh K.</p>
+                            <p class="pub-journal">Sleep, Oxford Academic, June 2026</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2026</span>
+                                <div class="pub-links-list">
+                                    <a href="https://academic.oup.com/sleep/advance-article/doi/10.1093/sleep/zsag154/8699387" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This multi-arm randomized controlled trial evaluated the efficacy of app-based audio interventions for improving sleep disturbance in working adults. Results demonstrated significant improvements in sleep quality compared to control conditions, supporting the use of digital audio interventions as an accessible approach to addressing sleep problems in the workplace population.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 4 -->
+                <div class="publication-item" data-year="2026">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2026</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">A user-centred interface design framework for the DELONELINESS system in older adults: Design indicator development and prioritization</h3>
+                            <p class="pub-authors">Zhou Y, <strong>Rees J</strong>, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">JMIR Human Factors, JMIR Publications Inc., March 2026</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2026</span>
+                                <div class="pub-links-list">
+                                    <a href="https://humanfactors.jmir.org/2026/1/e88263" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This study developed and prioritized design indicators for the DELONELINESS system, a digital intervention targeting loneliness in older adults. The user-centred framework identifies key design considerations for creating engaging and accessible interventions for older populations, emphasizing the importance of usability, accessibility, and meaningful engagement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 5 -->
+                <div class="publication-item" data-year="2026">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2026</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Smart textile based wearable sensors for monitoring isolation-related affective states: A step towards loneliness prediction</h3>
+                            <p class="pub-authors">Liu J, Probst F, Zhou Y, Ratcliffe J, <strong>Rees J</strong>, Molteni E, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">Advanced Sensor Research, Wiley, March 2026</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2026</span>
+                                <div class="pub-links-list">
+                                    <a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/adsr.202500161" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This paper presents novel smart textile-based wearable sensors for monitoring affective states related to social isolation. The technology represents a step towards predicting loneliness through continuous physiological monitoring, with potential applications in early intervention and prevention strategies.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 6 -->
+                <div class="publication-item" data-year="2026">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2026</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Understanding caregiver stress to inform community-based stress monitoring and supportive interventions: A qualitative descriptive study</h3>
+                            <p class="pub-authors">Saha S, Flowers E, Ang CS, Casson AJ, Condell J, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">Health & Social Care in the Community, Wiley, Feb 2026</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2026</span>
+                                <div class="pub-links-list">
+                                    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/hsc/2061790/" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This qualitative study explores caregiver stress to inform community-based monitoring and support interventions. Findings highlight the complex nature of caregiver burden and identify key opportunities for technology-enabled support systems to address unmet needs in community care settings.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 7 -->
+                <div class="publication-item" data-year="2026">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2026</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Sleep, steps, and screens: Between and within-person effects of digital markers of daily life behaviors on smartphone-based assessments of cognitive functioning in depression</h3>
+                            <p class="pub-authors">Ross-Adelman M, Aalbers G, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">Neuroscience Applied, Elsevier BV, Feb 2026</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2026</span>
+                                <div class="pub-links-list">
+                                    <a href="https://doi.org/10.1016/j.nsa.2026.106985" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This study examined the between- and within-person effects of digital markers (sleep, physical activity, screen time) on cognitive functioning in depression. Results demonstrated significant associations at both levels, suggesting that daily fluctuations in these behaviors may have immediate impacts on cognitive performance in individuals with depression.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 8 -->
+                <div class="publication-item" data-year="2026">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2026</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Smart wearable sensing systems mediating the digital monitoring of Loneliness – A review</h3>
+                            <p class="pub-authors">Mexia N, Molteni E, Ratcliffe J, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">Materials Today Electronics, Elsevier BV, Feb 2026</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2026</span>
+                                <div class="pub-links-list">
+                                    <a href="https://doi.org/10.1016/j.mtelec.2026.100202" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This comprehensive review examines the role of smart wearable sensing systems in digitally monitoring loneliness. It synthesizes current evidence on physiological markers of loneliness, existing technologies, and future directions for developing effective monitoring systems to address this growing public health concern.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 9 -->
+                <div class="publication-item" data-year="2026">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2026</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Development and user-centered evaluation of smart systems for loneliness monitoring in older adults: mixed methods study</h3>
+                            <p class="pub-authors">Zhou Y, <strong>Rees J</strong>, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">Journal of Medical Internet Research, 28, JMIR Publications Inc., Jan 2026</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2026</span>
+                                <div class="pub-links-list">
+                                    <a href="https://doi.org/10.2196/81027" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This mixed methods study reports on the development and user-centered evaluation of smart systems for monitoring loneliness in older adults. The research highlights the importance of involving older adults in the design process and identifies key factors influencing acceptance and engagement with technology-based loneliness monitoring systems.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 10 -->
+                <div class="publication-item" data-year="2026">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2026</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Systematic evaluation of commercially available pain-management mHealth apps for chronic pain in the United Kingdom</h3>
+                            <p class="pub-authors"><strong>Harding R</strong>, Gillett JL, Passaportis M, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">British Journal of Health Psychology, 31(1), Wiley, Jan 2026</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2026</span>
+                                <div class="pub-links-list">
+                                    <a href="https://doi.org/10.1111/bjhp.70053" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This systematic evaluation assesses commercially available pain-management mHealth apps for chronic pain in the UK. The study identifies strengths and limitations of current apps, providing recommendations for developers and clinicians on features that support effective pain self-management.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 11 -->
+                <div class="publication-item" data-year="2025">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2025</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Barriers and facilitators of engagement with app-based pain self-management strategies among chronic pain patients (CPPs)</h3>
+                            <p class="pub-authors"><strong>Harding R</strong>, Passaportis M, Miles E, <strong>Matcham F</strong></p>
+                            <p class="pub-journal">Journal of Health Psychology, SAGE, Jan 2026 (Online 2025)</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2025</span>
+                                <div class="pub-links-list">
+                                    <a href="https://doi.org/10.1177/13591053251406436" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This qualitative study identifies barriers and facilitators to engagement with app-based pain self-management strategies among chronic pain patients. Findings highlight key factors influencing adoption and sustained use, including usability, personalization, and integration with existing healthcare.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 12 -->
+                <div class="publication-item" data-year="2025">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2025</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">"What does the word loneliness mean to you?" Reflections on co-developing public engagement workshops...</h3>
+                            <p class="pub-authors"><strong>Rees J</strong>, Sajid M, Steele C, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">Research Involvement and Engagement, 11(1), Springer, Dec 2025</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2025</span>
+                                <div class="pub-links-list">
+                                    <a href="https://doi.org/10.1186/s40900-025-00800-5" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This paper reflects on the co-development of public engagement workshops exploring loneliness with older adults. It highlights the importance of community engagement in research and the value of co-production in developing meaningful interventions for complex social issues.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 13 -->
+                <div class="publication-item" data-year="2025">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2025</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Exploring biases related to the use of large language models in a multilingual depression corpus</h3>
+                            <p class="pub-authors">Perez-Toro PA, Dineley J, Iniesta R, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">Scientific Reports, 15(1), Springer, Dec 2025</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2025</span>
+                                <div class="pub-links-list">
+                                    <a href="https://doi.org/10.1038/s41598-025-19980-x" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This study explores biases in large language models when applied to a multilingual depression corpus. Findings highlight significant language-based biases that may affect the validity of AI-assisted mental health assessments, emphasizing the need for careful validation in diverse populations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 14 - Preprint -->
+                <div class="publication-item" data-year="2025">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini preprint">Preprint</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Multilingual Lexical Feature Analysis of Spoken Language for Predicting Major Depression Symptom Severity</h3>
+                            <p class="pub-authors">Tokareva A, Dineley J, Firth Z, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">arXiv, Nov 2025</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2025</span>
+                                <div class="pub-links-list">
+                                    <a href="https://doi.org/10.48550/arxiv.2511.07011" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This preprint presents a multilingual lexical feature analysis of spoken language for predicting depression symptom severity. The study demonstrates the potential of language-based markers across different languages and cultural contexts for scalable mental health assessment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 15 -->
+                <div class="publication-item" data-year="2025">
+                    <div class="pub-header">
+                        <span class="pub-badge-mini">2025</span>
+                        <div class="pub-info">
+                            <h3 class="pub-title">Adherence to actigraphic devices in elementary school–aged children: systematic review and meta-analysis</h3>
+                            <p class="pub-authors">Morris AC, Seker A, Telesia L, <strong>Matcham F</strong>, et al.</p>
+                            <p class="pub-journal">Journal of Medical Internet Research, 27, JMIR Publications Inc., Nov 2025</p>
+                            <div class="pub-meta">
+                                <span class="pub-year">2025</span>
+                                <div class="pub-links-list">
+                                    <a href="https://doi.org/10.2196/79718" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="pub-expand-btn" aria-label="Expand abstract">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="pub-abstract">
+                        <div class="pub-abstract-content">
+                            <p>This systematic review and meta-analysis examines adherence to actigraphic devices in elementary school-aged children. Findings provide important insights into factors affecting device adherence in pediatric populations and inform best practices for implementing actigraphy in child health research.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- No results message -->
+            <div class="no-results" id="no-results">
+                <i class="fas fa-search"></i>
+                <p>No publications match your filter. Try selecting a different year.</p>
+            </div>
+
             <div class="publications-footer">
                 <p class="pub-note">For a complete and up-to-date list of our 200+ publications, visit Dr. Matcham's <a href="https://profiles.sussex.ac.uk/p199181-faith-matcham/publications" target="_blank">University of Sussex profile</a>.</p>
             </div>
@@ -51,6 +689,57 @@
     <div id="footer-container"></div>
 
     <script src="js/template.js"></script>
+    <script>
+        // Toggle abstract expansion
+        document.querySelectorAll('.pub-expand-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const item = this.closest('.publication-item');
+                item.classList.toggle('expanded');
+            });
+        });
+
+        // Also allow clicking on the publication item to toggle
+        document.querySelectorAll('.publication-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Don't toggle if clicking on a link
+                if (e.target.closest('a')) return;
+                // Don't toggle if clicking on the button (already handled)
+                if (e.target.closest('.pub-expand-btn')) return;
+                this.classList.toggle('expanded');
+            });
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+                const items = document.querySelectorAll('.publication-item');
+                let visibleCount = 0;
+
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.year === filter) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no results message
+                const noResults = document.getElementById('no-results');
+                if (visibleCount === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
