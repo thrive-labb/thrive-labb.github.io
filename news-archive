@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THRIVE Lab - Archived News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <!-- Archive Header -->
+    <section class="archive-header">
+        <div class="container">
+            <div class="archive-header-content">
+                <span class="archive-badge"><i class="fas fa-archive"></i> ARCHIVE</span>
+                <h1 class="archive-title">News Archive</h1>
+                <p class="archive-subtitle">
+                    Welcome to our news archive. Here you will find our complete library of press releases, 
+                    company announcements, and media coverage. Browse our history to see how we've grown 
+                    and what we've been talking about over the years.
+                </p>
+                <div class="archive-meta">
+                    <span class="archive-meta-item">
+                        <i class="fas fa-newspaper"></i> All our stories in one place
+                    </span>
+                    <span class="archive-meta-item">
+                        <i class="fas fa-calendar-alt"></i> Browse by date
+                    </span>
+                    <span class="archive-meta-item">
+                        <i class="fas fa-tags"></i> Search by topic
+                    </span>
+                </div>
+                <div class="archive-search-hint">
+                    <i class="fas fa-info-circle"></i> Use the search bar above or browse the categories below to find exactly what you need.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Archive Navigation -->
+    <section class="archive-nav">
+        <div class="container">
+            <div class="archive-nav-content">
+                <div class="archive-nav-years">
+                    <a href="#" class="archive-year-link active">All</a>
+                    <a href="#" class="archive-year-link">2026</a>
+                    <a href="#" class="archive-year-link">2025</a>
+                    <a href="#" class="archive-year-link">2024</a>
+                    <a href="#" class="archive-year-link">2023</a>
+                </div>
+                <div class="archive-nav-categories">
+                    <a href="#" class="archive-cat-link active">All</a>
+                    <a href="#" class="archive-cat-link">Conferences</a>
+                    <a href="#" class="archive-cat-link">Publications</a>
+                    <a href="#" class="archive-cat-link">Awards</a>
+                    <a href="#" class="archive-cat-link">Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
