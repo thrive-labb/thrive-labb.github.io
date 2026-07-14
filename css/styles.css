@@ -829,3 +829,60 @@ a:hover { color: var(--tiger-orange-dark); }
 .news-section {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+/* Make abstract scrollable */
+.pub-abstract {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    padding: 0 var(--space-lg);
+}
+
+.publication-item.expanded .pub-abstract {
+    max-height: 600px; /* Increased to allow more content */
+    opacity: 1;
+    padding: var(--space-md) var(--space-lg) var(--space-md) var(--space-lg);
+    overflow-y: auto; /* Enables scrolling */
+}
+
+/* Custom scrollbar styling (optional) */
+.pub-abstract::-webkit-scrollbar {
+    width: 6px;
+}
+
+.pub-abstract::-webkit-scrollbar-track {
+    background: var(--gray-100);
+    border-radius: 3px;
+}
+
+.pub-abstract::-webkit-scrollbar-thumb {
+    background: var(--tiger-orange);
+    border-radius: 3px;
+}
+
+.pub-abstract::-webkit-scrollbar-thumb:hover {
+    background: var(--tiger-orange-dark);
+}
+
+/* Bold headings in abstract */
+.pub-abstract-content p strong {
+    color: var(--fern-green);
+    font-weight: 700;
+}
+
+/* Better spacing for abstract sections */
+.pub-abstract-content p {
+    margin-bottom: var(--space-sm);
+    line-height: 1.7;
+}
+
+.pub-abstract-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* First paragraph (Abstract heading) */
+.pub-abstract-content p:first-child strong {
+    color: var(--tiger-orange);
+    font-size: 1.05rem;
+}
