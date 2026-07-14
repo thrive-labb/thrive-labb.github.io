@@ -723,47 +723,84 @@ a:hover { color: var(--tiger-orange-dark); }
         padding: 4px 12px;
     }
 }
-/* Social icons in navbar - compact */
-.nav-social {
-    margin: 0 2px;
+/* Fix navbar alignment */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.social-icon {
+.nav-item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* Make social icons compact */
+.nav-item a[href*="github"],
+.nav-item a[href*="bsky"],
+.nav-item a[href*="linkedin"] {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     padding: 0 !important;
     font-size: 1.1rem;
     transition: all var(--transition-fast);
-    background-color: transparent;
     color: var(--gray-700);
 }
 
-.social-icon:hover {
+.nav-item a[href*="github"]:hover,
+.nav-item a[href*="bsky"]:hover,
+.nav-item a[href*="linkedin"]:hover {
     background-color: var(--tiger-orange);
     color: var(--white);
     transform: translateY(-2px);
 }
 
-/* Separator between nav links and social icons */
-.nav-social:first-of-type {
+/* Add a subtle separator before social icons */
+.nav-item:has(a[href*="github"]) {
     margin-left: 10px;
     padding-left: 10px;
     border-left: 1px solid var(--gray-300);
 }
 
-/* Mobile adjustments */
+/* Mobile fix */
 @media (max-width: 768px) {
-    .nav-social:first-of-type {
+    .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-sm);
+        padding: var(--space-md);
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background: var(--white);
+        transition: left 0.3s ease;
+        box-shadow: var(--shadow-lg);
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-item:has(a[href*="github"]) {
         margin-left: 0;
         padding-left: 0;
         border-left: none;
     }
     
-    .social-icon {
+    .nav-item a[href*="github"],
+    .nav-item a[href*="bsky"],
+    .nav-item a[href*="linkedin"] {
         width: 40px;
         height: 40px;
         font-size: 1.3rem;
