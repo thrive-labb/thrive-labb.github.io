@@ -813,3 +813,19 @@ a:hover { color: var(--tiger-orange-dark); }
     top: auto !important;
     box-shadow: none !important;
 }
+/* Fade in animation for filtered items */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Optional: Smooth transition for hiding/showing */
+.news-section {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}

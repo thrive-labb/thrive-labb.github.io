@@ -50,28 +50,32 @@
     </section>
 
     <!-- Archive Navigation -->
-    <section class="archive-nav">
-        <div class="container">
-            <div class="archive-nav-content">
-                <div class="archive-nav-years">
-                    <a href="#" class="archive-year-link active">All</a>
-                    <a href="#" class="archive-year-link">2026</a>
-                    <a href="#" class="archive-year-link">2025</a>
-                </div>
-                <div class="archive-nav-categories">
-                    <a href="#" class="archive-cat-link active">All</a>
-                    <a href="#" class="archive-cat-link">Conferences</a>
-                    <a href="#" class="archive-cat-link">Publications</a>
-                    <a href="#" class="archive-cat-link">Awards</a>
-                    <a href="#" class="archive-cat-link">Team</a>
-                </div>
+<!-- Archive Navigation -->
+<section class="archive-nav">
+    <div class="container">
+        <div class="archive-nav-content">
+            <div class="archive-nav-years">
+                <a href="#" class="archive-year-link active" data-filter-year="all">All</a>
+                <a href="#" class="archive-year-link" data-filter-year="2027">2027</a>
+                <a href="#" class="archive-year-link" data-filter-year="2026">2026</a>
+                <a href="#" class="archive-year-link" data-filter-year="2025">2025</a>
+            </div>
+            <div class="archive-nav-categories">
+                <a href="#" class="archive-cat-link active" data-filter-category="all">All</a>
+                <a href="#" class="archive-cat-link" data-filter-category="conferences">Conferences</a>
+                <a href="#" class="archive-cat-link" data-filter-category="publications">Publications</a>
+                <a href="#" class="archive-cat-link" data-filter-category="awards">Awards</a>
+                <a href="#" class="archive-cat-link" data-filter-category="team">Meetings</a>
+                <a href="#" class="archive-cat-link" data-filter-category="team">Training</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- First News Section - UKSBM 2026 Event -->
-    <section class="news-section">
-        <div class="news-container">
+        <section class="news-section" data-year="2026" data-category="conferences">
+            <div class="news-container">
             <div class="news-image">
                 <img src="assests/UKBSM_Slide.JPG" alt="Dr Faith Matcham presenting at the UK Society for Behavioural Medicine Annual Scientific Meeting">
                 <div class="news-image-caption">
@@ -97,7 +101,7 @@
     </section>
 
     <!-- Second News Section - KIT 2026 -->
-    <section class="news-section">
+    <section class="news-section" data-year="2026" data-category="conferences">
         <div class="news-container">
             <div class="news-image">
                 <img src="assests/KIT_Presentation.jpg" alt="Faith Matcham presenting at the Get Digital colloquium">
@@ -125,7 +129,7 @@
     </section>
 
     <!-- Fourth News Section - ECNP 2026 -->
-    <section class="news-section">
+    <section class="news-section" data-year="2027" data-category="meetings">
         <div class="news-container">
             <div class="news-image">
                 <img src="https://raw.githubusercontent.com/thrive-labb/thrive-labb.github.io/main/assests/ECNP%202027.jpg" alt="ECNP 2027 Congress">
@@ -148,7 +152,7 @@
     </section>
 
     <!-- Fifth News Section -->
-    <section class="news-section">
+    <section class="news-section" data-year="2026" data-category="training">
         <div class="news-container">
             <div class="news-image">
                 <img src="https://github.com/thrive-labb/thrive-labb.github.io/blob/main/assests/News_12_FEB_2026.png?raw=true" alt="News">
@@ -174,7 +178,7 @@
     </section>
 
     <!-- Sixth News Section -->
-    <section class="news-section">
+    <section class="news-section" data-year="2026" data-category="awards">
         <div class="news-container">
             <div class="news-image">
                 <img src="https://raw.githubusercontent.com/thrive-labb/thrive-labb.github.io/main/assests/Clean%20Slate%20White%20Paper%20Launch.jpg?raw=true" alt="Clean Slate Clinic White Paper Launch Event">
@@ -201,6 +205,111 @@
             </div>
         </div>
     </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all news sections
+        const newsItems = document.querySelectorAll('.news-section');
+        const yearLinks = document.querySelectorAll('.archive-year-link');
+        const categoryLinks = document.querySelectorAll('.archive-cat-link');
+        
+        let currentYear = 'all';
+        let currentCategory = 'all';
+
+        // Function to filter news items
+        function filterNews() {
+            newsItems.forEach(item => {
+                const itemYear = item.dataset.year || '';
+                const itemCategory = item.dataset.category || '';
+                
+                // Check if item matches current filters
+                const matchesYear = currentYear === 'all' || itemYear === currentYear;
+                const matchesCategory = currentCategory === 'all' || itemCategory === currentCategory;
+                
+                // Show/hide item
+                if (matchesYear && matchesCategory) {
+                    item.style.display = 'block';
+                    // Add a nice fade-in animation
+                    item.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Update active states
+            yearLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.filterYear === currentYear) {
+                    link.classList.add('active');
+                }
+            });
+
+            categoryLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.filterCategory === currentCategory) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Year filter click handlers
+        yearLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                currentYear = this.dataset.filterYear;
+                filterNews();
+            });
+        });
+
+        // Category filter click handlers
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                currentCategory = this.dataset.filterCategory;
+                filterNews();
+            });
+        });
+
+        // Optional: Add "No results" message
+        const container = document.querySelector('.container');
+        const noResultsMsg = document.createElement('p');
+        noResultsMsg.id = 'no-results';
+        noResultsMsg.style.cssText = `
+            display: none;
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: var(--gray-600);
+        `;
+        noResultsMsg.innerHTML = '<i class="fas fa-search" style="font-size:2rem;display:block;margin-bottom:10px;"></i>No news stories match your filters. Try adjusting your selection.';
+        
+        // Insert after archive-nav
+        const archiveNav = document.querySelector('.archive-nav');
+        archiveNav.parentNode.insertBefore(noResultsMsg, archiveNav.nextSibling);
+
+        // Modify filterNews to show "no results" message
+        const originalFilter = filterNews;
+        filterNews = function() {
+            originalFilter();
+            
+            let visibleItems = 0;
+            newsItems.forEach(item => {
+                if (item.style.display !== 'none') {
+                    visibleItems++;
+                }
+            });
+            
+            const noResults = document.getElementById('no-results');
+            if (visibleItems === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        };
+
+        // Re-run filter to initialize
+        filterNews();
+    });
+</script>
 
     <div id="footer-container"></div>
 
