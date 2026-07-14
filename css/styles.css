@@ -830,7 +830,110 @@ a:hover { color: var(--tiger-orange-dark); }
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Make abstract scrollable */
+/* Publications - Full Working Version */
+.publications-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.publication-item {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+    padding: var(--space-md) var(--space-lg);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    position: relative;
+}
+
+.publication-item:hover {
+    border-color: var(--tiger-orange);
+    box-shadow: var(--shadow-sm);
+}
+
+.publication-item.expanded {
+    border-color: var(--tiger-orange);
+    box-shadow: var(--shadow-md);
+}
+
+.pub-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+}
+
+.pub-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.pub-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--fern-green);
+    margin-bottom: var(--space-xs);
+    line-height: 1.4;
+}
+
+.pub-authors {
+    font-size: 0.9rem;
+    color: var(--gray-700);
+    margin-bottom: var(--space-xs);
+}
+
+.pub-authors strong {
+    color: var(--fern-green);
+    font-weight: 600;
+}
+
+.pub-journal {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    font-style: italic;
+    margin-bottom: var(--space-xs);
+}
+
+.pub-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+}
+
+.pub-meta .pub-year {
+    color: var(--tiger-orange);
+    font-weight: 600;
+}
+
+.pub-expand-btn {
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    cursor: pointer;
+    padding: var(--space-xs);
+    transition: all var(--transition-fast);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.pub-expand-btn:hover {
+    color: var(--tiger-orange);
+}
+
+.pub-expand-btn .fa-chevron-down {
+    transition: transform var(--transition-normal);
+}
+
+.publication-item.expanded .pub-expand-btn .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* CRITICAL: Abstract scrolling styles */
 .pub-abstract {
     max-height: 0;
     overflow: hidden;
@@ -840,13 +943,14 @@ a:hover { color: var(--tiger-orange-dark); }
 }
 
 .publication-item.expanded .pub-abstract {
-    max-height: 600px; /* Increased to allow more content */
+    max-height: 1000px; /* Large enough for most abstracts */
     opacity: 1;
     padding: var(--space-md) var(--space-lg) var(--space-md) var(--space-lg);
-    overflow-y: auto; /* Enables scrolling */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-/* Custom scrollbar styling (optional) */
+/* Custom scrollbar */
 .pub-abstract::-webkit-scrollbar {
     width: 6px;
 }
@@ -865,24 +969,78 @@ a:hover { color: var(--tiger-orange-dark); }
     background: var(--tiger-orange-dark);
 }
 
-/* Bold headings in abstract */
-.pub-abstract-content p strong {
-    color: var(--fern-green);
-    font-weight: 700;
-}
-
-/* Better spacing for abstract sections */
+/* Abstract content */
 .pub-abstract-content p {
     margin-bottom: var(--space-sm);
     line-height: 1.7;
+    font-size: 0.95rem;
+    color: var(--gray-700);
 }
 
 .pub-abstract-content p:last-child {
     margin-bottom: 0;
 }
 
-/* First paragraph (Abstract heading) */
+.pub-abstract-content p strong {
+    color: var(--fern-green);
+    font-weight: 700;
+}
+
 .pub-abstract-content p:first-child strong {
     color: var(--tiger-orange);
     font-size: 1.05rem;
+}
+
+.pub-links-list {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-top: var(--space-sm);
+}
+
+.pub-links-list .pub-link {
+    font-size: 0.85rem;
+    color: var(--fern-green);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pub-links-list .pub-link:hover {
+    color: var(--tiger-orange);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pub-header {
+        flex-wrap: wrap;
+    }
+
+    .pub-expand-btn {
+        position: absolute;
+        top: var(--space-md);
+        right: var(--space-md);
+    }
+
+    .pub-title {
+        font-size: 1rem;
+        padding-right: 30px;
+    }
+
+    .publication-item.expanded .pub-abstract {
+        max-height: 500px;
+        padding: var(--space-md) var(--space-md) var(--space-md) var(--space-md);
+    }
+}
+
+@media (max-width: 576px) {
+    .publication-item {
+        padding: var(--space-sm) var(--space-md);
+    }
+    
+    .publication-item.expanded .pub-abstract {
+        max-height: 350px;
+    }
 }
