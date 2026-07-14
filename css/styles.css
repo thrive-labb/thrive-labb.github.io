@@ -806,3 +806,10 @@ a:hover { color: var(--tiger-orange-dark); }
         font-size: 1.3rem;
     }
 }
+
+/* Remove sticky positioning from archive navigation */
+.archive-nav {
+    position: relative !important;
+    top: auto !important;
+    box-shadow: none !important;
+}
