@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THRIVE Lab - Archived News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <!-- Archive Header -->
+    <section class="archive-header">
+        <div class="container">
+            <div class="archive-header-content">
+                <span class="archive-badge"><i class="fas fa-archive"></i> ARCHIVE</span>
+                <h1 class="archive-title">News Archive</h1>
+                <p class="archive-subtitle">
+                    Welcome to our news archive. Here you will find our complete library of press releases, 
+                    company announcements, and media coverage. Browse our history to see how we've grown 
+                    and what we've been talking about over the years.
+                </p>
+                <div class="archive-meta">
+                    <span class="archive-meta-item">
+                        <i class="fas fa-newspaper"></i> All our stories in one place
+                    </span>
+                    <span class="archive-meta-item">
+                        <i class="fas fa-calendar-alt"></i> Browse by date
+                    </span>
+                    <span class="archive-meta-item">
+                        <i class="fas fa-tags"></i> Search by topic
+                    </span>
+                </div>
+                <div class="archive-search-hint">
+                    <i class="fas fa-info-circle"></i> Use the search bar above or browse the categories below to find exactly what you need.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Archive Navigation -->
+    <section class="archive-nav">
+        <div class="container">
+            <div class="archive-nav-content">
+                <div class="archive-nav-years">
+                    <a href="#" class="archive-year-link active">All</a>
+                    <a href="#" class="archive-year-link">2026</a>
+                    <a href="#" class="archive-year-link">2025</a>
+                    <a href="#" class="archive-year-link">2024</a>
+                    <a href="#" class="archive-year-link">2023</a>
+                </div>
+                <div class="archive-nav-categories">
+                    <a href="#" class="archive-cat-link active">All</a>
+                    <a href="#" class="archive-cat-link">Conferences</a>
+                    <a href="#" class="archive-cat-link">Publications</a>
+                    <a href="#" class="archive-cat-link">Awards</a>
+                    <a href="#" class="archive-cat-link">Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- First News Section - Royal College of Psychiatrists International Congress 2026 -->
+<section class="news-section">
+    <div class="news-container">
+        <div class="news-image">
+            <img src="assests/RCPsych.jpg" alt="Tessa Lapelyte and Enoch Baiden presenting at the Royal College of Psychiatrists International Congress 2026">
+            <div class="news-image-caption">
+            </div>
+        </div>
+        <div class="news-content">
+            <span class="news-badge"><i class="fas fa-users"></i> ROYAL COLLEGE OF PSYCHIATRISTS International Congress</span>
+            <h2 class="news-title">Bridging the Gap: Alcohol Risk, Help-Seeking, and Barriers to Care</h2>
+            <div class="news-subtitle">
+                <i class="fas fa-user-tie"></i> Tessa Lapelyte and Enoch Baiden, University of Sussex, UK
+            </div>
+            <div class="news-description">
+                Two research placement students from the THRIVE lab presented their work at the <a href="https://www.rcpsych.ac.uk/events/congress" target="_blank" rel="noopener noreferrer">Royal College of Psychiatrists International Congress</a> in Liverpool (June 2026), showcasing impactful analyses of alcohol risk and help-seeking in the UK.</p>
+                <p>Their research highlights a critical gap between clinical risk and self-identification, demonstrating that most individuals drinking at higher-risk levels do not see themselves as "heavy drinkers". The studies also identify systemic, stigma-related, and workplace barriers that limit access to support.</p>
+                <p>Together, these projects emphasise the need for proactive, routine screening (e.g. AUDIT-C) and more accessible, stigma-sensitive models of care, particularly within healthcare and occupational settings.</p>    
+            </div>
+            <div class="news-buttons">
+                <a href="https://www.rcpsych.ac.uk/events/congress/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Learn more about RCPsych
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Second News Section - UKSBM 2026 Event -->
+<section class="news-section">
+    <div class="news-container">
+        <div class="news-image">
+            <!-- Replace with an appropriate image for this event -->
+            <img src="assests/UKBSM_Slide.JPG" alt="Dr Faith Matcham presenting at the UK Society for Behavioural Medicine Annual Scientific Meeting">
+            <div class="news-image-caption">
+                <i class="fas fa-microphone-alt"></i> UKSBM 2026
+            </div>
+        </div>
+        <div class="news-content">
+            <span class="news-badge"><i class="fas fa-users"></i> UK SOCIETY FOR BEHAVIOURAL MEDICINE (UKSBM)</span>
+            <h2 class="news-title">Collaborative Approaches in Behavioural Science: Cross Sector Partnerships for Equitable Health Research and Practice</h2>
+            <div class="news-subtitle">
+                <i class="fas fa-user-tie"></i> Dr Faith Matcham, University of Sussex, UK
+            </div>
+            <div class="news-description">
+                <p>Dr Matcham presented at the UK Society for Behavioural Medicine Annual Scientific Meeting as part of a symposium on collaborative approaches in behavioural science. Her contribution focused on co-developing public engagement workshops on loneliness with older adults from ethnically diverse communities, in partnership with trusted community organisations. This work highlights how culturally and linguistically adapted, community-led approaches can reveal forms of "hidden loneliness" often missed by standard research models. The symposium brought together interdisciplinary perspectives on building equitable health research through meaningful collaboration, trust, and shared power.</p>
+            </div>
+            <div class="news-buttons">
+                <a href="https://www.uksbm.org.uk/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Learn more about UKSBM
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+     <!-- Third News Section - KIT 2026 -->
+    <section class="news-section">
+        <div class="news-container">
+            <div class="news-image">
+                <img src="assests/KIT_Presentation.jpg" alt="Faith Matcham presenting at the Get Digital colloquium">
+                <div class="news-image-caption">
+                <i class="fas fa-newspaper-alt"></i> News!
+            </div>
+        </div>
+        <div class="news-content">
+            <span class="news-badge"><i class="fas fa-bolt"></i> Recent Update</span>
+            <h2 class="news-title">THRIVE Lab presents digital phenotyping research for MDD at Get Digital colloquium</h2>
+            <div class="news-subtitle">
+                <i class="fas fa-user-tie"></i> Faith Matcham (PI) shares insights on predicting daily mood in depression using ambulatory assessment data
+            </div>
+            <div class="news-description">
+                <p>Last week members of the THRIVE Lab took part in the Get Digital colloquium, where Faith Matcham (PI) presented our research on predicting day‑to‑day mood in Major Depressive Disorder (MDD) using digital phenotyping and ambulatory assessment data.</p>
+                <p>The meeting brought together researchers from psychology, psychiatry, data science, and digital health, and highlighted both the promise and the growing pains of this rapidly developing field. As access to intensive, real‑world data increases, so too does the need for careful thinking about how these data are analysed, interpreted, and ultimately used.</p>
+                <p>A recurring message across the discussions was that meaningful progress will depend on stronger shared foundations — particularly around how daily mood and related constructs are defined, measured, and reported over time. For work like ours, which aims to understand and predict mood dynamics in everyday life, these issues are central to ensuring findings are interpretable, comparable, and clinically relevant.</p>
+            <div class="news-buttons">
+                <a href="https://www.ecnp.eu/research/ecnp-networks/list-of-ecnp-networks/digital-health-applied-to-the-clinical-research-of-brain-disorders-network/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Learn more about the Get Digital series
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Fourth  News Section - ECNP 2026 -->
+    <section class="news-section">
+        <div class="news-container">
+            <div class="news-image">
+                <img src="https://raw.githubusercontent.com/thrive-labb/thrive-labb.github.io/main/assests/ECNP%202027.jpg" alt="ECNP 2027 Congress">
+            </div>
+            <div class="news-content">
+                <span class="news-badge"><i class="fas fa-bolt"></i> Recent Update</span>
+                <h2 class="news-title">Dr Faith Matcham joins Scientific Programme Committee for the 40th ECNP Congress</h2>
+                <div class="news-subtitle">
+                    <i class="fas fa-user-tie"></i> THRIVE group PI and Associate Professor of Psychology appointed to shape the 2027 programme in Barcelona
+                </div>
+                <div class="news-description">
+                    <p>Dr Faith Matcham, THRIVE group PI and Associate Professor of Psychology, is serving on the Scientific Programme Committee for the 40th ECNP Congress in Barcelona (25–28 September 2027). Alongside colleagues from across neuroscience and psychiatry, she's helping build a scientific programme that focuses on genuine advances and emerging topics, without the usual conference fluff. The committee is also making a deliberate effort to include diverse voices and perspectives, both in the content and the speakers. With ECNP celebrating its 40th anniversary, Faith's contribution is part of what's shaping up to be a scientifically robust, innovative programme worth paying attention to.</p>
+                </div>
+                <div class="news-buttons">
+                    <a href="https://www.ecnp.eu/meetings/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i> Learn More about ECNP 2027
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fifth News Section - Fixed image path -->
+    <section class="news-section">
+        <div class="news-container">
+             <div class="news-image">
+                <img src="https://github.com/thrive-labb/thrive-labb.github.io/blob/main/assests/News_12_FEB_2026.png?raw=true" alt="News">
+                <div class="news-image-caption">
+                    <i class="fas fa-newspaper-alt"></i> News!
+                </div>
+             </div>
+            <div class="news-content">
+                <span class="news-badge"><i class="fas fa-bolt"></i> Recent Update</span>
+                <h2 class="news-title">The confidence to apply new tech skills in real research and consultancy work has been the biggest lasting impact</h2>
+                <div class="news-subtitle">
+                    <i class="fas fa-user-tie"></i> Our P.I., Dr. Faith Matcham, reflects on completing her Data Analyst, Level 4 apprenticeship!
+                </div>
+                <div class="news-description">
+                    <p>Apprenticeships can play a powerful role in supporting professional growth, confidence and career development alongside demanding roles. In this interview, Dr Faith Matcham, Associate Professor in Psychology, reflects on how completing a data-focused apprenticeship has strengthened her technical skills, reshaped her approach to research, teaching and consultancy, and opened up new possibilities in her work in digital mental health.</p>
+                </div>
+                <div class="news-buttons">
+                    <a href="https://staff.sussex.ac.uk/news/article/70046-the-confidence-to-apply-new-tech-skills-in-real-research-and-consultancy-work-has-been-the-biggest-lasting-impact" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i> Read the Article
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sixth News Section - Fixed image path -->
+    <section class="news-section">
+        <div class="news-container">
+            <div class="news-image">
+                <img src="https://raw.githubusercontent.com/thrive-labb/thrive-labb.github.io/main/assests/Clean%20Slate%20White%20Paper%20Launch.jpg?raw=true" alt="Clean Slate Clinic White Paper Launch Event">
+                <div class="news-image-caption">
+                    <i class="fas fa-calendar-alt"></i> Clean Slate Clinic White Paper Launch Event
+                </div>
+            </div>
+            <div class="news-content">
+                <span class="news-badge"><i class="fas fa-bolt"></i> Recent Update</span>
+                <h2 class="news-title">Clean Slate Clinic White Paper Launch</h2>
+                <div class="news-subtitle">
+                    <i class="fas fa-user-tie"></i> Our P.I., Dr. Faith Matcham, was invited as a panelist!
+                </div>
+                <div class="news-description"> 
+                    <p>We're thrilled to announce that Dr. Faith Matcham participated as a distinguished panelist at the Clean Slate Clinic White Paper Launch Event, contributing her expertise in digital mental health and cognitive resilience to this important initiative.</p>
+                </div>
+                <div class="news-buttons">
+                    <a href="https://raw.githubusercontent.com/thrive-labb/thrive-labb.github.io/main/assests/Final_Clean%20Slate%20Clinic_White%20Paper.pdf?raw=true" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-file-pdf"></i> Read the White Paper
+                    </a>
+                    <a href="team.html" class="btn btn-outline">
+                        <i class="fas fa-users"></i> Meet Our Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
