@@ -1055,10 +1055,9 @@ a:hover { color: var(--tiger-orange-dark); }
     background: var(--white);
 }
 
-.event-image img {
-    width: 100%;
-    height: auto;
-    display: block;
+.event-image {
+max-width: 300px;
+margin: 0 auto 1.5rem auto;
 }
 
 .event-image-caption {
@@ -1096,4 +1095,12 @@ a:hover { color: var(--tiger-orange-dark); }
         max-width: 300px;
         margin: 0 auto;
     }
+}
+
+.event-image img {
+width: 100%;
+height: auto;
+display: block;
+border-radius: var(--radius-md);
+box-shadow: var(--shadow-md);
 }
