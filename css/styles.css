@@ -1043,3 +1043,27 @@ a:hover { color: var(--tiger-orange-dark); }
         max-height: 350px;
     }
 }
+
+.event-image {
+    float: right;
+    width: 250px;
+    margin: 0 0 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 2px solid var(--gray-200);
+    background: var(--white);
+}
+
+.event-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.event-image-caption {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--gray-600);
+}
