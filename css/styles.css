@@ -90,7 +90,7 @@ a:hover { color: var(--tiger-orange-dark); }
 .news-section { background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%); padding: var(--space-xxl) 0; position: relative; overflow: hidden; }
 .news-section::before { content: 'NEW'; position: absolute; top: 20px; right: -30px; background-color: var(--tiger-orange); color: var(--white); padding: 0.5rem 4rem; font-size: 1.2rem; font-weight: 700; transform: rotate(45deg); letter-spacing: 2px; box-shadow: var(--shadow-md); z-index: 10; }
 @keyframes pulse { 0% { opacity: 1; transform: rotate(45deg) scale(1); } 50% { opacity: 0.9; transform: rotate(45deg) scale(1.05); background-color: var(--tiger-orange-dark); } 100% { opacity: 1; transform: rotate(45deg) scale(1); } }
-.news-container { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
+.news-container { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); width: 100%; }
 .news-image { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); transition: transform var(--transition-normal); border: 3px solid var(--tiger-orange); }
 .news-image:hover { transform: scale(1.02); }
 .news-image img { width: 100%; height: auto; display: block; transition: transform var(--transition-normal); }
