@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-mode="day">                                          <!-- ✅ EDIT 1: added data-mode="day" -->
+<html lang="en" data-mode="day">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,6 @@
 <body>
     <div id="navbar-container"></div>
 
-    <!-- ✅ EDIT 2: Night canvas + theme toggle -->
     <canvas id="night-canvas" aria-hidden="true"></canvas>
     <div class="theme-controls" role="group" aria-label="Theme settings">
         <button id="mode-toggle" class="theme-btn" aria-label="Toggle day/night mode" title="Toggle day/night">
@@ -40,139 +39,136 @@
         </div>
     </section>
 
-<!-- ===== Events Section ===== -->
-<section class="events-section">
-    <div class="container">
-        <h2 class="section-title">Latest News</h2>
-
-<!-- News Section - University of Sussex JRA Conference -->
-<section class="news-section" data-year="2026" data-category="conferences">
-    <div class="news-container">
-        <div class="news-image">
-            <img src="assets/Anna_SibsonJRA.jpg" alt="Anna Sibson presenting her poster at the University of Sussex JRA Conference">
-            <div class="news-image-caption"></div>
-        </div>
-        <div class="news-content">
-            <span class="news-badge"><i class="fas fa-users"></i> University of Sussex JRA Conference</span>
-            <h2 class="news-title">Intra-Individual Variability in Sleep and Pain Instability in Chronic Pain</h2>
-            <div class="news-subtitle">
-                <i class="fas fa-user-tie"></i> Anna Sibson, University of Sussex, UK
-            </div>
-            <div class="news-description">
-                <p>THRIVE Junior Research Associate Anna Sibson presented her work examining the relationship between intra-individual variability in sleep and pain instability in chronic pain at the University of Sussex JRA conference on 13 October 2026.</p>
-                <p>Chronic pain is a leading cause of disability worldwide, and sleep disturbance is highly prevalent among people living with chronic pain. Greater pain instability is associated with a range of adverse outcomes, yet conventional research methods and interventions often fail to capture this within-person variability. Ecological Momentary Assessment (EMA) offers a way to capture real-time fluctuations in pain, mood, and behaviours in daily life, but research investigating associations between sleep and pain instability using EMA data remains limited.</p>
-                <p>Using EMA data from a study of adults with chronic pain, Anna examined whether night-to-night variability in sleep predicted next-day pain instability. Pain instability was calculated using the Root Mean Square of Successive Differences (RMSSD), and sleep scores were person-mean centred to capture variability. Multilevel models were used to test associations between nightly sleep variability and next-day pain instability, with baseline clinical characteristics tested as potential moderators and daily affect tested as a potential mediator.</p>
-                <p>The findings showed that shorter-than-usual sleep duration, poorer-than-usual sleep quality, and greater-than-usual sleep disruption all significantly predicted greater next-day pain instability. The association between greater sleep disruption and next-day pain instability was stronger in individuals with greater baseline pain severity. In addition, poorer sleep quality and greater sleep disruption were both indirectly linked to greater next-day pain instability through lower positive affect.</p>
-                <p>This research extends existing knowledge by highlighting the potential roles of sleep and affective processes in pain instability, as well as the significance of baseline pain severity. The findings have implications for more personalised digital pain interventions. In particular, they may inform Just-In-Time Adaptive Interventions (JITAIs), where periods of poorer-than-usual sleep or lower-than-usual positive affect could trigger proactive coping prompts or behavioural recommendations. Future research should explore whether associations between sleep and pain instability are bidirectional.</p>
-            </div>
-            <div class="news-buttons">
-                <a href="assets/Sibson_Poster.jpg" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-external-link-alt"></i> View the Poster
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Events Section -->
+    <!-- ===== Latest News ===== -->
     <section class="events-section">
         <div class="container">
-            <h2 class="section-title">Upcoming Events</h2>   
-            <div class="events-grid">
+            <h2 class="section-title">Latest News</h2>
 
-<!-- ESRII 2026 Event -->
-<div class="event-card featured">
-    <div class="event-calendar">
-        <div class="calendar-month">OCT</div>
-        <div class="calendar-date">9th-11th</div>
-        <div class="calendar-year">2026</div>
-    </div>
-    
-    <div class="event-content">
-        <span class="event-badge">EUROPEAN SOCIETY FOR RESEARCH ON INTERNET INTERVENTIONS (ESRII) 2026</span>
-        <h3 class="event-title">Exploring the Use of a Generative Artificial Intelligence Wellbeing Coach for Sleep Disturbance in Working Adults
-    </h3>
-        <p class="event-subtitle">Oral Presentation | ESRII Annual Conference 2026</p>
-        <div class="event-details">
-            <div class="event-detail">
-                <i class="fas fa-calendar-alt"></i>
-                <span><strong>Dates:</strong> October 9th - 11th, 2026</span>
-            </div>
-            <div class="event-detail">
-                <i class="fas fa-chalkboard"></i>
-                <span><strong>Format:</strong> Oral Presentation</span>
-            </div>
-            <div class="event-detail">
-                <i class="fas fa-dna"></i>
-                <span><strong>Study:</strong> Nova</span>
-            </div>
-            <div class="event-detail">
-                <i class="fas fa-venus-mars"></i>
-                <span><strong>Key Focus:</strong> Generative AI in sleep disturbance</span>
-            </div>
-            <div class="event-detail">
-                <i class="fas fa-tag"></i>
-                <span><strong>Event:</strong> ESRII Annual Conference 2026</span>
-            </div>
-        </div>
-        <div class="event-description">
-            <p>PhD student Jessica Vazzaz explores the effectiveness, acceptability adn feasibility of Nova, a GenAI-powered wellbeing coach for improving sleep disturbance. <p>
-        </div>
-        <div class="event-actions">
-            <a href="https://esrii.org/?page=conference" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                <i class="fas fa-external-link-alt"></i> View conference programme
-            </a>
-        </div>
-    </div>
-</div>
+            <section class="news-section" data-year="2026" data-category="conferences">
+                <div class="news-container">
+                    <div class="news-image">
+                        <img src="assets/Anna_SibsonJRA.jpg" alt="Anna Sibson presenting her poster at the University of Sussex JRA Conference">
+                        <div class="news-image-caption"></div>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-badge"><i class="fas fa-users"></i> University of Sussex JRA Conference</span>
+                        <h2 class="news-title">Intra-Individual Variability in Sleep and Pain Instability in Chronic Pain</h2>
+                        <div class="news-subtitle">
+                            <i class="fas fa-user-tie"></i> Anna Sibson, University of Sussex, UK
+                        </div>
+                        <div class="news-description">
+                            <p>THRIVE Junior Research Associate Anna Sibson presented her work examining the relationship between intra-individual variability in sleep and pain instability in chronic pain at the University of Sussex JRA conference on 13 October 2026.</p>
+                            <p>Chronic pain is a leading cause of disability worldwide, and sleep disturbance is highly prevalent among people living with chronic pain. Greater pain instability is associated with a range of adverse outcomes, yet conventional research methods and interventions often fail to capture this within-person variability. Ecological Momentary Assessment (EMA) offers a way to capture real-time fluctuations in pain, mood, and behaviours in daily life, but research investigating associations between sleep and pain instability using EMA data remains limited.</p>
+                            <p>Using EMA data from a study of adults with chronic pain, Anna examined whether night-to-night variability in sleep predicted next-day pain instability. Pain instability was calculated using the Root Mean Square of Successive Differences (RMSSD), and sleep scores were person-mean centred to capture variability. Multilevel models were used to test associations between nightly sleep variability and next-day pain instability, with baseline clinical characteristics tested as potential moderators and daily affect tested as a potential mediator.</p>
+                            <p>The findings showed that shorter-than-usual sleep duration, poorer-than-usual sleep quality, and greater-than-usual sleep disruption all significantly predicted greater next-day pain instability. The association between greater sleep disruption and next-day pain instability was stronger in individuals with greater baseline pain severity. In addition, poorer sleep quality and greater sleep disruption were both indirectly linked to greater next-day pain instability through lower positive affect.</p>
+                            <p>This research extends existing knowledge by highlighting the potential roles of sleep and affective processes in pain instability, as well as the significance of baseline pain severity. The findings have implications for more personalised digital pain interventions. In particular, they may inform Just-In-Time Adaptive Interventions (JITAIs), where periods of poorer-than-usual sleep or lower-than-usual positive affect could trigger proactive coping prompts or behavioural recommendations. Future research should explore whether associations between sleep and pain instability are bidirectional.</p>
+                        </div>
+                        <div class="news-buttons">
+                            <a href="assets/Sibson_Poster.jpg" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i> View the Poster
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<!-- SSA Annual Conference 2026 - Plenary Session -->
-<div class="event-card featured">
-    <div class="event-calendar">
-        <div class="calendar-month">NOV</div>
-        <div class="calendar-date">12th-13th</div>
-        <div class="calendar-year">2026</div>
-    </div>
-    <div class="event-content">
-        <span class="event-badge">SOCIETY FOR THE STUDY OF ADDICTION (SSA)</span>
-        <h3 class="event-title">AI and Digital Innovations in Addiction Treatment</h3>
-        <p class="event-subtitle">SSA Annual Conference 2026 Plenary Session</p>
-        <div class="event-details">
-            <div class="event-detail">
-                <i class="fas fa-user"></i>
-                <span><strong>Speaker:</strong> Dr Faith Matcham</span>
-            </div>
-            <div class="event-detail">
-                <i class="fas fa-calendar-alt"></i>
-                <span><strong>Event:</strong> SSA Annual Conference 2026</span>
-            </div>
-            <div class="event-detail">
-                <i class="fas fa-users"></i>
-                <span><strong>Session Type:</strong> Plenary Panel Discussion</span>
-            </div>
-            <div class="event-detail">
-                <i class="fas fa-tag"></i>
-                <span><strong>Theme:</strong> AI and Digital Health Innovation</span>
-            </div>
-        </div>
-        <div class="event-description">
-            <p>
-                This plenary session will explore how artificial intelligence and emerging digital technologies can transform addiction research, prevention, and treatment. The discussion will focus on the potential of these innovations to enable earlier detection of risk, deliver more personalised interventions, and improve outcomes for people experiencing addiction.
-            </p>
-            <p style="margin-top: 1rem;">
-                Bringing together four leaders in health system transformation, clinical AI, mobile health, and digital mental health, the session will examine current opportunities, challenges, and future directions for integrating digital technologies into addiction care and research.
-            </p>
-        </div>
-        <div class="event-actions">
-            <a href="https://www.addiction-ssa.org/events/annual-conference/2026/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                <i class="fas fa-external-link-alt"></i> Find out more
-            </a>
-        </div>
-    </div>
-</div>
-            <div class="events-note">
-                <p><i class="fas fa-info-circle"></i> More events will be announced soon. Follow us on <a href="https://bsky.app/profile/thrivelab.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a> for updates.</p>
-            </div>
+            <!-- ===== Upcoming Events ===== -->
+            <section class="events-section">
+                <div class="container">
+                    <h2 class="section-title">Upcoming Events</h2>
+                    <div class="events-grid">
+
+                        <!-- ESRII 2026 Event -->
+                        <div class="event-card featured">
+                            <div class="event-calendar">
+                                <div class="calendar-month">OCT</div>
+                                <div class="calendar-date">9th-11th</div>
+                                <div class="calendar-year">2026</div>
+                            </div>
+                            <div class="event-content">
+                                <span class="event-badge">EUROPEAN SOCIETY FOR RESEARCH ON INTERNET INTERVENTIONS (ESRII) 2026</span>
+                                <h3 class="event-title">Exploring the Use of a Generative Artificial Intelligence Wellbeing Coach for Sleep Disturbance in Working Adults</h3>
+                                <p class="event-subtitle">Oral Presentation | ESRII Annual Conference 2026</p>
+                                <div class="event-details">
+                                    <div class="event-detail">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span><strong>Dates:</strong> October 9th - 11th, 2026</span>
+                                    </div>
+                                    <div class="event-detail">
+                                        <i class="fas fa-chalkboard"></i>
+                                        <span><strong>Format:</strong> Oral Presentation</span>
+                                    </div>
+                                    <div class="event-detail">
+                                        <i class="fas fa-dna"></i>
+                                        <span><strong>Study:</strong> Nova</span>
+                                    </div>
+                                    <div class="event-detail">
+                                        <i class="fas fa-venus-mars"></i>
+                                        <span><strong>Key Focus:</strong> Generative AI in sleep disturbance</span>
+                                    </div>
+                                    <div class="event-detail">
+                                        <i class="fas fa-tag"></i>
+                                        <span><strong>Event:</strong> ESRII Annual Conference 2026</span>
+                                    </div>
+                                </div>
+                                <div class="event-description">
+                                    <p>PhD student Jessica Vazzaz explores the effectiveness, acceptability and feasibility of Nova, a GenAI-powered wellbeing coach for improving sleep disturbance.</p>
+                                </div>
+                                <div class="event-actions">
+                                    <a href="https://esrii.org/?page=conference" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                        <i class="fas fa-external-link-alt"></i> View conference programme
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SSA Annual Conference 2026 - Plenary Session -->
+                        <div class="event-card featured">
+                            <div class="event-calendar">
+                                <div class="calendar-month">NOV</div>
+                                <div class="calendar-date">12th-13th</div>
+                                <div class="calendar-year">2026</div>
+                            </div>
+                            <div class="event-content">
+                                <span class="event-badge">SOCIETY FOR THE STUDY OF ADDICTION (SSA)</span>
+                                <h3 class="event-title">AI and Digital Innovations in Addiction Treatment</h3>
+                                <p class="event-subtitle">SSA Annual Conference 2026 Plenary Session</p>
+                                <div class="event-details">
+                                    <div class="event-detail">
+                                        <i class="fas fa-user"></i>
+                                        <span><strong>Speaker:</strong> Dr Faith Matcham</span>
+                                    </div>
+                                    <div class="event-detail">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span><strong>Event:</strong> SSA Annual Conference 2026</span>
+                                    </div>
+                                    <div class="event-detail">
+                                        <i class="fas fa-users"></i>
+                                        <span><strong>Session Type:</strong> Plenary Panel Discussion</span>
+                                    </div>
+                                    <div class="event-detail">
+                                        <i class="fas fa-tag"></i>
+                                        <span><strong>Theme:</strong> AI and Digital Health Innovation</span>
+                                    </div>
+                                </div>
+                                <div class="event-description">
+                                    <p>This plenary session will explore how artificial intelligence and emerging digital technologies can transform addiction research, prevention, and treatment. The discussion will focus on the potential of these innovations to enable earlier detection of risk, deliver more personalised interventions, and improve outcomes for people experiencing addiction.</p>
+                                    <p style="margin-top: 1rem;">Bringing together four leaders in health system transformation, clinical AI, mobile health, and digital mental health, the session will examine current opportunities, challenges, and future directions for integrating digital technologies into addiction care and research.</p>
+                                </div>
+                                <div class="event-actions">
+                                    <a href="https://www.addiction-ssa.org/events/annual-conference/2026/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                        <i class="fas fa-external-link-alt"></i> Find out more
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="events-note">
+                        <p><i class="fas fa-info-circle"></i> More events will be announced soon. Follow us on <a href="https://bsky.app/profile/thrivelab.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a> for updates.</p>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
 
@@ -180,6 +176,6 @@
 
     <script src="js/template.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/darkmode.js"></script>                                   <!-- ✅ EDIT 3: added darkmode script -->
+    <script src="js/darkmode.js"></script>
 </body>
 </html>
