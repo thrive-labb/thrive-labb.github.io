@@ -1096,3 +1096,413 @@ margin: 0 auto 1.5rem auto;
         margin: 0 auto;
     }
 }
+
+/* =============================================================
+   DAY / NIGHT MODE
+   Default (no attribute or data-mode="day") = your existing styles.
+   data-mode="night" on <html> = soft dark surface, brand intact.
+   ============================================================= */
+
+html[data-mode="night"] {
+    --night-bg: #14140F;
+    --night-surface: rgba(34, 34, 26, 0.88);
+    --night-surface-solid: #22221A;
+    --night-border: rgba(233, 122, 41, 0.18);
+    --night-text: #EDE8DF;
+    --night-text-muted: #B8B2A8;
+    --night-heading: #9FC287;
+    --night-accent: var(--tiger-orange-light);
+}
+
+html[data-mode="night"] body {
+    background-color: var(--night-bg);
+    color: var(--night-text);
+}
+html[data-mode="night"] body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 20, 15, 0.94);
+    pointer-events: none;
+    z-index: 0;
+}
+html[data-mode="night"] body > *:not(#night-canvas) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Headings become light-fern at night */
+html[data-mode="night"] h1,
+html[data-mode="night"] h2,
+html[data-mode="night"] h3,
+html[data-mode="night"] h4,
+html[data-mode="night"] h5,
+html[data-mode="night"] h6,
+html[data-mode="night"] .section-title,
+html[data-mode="night"] .news-title,
+html[data-mode="night"] .event-title,
+html[data-mode="night"] .hero-title,
+html[data-mode="night"] .opportunity-title,
+html[data-mode="night"] .team-name,
+html[data-mode="night"] .pub-title,
+html[data-mode="night"] .research-title,
+html[data-mode="night"] .footer-logo-text,
+html[data-mode="night"] .archive-title {
+    color: var(--night-heading);
+}
+
+html[data-mode="night"] p,
+html[data-mode="night"] .news-description,
+html[data-mode="night"] .event-description,
+html[data-mode="night"] .event-detail,
+html[data-mode="night"] .section-subtitle,
+html[data-mode="night"] .hero-subtitle,
+html[data-mode="night"] .opportunity-desc,
+html[data-mode="night"] .team-bio,
+html[data-mode="night"] .research-desc,
+html[data-mode="night"] .pub-authors,
+html[data-mode="night"] .pub-abstract-content p,
+html[data-mode="night"] .value-item p,
+html[data-mode="night"] .archive-subtitle,
+html[data-mode="night"] .archive-meta-item {
+    color: var(--night-text);
+}
+
+/* Navbar */
+html[data-mode="night"] .navbar {
+    background-color: rgba(20, 20, 15, 0.92);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+html[data-mode="night"] .nav-link,
+html[data-mode="night"] .nav-logo,
+html[data-mode="night"] .logo-text {
+    color: var(--night-text);
+}
+html[data-mode="night"] .nav-link.active,
+html[data-mode="night"] .nav-link:hover {
+    color: var(--night-accent);
+}
+html[data-mode="night"] .nav-link.active::after {
+    background-color: var(--night-accent);
+}
+
+/* Hero */
+html[data-mode="night"] .hero {
+    background: linear-gradient(135deg,
+        rgba(233, 122, 41, 0.10) 0%,
+        rgba(79, 121, 66, 0.14) 100%);
+}
+html[data-mode="night"] .tagline-text {
+    color: var(--night-accent);
+    border-left-color: var(--night-heading);
+}
+
+/* Transparent section backgrounds at night */
+html[data-mode="night"] .news-section,
+html[data-mode="night"] .thrive-overview,
+html[data-mode="night"] .events-section,
+html[data-mode="night"] .team-section,
+html[data-mode="night"] .join-section,
+html[data-mode="night"] .industry-section,
+html[data-mode="night"] .archive-header,
+html[data-mode="night"] .archive-footer,
+html[data-mode="night"] .research-section,
+html[data-mode="night"] .publications-section {
+    background: transparent;
+}
+
+/* Cards & panels get night surfaces */
+html[data-mode="night"] .event-card,
+html[data-mode="night"] .news-container,
+html[data-mode="night"] .research-card,
+html[data-mode="night"] .team-card,
+html[data-mode="night"] .publication-item,
+html[data-mode="night"] .publication-card,
+html[data-mode="night"] .opportunity-card,
+html[data-mode="night"] .lab-culture,
+html[data-mode="night"] .industry-highlight,
+html[data-mode="night"] .events-note,
+html[data-mode="night"] .thrive-mission-card,
+html[data-mode="night"] .mission-item,
+html[data-mode="night"] .event-details,
+html[data-mode="night"] .archive-search-hint,
+html[data-mode="night"] .member-card,
+html[data-mode="night"] .listen-cta {
+    background: var(--night-surface);
+    border-color: var(--night-border);
+    color: var(--night-text);
+}
+html[data-mode="night"] .event-card.featured {
+    background: linear-gradient(to right,
+        var(--night-surface-solid),
+        rgba(34, 34, 26, 0.6));
+}
+html[data-mode="night"] .member-card-header {
+    background: linear-gradient(135deg,
+        rgba(34, 34, 26, 0.7) 0%,
+        rgba(34, 34, 26, 0.4) 100%);
+    border-bottom-color: var(--night-border);
+}
+
+/* Buttons */
+html[data-mode="night"] .btn-outline {
+    color: var(--night-heading);
+    border-color: var(--night-heading);
+}
+html[data-mode="night"] .btn-outline:hover {
+    background-color: var(--night-heading);
+    color: var(--night-bg);
+}
+
+/* Q&A accordion at night */
+html[data-mode="night"] .qa-item {
+    border-bottom-color: var(--night-border);
+}
+html[data-mode="night"] .qa-item > summary {
+    color: var(--night-heading);
+}
+html[data-mode="night"] .qa-item > summary:hover {
+    color: var(--night-accent);
+}
+html[data-mode="night"] .qa-answer {
+    color: var(--night-text);
+}
+
+/* Footer stays fern (brand) but darker */
+html[data-mode="night"] .footer {
+    background-color: var(--fern-green-dark);
+}
+
+/* ---- Night canvas (subtle stars) ---- */
+#night-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ---- Theme toggle button ---- */
+.theme-controls {
+    position: fixed;
+    top: 84px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 1001;
+}
+.theme-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--gray-200);
+    background: var(--white);
+    color: var(--tiger-orange);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: transform var(--transition-fast), background var(--transition-normal), color var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+.theme-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+.theme-btn:focus-visible {
+    outline: 2px solid var(--tiger-orange);
+    outline-offset: 2px;
+}
+html[data-mode="night"] .theme-btn {
+    background: var(--night-surface-solid);
+    border-color: var(--night-border);
+    color: var(--night-accent);
+}
+
+/* =============================================================
+   LISTEN FROM OUR MEMBERS
+   Q&A accordion cards on the Join Us page
+   ============================================================= */
+
+.listen-section {
+    margin-top: var(--space-xxl);
+    padding-top: var(--space-xl);
+    border-top: 3px solid var(--tiger-orange);
+}
+
+.member-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin: var(--space-xl) auto;
+    overflow: hidden;
+    max-width: 1000px;
+    transition: box-shadow var(--transition-normal);
+}
+.member-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.member-card-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.member-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--fern-green), var(--fern-green-dark));
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.member-meta { min-width: 0; }
+.member-name {
+    font-family: var(--font-secondary);
+    font-size: 1.35rem;
+    color: var(--fern-green);
+    margin-bottom: 0.25rem;
+}
+.member-role {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--tiger-orange);
+    font-weight: 600;
+}
+
+.member-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    justify-content: flex-end;
+}
+.member-tags .voice-tag {
+    font-size: 0.72rem;
+    padding: 0.22rem 0.6rem;
+    background: rgba(233, 122, 41, 0.12);
+    color: var(--tiger-orange-dark);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+}
+
+.member-qa {
+    padding: var(--space-md) var(--space-lg) var(--space-lg);
+}
+
+.qa-item {
+    border-bottom: 1px solid var(--gray-200);
+}
+.qa-item:last-child { border-bottom: none; }
+
+.qa-item > summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-md) 0;
+    font-weight: 600;
+    color: var(--fern-green);
+    transition: color var(--transition-fast);
+}
+.qa-item > summary::-webkit-details-marker { display: none; }
+.qa-item > summary::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.8rem;
+    margin-left: auto;
+    align-self: center;
+    transition: transform var(--transition-normal);
+    color: var(--tiger-orange);
+    flex-shrink: 0;
+}
+.qa-item[open] > summary::after {
+    transform: rotate(180deg);
+}
+.qa-item > summary:hover {
+    color: var(--tiger-orange);
+}
+
+.qa-question i {
+    color: var(--tiger-orange);
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+    font-size: 0.95rem;
+}
+.qa-question span {
+    flex: 1;
+    line-height: 1.5;
+}
+
+.qa-answer {
+    padding: 0 0 var(--space-md) calc(1rem + 0.5rem);
+    color: var(--gray-700);
+    font-size: 0.97rem;
+    line-height: 1.75;
+    animation: qaFadeIn 0.25s ease;
+}
+.qa-answer p { margin: 0; }
+
+@keyframes qaFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.listen-cta {
+    max-width: 1000px;
+    margin: var(--space-xl) auto 0;
+    padding: var(--space-md) var(--space-lg);
+    text-align: center;
+    background: var(--white);
+    border: 1px dashed rgba(233, 122, 41, 0.35);
+    border-radius: var(--radius-lg);
+    color: var(--gray-700);
+}
+.listen-cta i {
+    color: var(--tiger-orange);
+    margin-right: 6px;
+}
+.listen-cta a {
+    color: var(--tiger-orange-dark);
+    font-weight: 600;
+    text-decoration: underline;
+}
+.listen-cta a:hover {
+    color: var(--tiger-orange);
+}
+.listen-cta p { margin: 0; }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .theme-controls { top: 76px; right: 12px; }
+    .theme-btn { width: 38px; height: 38px; }
+    .member-card-header { grid-template-columns: auto 1fr; }
+    .member-tags {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+    }
+    .member-avatar { width: 54px; height: 54px; font-size: 1rem; }
+    .member-name { font-size: 1.15rem; }
+    .member-qa { padding: var(--space-sm) var(--space-md) var(--space-md); }
+    .qa-answer { padding-left: calc(1rem + 0.5rem); font-size: 0.92rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #night-canvas { display: none; }
+    .theme-btn, .member-card { transition: none; }
+    .qa-answer { animation: none; }
+}
