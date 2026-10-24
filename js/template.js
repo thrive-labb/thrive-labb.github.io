@@ -1,5 +1,5 @@
 // Load Navbar
-fetch('Navbar.html')  // Note: capital N to match your filename
+fetch('Navbar.html')
     .then(response => {
         if (!response.ok) throw new Error('Navbar not found');
         return response.text();
@@ -8,6 +8,9 @@ fetch('Navbar.html')  // Note: capital N to match your filename
         document.getElementById('navbar-container').innerHTML = data;
         setActiveNavLink();
         initializeMobileToggle();
+
+        // ✅ NEW: tell the rest of the page the navbar is ready
+        document.dispatchEvent(new CustomEvent('navbar:loaded'));
     })
     .catch(error => {
         console.error('Error loading navbar:', error);
@@ -15,7 +18,7 @@ fetch('Navbar.html')  // Note: capital N to match your filename
     });
 
 // Load Footer
-fetch('Footer.html')  // Note: capital F to match your filename
+fetch('Footer.html')
     .then(response => {
         if (!response.ok) throw new Error('Footer not found');
         return response.text();
