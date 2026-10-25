@@ -1,3 +1,20 @@
+// Auto-create the toggle + star canvas on any page that doesn't have them
+(function ensureMarkup() {
+  if (!document.getElementById('night-canvas')) {
+    var c = document.createElement('canvas');
+    c.id = 'night-canvas';
+    c.setAttribute('aria-hidden', 'true');
+    document.body.prepend(c);
+  }
+  if (!document.getElementById('mode-toggle')) {
+    var w = document.createElement('div');
+    w.className = 'theme-controls';
+    w.setAttribute('role', 'group');
+    w.setAttribute('aria-label', 'Theme settings');
+    w.innerHTML = '<button id="mode-toggle" class="theme-btn" aria-label="Toggle day/night mode" title="Toggle day/night"><i class="fas fa-moon" aria-hidden="true"></i></button>';
+    document.body.appendChild(w);
+  }
+})();
 // THRIVE Lab – day/night (dark mode) toggle
 (function () {
   var KEY = 'thrive-mode';
