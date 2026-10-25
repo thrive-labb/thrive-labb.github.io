@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>try{var m=localStorage.getItem('thrive-mode');if(!m&&matchMedia('(prefers-color-scheme: dark)').matches)m='night';document.documentElement.setAttribute('data-mode',m||'day')}catch(e){}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THRIVE Lab - Archived News</title>
@@ -34,17 +35,6 @@
                     company announcements, and media coverage. Browse our history to see how we've grown 
                     and what we've been talking about over the years.
                 </p>
-                <div class="archive-meta">
-                    <span class="archive-meta-item">
-                        <i class="fas fa-newspaper"></i> All our stories in one place
-                    </span>
-                    <span class="archive-meta-item">
-                        <i class="fas fa-calendar-alt"></i> Browse by date
-                    </span>
-                    <span class="archive-meta-item">
-                        <i class="fas fa-tags"></i> Search by topic
-                    </span>
-                </div>
             </div>
         </div>
     </section>
@@ -388,13 +378,7 @@
         const container = document.querySelector('.container');
         const noResultsMsg = document.createElement('p');
         noResultsMsg.id = 'no-results';
-        noResultsMsg.style.cssText = `
-            display: none;
-            text-align: center;
-            padding: 40px;
-            font-size: 1.2rem;
-            color: var(--gray-600);
-        `;
+        noResultsMsg.className = 'no-results';
         noResultsMsg.innerHTML = '<i class="fas fa-search" style="font-size:2rem;display:block;margin-bottom:10px;"></i>No news stories match your filters. Try adjusting your selection.';
         
         // Insert after archive-nav
@@ -430,5 +414,6 @@
 
     <script src="js/template.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/darkmode.js"></script>
 </body>
 </html>
