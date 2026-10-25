@@ -1126,7 +1126,7 @@ html[data-mode="night"] body::before {
     pointer-events: none;
     z-index: 0;
 }
-html[data-mode="night"] body > *:not(#night-canvas) {
+html[data-mode="night"] body > *:not(#night-canvas):not(.theme-controls) {
     position: relative;
     z-index: 1;
 }
@@ -1617,3 +1617,17 @@ html[data-mode="night"] .nav-item:has(a[href*="github"]) { border-left-color: va
 /* --- footer logo (white invert already set) + links stay readable --- */
 html[data-mode="night"] .footer-bottom { border-top-color: rgba(255,255,255,.12); }
 
+html[data-mode="night"] body > .theme-controls {
+    position: fixed !important;
+    top: 84px !important;
+    right: 20px !important;
+    left: auto !important;
+    z-index: 1001 !important;
+}
+
+@media (max-width: 768px) {
+    html[data-mode="night"] body > .theme-controls {
+        top: 76px !important;
+        right: 12px !important;
+    }
+}
