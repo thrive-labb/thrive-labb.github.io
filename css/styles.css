@@ -1737,3 +1737,8 @@ html[data-mode="night"] .alumni-link:hover { background: var(--fern-green); colo
 /* ---- Archive page ---- */
 .no-results { display: none; text-align: center; padding: 40px; font-size: 1.2rem; color: var(--gray-600); }
 html[data-mode="night"] .no-results { color: var(--night-text-muted); }
+
+.grant-name a { color: var(--fern-green); }
+.grant-name a:hover { color: var(--tiger-orange); }
+html[data-mode="night"] .grant-name a { color: var(--night-heading); }
+html[data-mode="night"] .grant-name a:hover { color: var(--night-accent); }
