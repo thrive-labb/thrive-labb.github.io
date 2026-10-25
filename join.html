@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>try{var m=localStorage.getItem('thrive-mode');if(!m&&matchMedia('(prefers-color-scheme: dark)').matches)m='night';document.documentElement.setAttribute('data-mode',m||'day')}catch(e){}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THRIVE Lab - Join Us</title>
@@ -9,6 +10,77 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ===== Join page additions ===== */
+        .sub-heading { text-align: center; font-family: var(--font-secondary); font-size: 1.8rem; color: var(--fern-green); margin: var(--space-xxl) 0 var(--space-sm); }
+        .sub-lead { text-align: center; max-width: 800px; margin: 0 auto var(--space-xl); color: var(--gray-700); }
+        .card-note { font-size: .9rem; color: var(--gray-700); background: rgba(79,121,66,.08); border-left: 3px solid var(--fern-green);
+            padding: var(--space-sm) var(--space-md); border-radius: var(--radius-sm); margin-bottom: var(--space-md); }
+        .card-note strong { color: var(--fern-green); }
+
+        /* Routes (RA schemes) + funding cards */
+        .route-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: var(--space-lg); }
+        .route-card { background: var(--white); border-radius: var(--radius-lg); padding: var(--space-lg); box-shadow: var(--shadow-md);
+            border-top: 4px solid var(--tiger-orange); display: flex; flex-direction: column; transition: transform var(--transition-normal); }
+        .route-card:hover { transform: translateY(-5px); }
+        .route-meta { font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--tiger-orange-dark); margin-bottom: .4rem; }
+        .route-stars { color: var(--tiger-orange); letter-spacing: 2px; margin-right: .4rem; }
+        .route-title { font-size: 1.25rem; color: var(--fern-green); margin-bottom: var(--space-xs); }
+        .route-card p { font-size: .95rem; color: var(--gray-700); }
+        .route-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 var(--space-md); padding: 0; }
+        .route-tags li { font-size: .75rem; font-weight: 500; background: var(--tiger-orange-light); color: var(--tiger-orange-dark);
+            padding: .2rem .7rem; border-radius: var(--radius-sm); }
+        .route-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-md); }
+        .route-links a { font-size: .88rem; font-weight: 600; }
+        .route-links a i { margin-right: 4px; }
+
+        /* PhD roadmap tabs */
+        .step-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); max-width: 1000px; margin: 0 auto var(--space-lg); }
+        .step-tab { display: flex; align-items: center; gap: var(--space-sm); text-align: left; font-family: inherit; cursor: pointer;
+            background: var(--white); border: 2px solid var(--gray-200); border-radius: var(--radius-lg); padding: var(--space-md);
+            box-shadow: var(--shadow-sm); transition: all var(--transition-normal); }
+        .step-tab:hover { border-color: var(--tiger-orange); transform: translateY(-3px); }
+        .step-tab.active { border-color: var(--tiger-orange); box-shadow: var(--shadow-orange); }
+        .step-tab:focus-visible { outline: 2px solid var(--tiger-orange); outline-offset: 2px; }
+        .step-num { width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 1.1rem;
+            color: var(--white); background: linear-gradient(135deg, var(--fern-green), var(--fern-green-dark)); }
+        .step-tab.active .step-num { background: linear-gradient(135deg, var(--tiger-orange), var(--tiger-orange-dark)); }
+        .step-label { font-weight: 600; color: var(--fern-green); line-height: 1.3; }
+        .step-panel { max-width: 1000px; margin: 0 auto; background: var(--white); border-radius: var(--radius-lg); padding: var(--space-xl);
+            box-shadow: var(--shadow-md); border-left: 5px solid var(--tiger-orange); animation: qaFadeIn .3s ease; }
+        .step-panel[hidden] { display: none; }
+        .step-panel h4 { color: var(--fern-green); margin-bottom: var(--space-sm); font-size: 1.4rem; }
+        .step-panel p { color: var(--gray-700); }
+        .step-panel ul { margin: 0 0 var(--space-md) 1.2rem; color: var(--gray-700); }
+        .step-panel li { margin-bottom: var(--space-xs); }
+        .step-panel li strong { color: var(--fern-green); }
+
+        @media (max-width: 576px) { .step-panel { padding: var(--space-lg); } }
+
+        /* ===== Night mode for new parts ===== */
+        html[data-mode="night"] .sub-heading { color: var(--night-heading); }
+        html[data-mode="night"] .sub-lead,
+        html[data-mode="night"] .card-note,
+        html[data-mode="night"] .route-card p,
+        html[data-mode="night"] .step-panel p,
+        html[data-mode="night"] .step-panel ul { color: var(--night-text); }
+        html[data-mode="night"] .card-note { background: rgba(79,121,66,.18); }
+        html[data-mode="night"] .card-note strong,
+        html[data-mode="night"] .route-title,
+        html[data-mode="night"] .step-label,
+        html[data-mode="night"] .step-panel h4,
+        html[data-mode="night"] .step-panel li strong,
+        html[data-mode="night"] .route-links a { color: var(--night-heading); }
+        html[data-mode="night"] .route-links a:hover { color: var(--night-accent); }
+        html[data-mode="night"] .route-meta { color: var(--night-accent); }
+        html[data-mode="night"] .route-tags li { background: rgba(233,122,41,.18); color: var(--tiger-orange-light); }
+        html[data-mode="night"] .route-card,
+        html[data-mode="night"] .step-panel { background: var(--night-surface); border-color: var(--night-border); }
+        html[data-mode="night"] .step-tab { background: var(--night-surface); border-color: var(--night-border); }
+        html[data-mode="night"] .step-tab:hover,
+        html[data-mode="night"] .step-tab.active { border-color: var(--tiger-orange); }
+        html[data-mode="night"] .opportunity-list i { color: var(--night-heading); }
+    </style>
 </head>
 <body>
     <div id="navbar-container"></div>
@@ -17,19 +89,238 @@
         <div class="container">
             <h2 class="section-title">Join the THRIVE Lab</h2>
             <p class="section-subtitle">We're always looking for passionate researchers at all levels</p>
+
+            <!-- ===== Opportunity cards ===== -->
             <div class="opportunities-grid">
-                <div class="opportunity-card"><h3 class="opportunity-title">Postdoctoral Positions</h3><p class="opportunity-desc">We have openings for postdocs in digital health, computational modeling, human-centred design, and intervention development.</p><ul class="opportunity-list"><li><i class="fas fa-check"></i> 2-year positions with possible extension</li><li><i class="fas fa-check"></i> Competitive salary and benefits</li><li><i class="fas fa-check"></i> Interdisciplinary collaboration</li></ul><a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary">Apply Now</a></div>
-                <div class="opportunity-card"><h3 class="opportunity-title">PhD Studentships</h3><p class="opportunity-desc">We accept PhD students through the Cognitive Science, Psychology, and Neuroscience graduate programs.</p><ul class="opportunity-list"><li><i class="fas fa-check"></i> Fully-funded positions</li><li><i class="fas fa-check"></i> Mentorship from multiple faculty</li><li><i class="fas fa-check"></i> Access to cutting-edge methods</li></ul><a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary">Learn More</a></div>
-                <div class="opportunity-card"><h3 class="opportunity-title">Research Assistants</h3><p class="opportunity-desc">Undergraduate and master's students can gain research experience through volunteer or paid positions.</p><ul class="opportunity-list"><li><i class="fas fa-check"></i> Flexible hours</li><li><i class="fas fa-check"></i> Training in research methods</li><li><i class="fas fa-check"></i> Potential for authorship</li></ul><a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary">Contact Us</a></div>
+                <div class="opportunity-card">
+                    <h3 class="opportunity-title">Postdoctoral Positions</h3>
+                    <p class="opportunity-desc">We have oppurtunities for postdocs in digital health, computational modeling, human-centred design, and intervention development.</p>
+                    <ul class="opportunity-list">
+                        <li><i class="fas fa-check"></i> Competitive salary and benefits</li>
+                        <li><i class="fas fa-check"></i> Interdisciplinary collaboration</li>
+                    </ul>
+                    <p class="card-note"><strong>Interested?</strong> Please email Faith at F.Matcham@sussex.ac.uk directly to discuss postdoctoral opportunities.</p>
+                    <a href="mailto:F.Matcham@sussex.ac.uk?subject=Postdoctoral%20enquiry%20-%20THRIVE%20Lab" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Faith</a>
+                </div>
+
+                <div class="opportunity-card">
+                    <h3 class="opportunity-title">PhD Studentships</h3>
+                    <p class="opportunity-desc">We accept PhD positions in Digital Sensing for Long-term Conditions across AI-augmented digital interventions, human-centred design for loneliness and ageing, JITAIs, smartphone and wearable prediction modelling, community co-development, and applied machine learning for symptom tracking, with core focus areas in symptom tracking, rehabilitation, neurology, and mixed-methods evaluations.</p>
+                    <ul class="opportunity-list">
+                        <li><i class="fas fa-check"></i> Self-funded/Partially funded/Externally Funded/ Fully-funded positions</li>
+                        <li><i class="fas fa-check"></i> Mentorship from experienced faculty</li>
+                        <li><i class="fas fa-check"></i> Access to cutting-edge methods</li>
+                    </ul>
+                    <p class="card-note"><strong>Funding:</strong> PhD funding usually comes through grants or external scholarships. Scholarship opportunities are normally listed on the university website. The best first step is to reach out to the supervisor.</p>
+                    <a href="#phd-roadmap" class="btn btn-primary">See the PhD roadmap</a>
+                </div>
+
+                <div class="opportunity-card">
+                    <h3 class="opportunity-title">Research Assistants</h3>
+                    <p class="opportunity-desc">Undergraduate and master's students can gain research experience through volunteer or paid positions.</p>
+                    <ul class="opportunity-list">
+                        <li><i class="fas fa-check"></i> Flexible hours</li>
+                        <li><i class="fas fa-check"></i> Training in research methods</li>
+                        <li><i class="fas fa-check"></i> Potential for authorship</li>
+                    </ul>
+                    <p class="card-note"><strong>How to apply:</strong> Please contact Faith from your official university email address. Faith usually takes undergraduate placement students and dissertation students, MRes research process and dissertation students, and honorary or visiting research assistants. For further information it is always best to get in touch.</p>
+                    <a href="mailto:F.Matcham@sussex.ac.uk?subject=Research%20assistant%20enquiry%20-%20THRIVE%20Lab" class="btn btn-primary">Contact Us</a>
+                </div>
             </div>
-            <div class="lab-culture">
+
+            <!-- ===== RA routes ===== -->
+            <h3 class="sub-heading">Ways to Gain Research Experience</h3>
+            <p class="sub-lead">Besides contacting the lab directly, these routes can lead to a research assistant role or a research placement.</p>
+            <div class="route-grid">
+                <div class="route-card">
+                    <span class="route-meta">Salaried · usually advertised when a grant lands</span>
+                    <h4 class="route-title">Funded RA positions</h4>
+                    <p>Open RA posts are often listed on the university's recruitment pages. They come and go with funding rather than on a yearly cycle, so it is worth checking more than once.</p>
+                    <ul class="route-tags"><li>Salaried</li><li>Full research experience</li></ul>
+                    <div class="route-links"><a href="https://www.sussex.ac.uk/about/jobs/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>Sussex jobs</a></div>
+                </div>
+
+                <div class="route-card">
+                    <span class="route-meta">Undergraduates · Sussex · 1 year</span>
+                    <h4 class="route-title">Psychology Placement Year</h4>
+                    <p> It is a full year in a research lab between your second and third year. Gives great experience and boost to one's CV as it helps in transitioning to research roles, Masters or PhDs!</p>
+                    <div class="route-links">
+                        <a href="https://www.sussex.ac.uk/study/undergraduate/courses/psychology-with-a-professional-placement-year-bsc-hons" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>The course</a>
+                        <a href="http://www.sussex.ac.uk/psychology/internal/students/placements" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>Placement info</a>
+                    </div>
+                </div>
+
+                <div class="route-card">
+                    <span class="route-meta">Undergraduates · Sussex · 8 weeks · funded</span>
+                    <h4 class="route-title">Junior Research Associate (JRA)</h4>
+                    <p>A bursary-supported, eight-week intensive research project over the summer break.</p>
+                    <div class="route-links">
+                        <a href="http://www.sussex.ac.uk/suro/jra" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>The scheme</a>
+                        <a href="http://www.sussex.ac.uk/suro/applying" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>How to apply</a>
+                        <a href="https://realitybendinglab.com/#post-2023-jra-experience" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>A past JRA's account</a>
+                    </div>
+                </div>
+
+                <div class="route-card">
+                    <span class="route-meta">Undergraduates · beyond Sussex · summer</span>
+                    <h4 class="route-title">International JRA (IJRA)</h4>
+                    <p>The same summer scheme, opened up to students from outside Sussex.</p>
+                    <div class="route-links"><a href="https://www.sussex.ac.uk/suro/current/ijra" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>Details</a></div>
+                </div>
+            </div>
+
+            <!-- ===== Lab culture ===== -->
+            <div class="lab-culture" style="margin-top: var(--space-xxl);">
                 <h3>Our Lab Culture</h3>
                 <p>At THRIVE, we believe that a supportive, collaborative environment is essential for scientific innovation and personal growth. We value:</p>
                 <div class="culture-values">
                     <div class="value-item"><i class="fas fa-hands-helping"></i><h4>Collaboration</h4><p>We work together across disciplines and experience levels</p></div>
                     <div class="value-item"><i class="fas fa-lock-open"></i><h4>Open Science</h4><p>We share data, code, and materials whenever possible</p></div>
                     <div class="value-item"><i class="fas fa-balance-scale"></i><h4>Work-Life Balance</h4><p>We prioritize sustainable research practices</p></div>
-                    <div class="value-item"><i class="fas fa-users"></i><h4>Diversity & Inclusion</h4><p>We actively work to create an inclusive environment</p></div>
+                    <div class="value-item"><i class="fas fa-users"></i><h4>Diversity &amp; Inclusion</h4><p>We actively work to create an inclusive environment</p></div>
+                </div>
+            </div>
+
+            <!-- ===== From our members ===== -->
+            <div class="listen-section">
+                <h2 class="section-title">Listen From Our Members</h2>
+                <p class="section-subtitle">Lab members answer a few questions about life at THRIVE</p>
+
+                <!-- Tessa -->
+                <article class="member-card">
+                    <div class="member-card-header">
+                        <div class="member-avatar">TL</div>
+                        <div class="member-meta">
+                            <h3 class="member-name">Tessa Lapelyte</h3>
+                            <p class="member-role">Research Project Student</p>
+                        </div>
+                        <div class="member-tags"><span class="voice-tag">Research placement</span><span class="voice-tag">Final-year Psychology</span></div>
+                    </div>
+                    <div class="member-qa">
+                        <details class="qa-item" open>
+                            <summary class="qa-question"><i class="fas fa-user"></i><span>What is your role in the lab, and what are you currently working on?</span></summary>
+                            <div class="qa-answer"><p>I was a research placement student; currently, I am in my final year of my psychology degree.</p></div>
+                        </details>
+                        <details class="qa-item">
+                            <summary class="qa-question"><i class="fas fa-lightbulb"></i><span>What drew you to the THRIVE Lab, and what has surprised you most since joining?</span></summary>
+                            <div class="qa-answer"><p>I was really interested in Faith's research and thought I could learn a lot from her. I was surprised by how many people are involved in the THRIVE lab; it was a lovely surprise to have a community where we could share ideas and project progress.</p></div>
+                        </details>
+                        <details class="qa-item">
+                            <summary class="qa-question"><i class="fas fa-heart"></i><span>How would you describe the lab culture, and is there a favourite moment or tradition?</span></summary>
+                            <div class="qa-answer"><p>Everyone is lovely and accepting; I never felt like I would be judged for anything. I like the idea of sharing both our achievements and losses at the start of our THRIVE meetings, as it shows you are not alone in your successes or struggles.</p></div>
+                        </details>
+                        <details class="qa-item">
+                            <summary class="qa-question"><i class="fas fa-seedling"></i><span>How has working with Faith and the team shaped your skills, thinking, or career plans?</span></summary>
+                            <div class="qa-answer"><p>Working with Faith has definitely improved my confidence in general and made me realise I want to continue to be involved in the THRIVE lab in any way possible moving forward.</p></div>
+                        </details>
+                        <details class="qa-item">
+                            <summary class="qa-question"><i class="fas fa-comment-dots"></i><span>What advice would you give someone thinking of joining the lab?</span></summary>
+                            <div class="qa-answer"><p>Best advice would be to get familiarised with the previous research projects of Faith or the people from the lab, as it will show what the THRIVE lab is about and if any of those projects sound interesting, I'm sure they would fit right in.</p></div>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- Yasmin -->
+                <article class="member-card">
+                    <div class="member-card-header">
+                        <div class="member-avatar">YL</div>
+                        <div class="member-meta">
+                            <h3 class="member-name">Yasmin Lavictoire</h3>
+                            <p class="member-role">PhD Student &amp; Doctoral Tutor in Psychology</p>
+                        </div>
+                        <div class="member-tags"><span class="voice-tag">PhD researcher</span><span class="voice-tag">Menopause &amp; sleep</span></div>
+                    </div>
+                    <div class="member-qa">
+                        <details class="qa-item" open>
+                            <summary class="qa-question"><i class="fas fa-user"></i><span>What is your role in the lab, and what are you currently working on?</span></summary>
+                            <div class="qa-answer"><p>I am a PhD researcher investigating the relationship between menopausal sleep disturbance and positive psychological traits, with the aim of developing a positive psychological intervention to support sleep during this life stage. Currently, I am working on a scoping review to understand the research landscape and inform my future studies.</p></div>
+                        </details>
+                        <details class="qa-item">
+                            <summary class="qa-question"><i class="fas fa-lightbulb"></i><span>What drew you to the THRIVE Lab, and what has surprised you most since joining?</span></summary>
+                            <div class="qa-answer"><p>I was drawn to Faith’s expertise in digital research methodology, which aligned with my interests. What surprised me most was the diversity of members’ research backgrounds and interests, while we all share a common goal: to better understand and support mental and physical health through digital technology.</p></div>
+                        </details>
+                        <details class="qa-item">
+                            <summary class="qa-question"><i class="fas fa-heart"></i><span>How would you describe the lab culture, and is there a favourite moment or tradition?</span></summary>
+                            <div class="qa-answer"><p>The lab provides a welcoming, inclusive and supportive environment, where all lab members collaborate to generate insightful research. Lab meetings have been a particular highlight: it has been inspiring to hear about others’ research and findings, connect with other researchers, and explore ideas and practices to adopt in my own research.</p></div>
+                        </details>
+                        <details class="qa-item">
+                            <summary class="qa-question"><i class="fas fa-seedling"></i><span>How has working with Faith and the team shaped your skills, thinking, or career plans?</span></summary>
+                            <div class="qa-answer"><p>I have adored working with Faith: her exceptional supervision, support and expertise have equipped me with the skills and opportunities to grow as a researcher. Her guidance has encouraged me to think critically about my research protocols and methodology, and I have carried this learning forward into shaping my PhD research. Equally, collaborating with other members of the lab, such as Bex, has developed my knowledge of how to run an experience sampling study, develop study protocols and navigate the challenges associated with this methodology.</p></div>
+                        </details>
+                        <details class="qa-item">
+                            <summary class="qa-question"><i class="fas fa-comment-dots"></i><span>What advice would you give someone thinking of joining the lab?</span></summary>
+                            <div class="qa-answer"><p>Be prepared to learn from people with a wide range of interests and expertise, and don’t be afraid to ask questions or share your ideas. There is so much to gain from the support and collaboration within the lab, so make the most of opportunities to get involved and learn from one another.</p></div>
+                        </details>
+                    </div>
+                </article>
+
+                <div class="listen-cta">
+                    <p><i class="fas fa-envelope-open-text"></i> Curious what it is like to work here? <a href="mailto:F.Matcham@sussex.ac.uk?subject=Joining%20THRIVE%20Lab">Get in touch</a>.</p>
+                </div>
+            </div>
+
+            <!-- ===== PhD roadmap ===== -->
+            <h3 class="sub-heading" id="phd-roadmap">Applying for a PhD: How It Actually Works</h3>
+            <p class="sub-lead">Three steps. Click a card to read more about it.</p>
+
+            <div class="step-tabs" role="tablist" aria-label="PhD application steps">
+                <button class="step-tab active" role="tab" id="tab-1" aria-selected="true" aria-controls="step-1" data-step="1"><span class="step-num">1</span><span class="step-label">Reach out to the supervisor</span></button>
+                <button class="step-tab" role="tab" id="tab-2" aria-selected="false" aria-controls="step-2" data-step="2"><span class="step-num">2</span><span class="step-label">Then find the money</span></button>
+                <button class="step-tab" role="tab" id="tab-3" aria-selected="false" aria-controls="step-3" data-step="3"><span class="step-num">3</span><span class="step-label">Then apply</span></button>
+            </div>
+
+            <div class="step-panel" role="tabpanel" id="step-1" aria-labelledby="tab-1">
+                <h4>1. Reaching out to the supervisor</h4>
+                <p>Send your CV, your research interests and eventually a couple of project ideas that connect to the lab's work. Having no ideas yet is perfectly fine: we will usually propose some directions and refine them with you. It also helps enormously to arrive having already searched and selected potential funding schemes you want to target, so we can shape the project around what you are actually eligible for.</p>
+                <a href="mailto:F.Matcham@sussex.ac.uk?subject=PhD%20enquiry%20-%20THRIVE%20Lab" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Faith</a>
+            </div>
+
+            <div class="step-panel" role="tabpanel" id="step-2" aria-labelledby="tab-2" hidden>
+                <h4>2. Then find the money</h4>
+                <p>This is the genuinely difficult part. Four profiles cover most cases:</p>
+                <ul>
+                    <li>you and the supervisor build a project and apply for a scholarship together;</li>
+                    <li>the supervisor already holds a grant for a specific project and recruits for it;</li>
+                    <li>you arrive with a scholarship already secured; or</li>
+                    <li>you self-fund, which we do not recommend unless you are one of the lucky few with money to spare.</li>
+                </ul>
+                <p>Funding opportunities are listed below, but you should also search for others.</p>
+            </div>
+
+            <div class="step-panel" role="tabpanel" id="step-3" aria-labelledby="tab-3" hidden>
+                <h4>3. Then apply</h4>
+                <p>With a target in mind, gather the documents and write the proposal. Fingers crossed!</p>
+            </div>
+
+            <!-- ===== Funding opportunities ===== -->
+            <h3 class="sub-heading">PhD Funding Opportunities</h3>
+            <p class="sub-lead">Funding is the usual barrier between a plan and a PhD. Below are some opportunities, but you should also search for others.</p>
+            <div class="route-grid">
+                <div class="route-card">
+                    <span class="route-meta"><span class="route-stars">★★★</span>2027 entry · apply to Sussex by 1 December 2026</span>
+                    <h4 class="route-title">SEDarc (ESRC) scholarships</h4>
+                    <p>The ESRC's doctoral training partnership for the South East, and the closest fit for most of what this lab does: Psychology is one of its eligible subject areas. Home-rate fees and a UKRI stipend over 3.5 years, or 1+3.5 if you do not have a Masters yet, plus a funded three-month placement outside academia. The project has to sit inside one of the five SEDarc themes, and a proposal claiming the advanced quantitative methods or data skills steer is what this lab is built for.</p>
+                    <p>You apply to Sussex by 1 December 2026, complete with a supervisor statement; Sussex nominates to the consortium at the end of January. Write to Faith well before November.</p>
+                    <ul class="route-tags"><li>Fees + stipend</li><li>3.5 or 1+3.5 years</li><li>3-month funded placement</li></ul>
+                    <div class="route-links">
+                        <a href="https://www.sedarc.ac.uk/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>SEDarc</a>
+                        <a href="https://www.sedarc.ac.uk/thematic-pathways/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>Thematic pathways</a>
+                        <a href="https://www.findaphd.com/phds/program/the-south-east-doctoral-training-arc-sedarc/?i207p6322" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>The advert</a>
+                    </div>
+                </div>
+
+                <div class="route-card">
+                    <span class="route-meta">Co-supervision · last round closed January 2026</span>
+                    <h4 class="route-title">Industry partnership</h4>
+                    <p>If an external partner covers half the cost, the university can match the other half. It works well for applied projects with startups, companies or NGOs, particularly if there is a product, a piece of software or a service to build at the end of it.</p>
+                </div>
+
+                <div class="route-card">
+                    <span class="route-meta">Cross-school</span>
+                    <h4 class="route-title">Sussex AI studentships</h4>
+                    <p>Your primary supervisor has to come from the School of Engineering and Informatics, but Faith can be a co-supervisor on it.</p>
+                    <ul class="route-tags"><li>Cross-school</li></ul>
+                    <div class="route-links"><a href="https://www.sussex.ac.uk/study/fees-funding/phd-funding/view/1807-Sussex-AI-PhD-studentships" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>Studentships</a></div>
                 </div>
             </div>
         </div>
@@ -39,5 +330,24 @@
 
     <script src="js/template.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // PhD roadmap: show only the clicked step
+        (function () {
+            var tabs = document.querySelectorAll('.step-tab');
+            var panels = document.querySelectorAll('.step-panel');
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var n = tab.dataset.step;
+                    tabs.forEach(function (t) {
+                        var on = t === tab;
+                        t.classList.toggle('active', on);
+                        t.setAttribute('aria-selected', on ? 'true' : 'false');
+                    });
+                    panels.forEach(function (p) { p.hidden = (p.id !== 'step-' + n); });
+                });
+            });
+        })();
+    </script>
+    <script src="js/darkmode.js"></script>
 </body>
 </html>
