@@ -1719,3 +1719,17 @@ html[data-mode="night"] .orbit-hint { color: var(--night-heading); }
     .research-card, .research-card::after { animation: none; }
     .research-card::after { display: none; }
 }
+
+/* ---- Team page: Alumni section at night ---- */
+html[data-mode="night"] .alumni-section { border-top-color: var(--night-border); }
+html[data-mode="night"] .alumni-title { color: var(--night-text-muted); }
+html[data-mode="night"] .alumni-title::after { background-color: var(--night-border); }
+html[data-mode="night"] .alumni-card { background: var(--night-surface); border-color: var(--night-border); }
+html[data-mode="night"] .alumni-photo { background: linear-gradient(135deg, #2a2a20 0%, #3a3a2c 100%); }
+html[data-mode="night"] .alumni-photo img { border-color: var(--night-surface-solid); }
+html[data-mode="night"] .alumni-name { color: var(--night-heading); }
+html[data-mode="night"] .alumni-title-role,
+html[data-mode="night"] .alumni-bio { color: var(--night-text-muted); }
+html[data-mode="night"] .alumni-period { color: var(--night-accent); background-color: rgba(233, 122, 41, 0.15); }
+html[data-mode="night"] .alumni-link { background: var(--night-surface-solid); border-color: var(--night-border); color: var(--night-heading); }
+html[data-mode="night"] .alumni-link:hover { background: var(--fern-green); color: var(--white); border-color: var(--fern-green); }
