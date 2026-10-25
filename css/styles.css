@@ -1506,3 +1506,114 @@ html[data-mode="night"] .theme-btn {
     .theme-btn, .member-card { transition: none; }
     .qa-answer { animation: none; }
 }
+    /* =============================================================
+   NIGHT MODE – ADDITIONS
+   Paste at the very END of css/styles.css (after the
+   "LISTEN FROM OUR MEMBERS" block). It builds on your existing
+   DAY / NIGHT MODE variables (--night-*), so nothing is duplicated.
+   ============================================================= */
+
+/* --- missing variable (var(--shadow-xl) was used but never defined) --- */
+:root { --shadow-xl: 0 18px 40px rgba(0, 0, 0, 0.18); }
+
+/* --- smooth switching + native dark form controls/scrollbars --- */
+body, .navbar, .event-card, .news-container, .research-card, .team-card,
+.publication-item, .opportunity-card, .member-card, .lab-culture,
+.event-details, .events-note, .btn-outline, .filter-btn, .partner-tag {
+    transition: background-color .4s ease, color .4s ease, border-color .4s ease, box-shadow .4s ease;
+}
+html[data-mode="night"] { color-scheme: dark; }
+
+/* --- BUG FIX: your rule "body > *:not(#night-canvas){position:relative}"
+       also hits the fixed toggle button and drops it into the page flow --- */
+html[data-mode="night"] body > .theme-controls { position: fixed; z-index: 1001; }
+
+/* --- muted / secondary text --- */
+html[data-mode="night"] .news-subtitle,
+html[data-mode="night"] .event-subtitle,
+html[data-mode="night"] .pub-journal,
+html[data-mode="night"] .pub-meta,
+html[data-mode="night"] .pub-note,
+html[data-mode="night"] .event-image-caption,
+html[data-mode="night"] .poster-caption,
+html[data-mode="night"] .archive-footer-content p,
+html[data-mode="night"] .archive-footer-content i,
+html[data-mode="night"] .archive-year-link,
+html[data-mode="night"] .archive-cat-link,
+html[data-mode="night"] .thrive-quote,
+html[data-mode="night"] .industry-content p,
+html[data-mode="night"] .mission-item p {
+    color: var(--night-text-muted);
+}
+
+/* --- fern-green text/icons that were too dark on a dark surface --- */
+html[data-mode="night"] .event-detail i,
+html[data-mode="night"] .event-detail strong,
+html[data-mode="night"] .research-icon,
+html[data-mode="night"] .member-name,
+html[data-mode="night"] .pub-authors strong,
+html[data-mode="night"] .pub-abstract-content p strong,
+html[data-mode="night"] .poster-caption,
+html[data-mode="night"] .events-note a,
+html[data-mode="night"] .pub-link,
+html[data-mode="night"] .archive-footer-content a,
+html[data-mode="night"] .opportunity-list i,
+html[data-mode="night"] .mission-item h4,
+html[data-mode="night"] .value-item h4,
+html[data-mode="night"] .partner-tag {
+    color: var(--night-heading);
+}
+html[data-mode="night"] .events-note a:hover,
+html[data-mode="night"] .pub-link:hover,
+html[data-mode="night"] .archive-footer-content a:hover { color: var(--night-accent); }
+
+/* --- extra surfaces --- */
+html[data-mode="night"] .event-poster,
+html[data-mode="night"] .event-image,
+html[data-mode="night"] .partner-tag,
+html[data-mode="night"] .archive-nav,
+html[data-mode="night"] .filter-btn,
+html[data-mode="night"] .team-link {
+    background: var(--night-surface);
+    border-color: var(--night-border);
+}
+html[data-mode="night"] .thrive-quote { background: rgba(79, 121, 66, 0.12); }
+html[data-mode="night"] .filter-btn { color: var(--night-text); }
+html[data-mode="night"] .filter-btn:hover { background: rgba(233, 122, 41, 0.15); }
+html[data-mode="night"] .filter-btn.active { background: var(--tiger-orange); color: var(--white); }
+html[data-mode="night"] .archive-year-link:hover,
+html[data-mode="night"] .archive-cat-link:hover { background: rgba(255,255,255,.06); color: var(--night-heading); }
+html[data-mode="night"] .archive-year-link.active,
+html[data-mode="night"] .archive-cat-link.active { background: var(--tiger-orange); color: var(--white); }
+html[data-mode="night"] .team-link { color: var(--night-heading); }
+html[data-mode="night"] .team-link:hover { background: var(--fern-green); color: var(--white); }
+html[data-mode="night"] .tag { background: rgba(233, 122, 41, 0.18); color: var(--tiger-orange-light); }
+html[data-mode="night"] .poster-thumbnail { border-color: var(--night-border); }
+
+/* --- borders that were light grey --- */
+html[data-mode="night"] .news-subtitle,
+html[data-mode="night"] .event-description { border-color: var(--night-border); }
+html[data-mode="night"] .archive-item .news-container { border-left-color: rgba(255,255,255,.14); }
+html[data-mode="night"] .archive-item:hover .news-container { border-left-color: var(--tiger-orange); }
+html[data-mode="night"] .events-section::before { opacity: .8; }
+
+/* --- publication abstracts: scrollbar --- */
+html[data-mode="night"] .pub-abstract::-webkit-scrollbar-track { background: rgba(255,255,255,.06); }
+html[data-mode="night"] .pub-expand-btn { color: var(--night-text-muted); }
+html[data-mode="night"] .pub-expand-btn:hover { color: var(--night-accent); }
+
+/* --- mobile slide-out menu was still white at night --- */
+@media (max-width: 768px) {
+    html[data-mode="night"] .nav-menu { background: var(--night-surface-solid); box-shadow: 0 10px 25px rgba(0,0,0,.5); }
+    html[data-mode="night"] .mobile-toggle { color: var(--night-heading); }
+}
+
+/* --- navbar social icons + separator --- */
+html[data-mode="night"] .nav-item a[href*="github"],
+html[data-mode="night"] .nav-item a[href*="bsky"],
+html[data-mode="night"] .nav-item a[href*="linkedin"] { color: var(--night-text); }
+html[data-mode="night"] .nav-item:has(a[href*="github"]) { border-left-color: var(--night-border); }
+
+/* --- footer logo (white invert already set) + links stay readable --- */
+html[data-mode="night"] .footer-bottom { border-top-color: rgba(255,255,255,.12); }
+
