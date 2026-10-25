@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>try{var m=localStorage.getItem('thrive-mode');if(!m&&matchMedia('(prefers-color-scheme: dark)').matches)m='night';document.documentElement.setAttribute('data-mode',m||'day')}catch(e){}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THRIVE Lab - Publications</title>
@@ -147,7 +148,7 @@
         }
 
         .publication-item.expanded .pub-abstract {
-            max-height: 500px;
+            max-height: 2000px;
             opacity: 1;
             padding: var(--space-md) var(--space-lg) 0 var(--space-lg);
         }
@@ -880,6 +881,66 @@
             <div class="publications-footer">
                 <p class="pub-note">For a complete and up-to-date list of our 200+ publications, visit Dr. Matcham's <a href="https://profiles.sussex.ac.uk/p199181-faith-matcham/publications" target="_blank">University of Sussex profile</a>.</p>
             </div>
+            <!-- Grants & Funding -->
+<h2 class="section-title" style="margin-top: var(--space-xxl);">Grants &amp; Funding</h2>
+<div class="grants-card" id="grants">
+    <button class="grants-toggle" aria-expanded="false" aria-controls="grants-panel">
+        <span class="grants-icon"><i class="fas fa-award"></i></span>
+        <span class="grants-head">
+            <span class="grants-title">Research Grants</span>
+            <span class="grants-sub">£3.8 million in collaborative funding. Click to explore</span>
+        </span>
+        <i class="fas fa-chevron-down grants-chevron"></i>
+    </button>
+    <div class="grants-panel" id="grants-panel">
+        <ul class="grants-list">
+    <li class="grant-item">
+        <span class="grant-years">1 Oct 2025 – 31 Dec 2025</span>
+        <h4 class="grant-name">Accelerated Knowledge Transfer KTP University of Sussex and Mind Health AI Limited</h4>
+        <p class="grant-meta"><strong>People funded:</strong> Matcham F</p>
+    </li>
+    <li class="grant-item">
+        <span class="grant-years">9 Oct 2022 – 8 Oct 2025</span>
+        <h4 class="grant-name"><a href="https://gtr.ukri.org/projects?ref=EP%2FX001016%2F1" target="_blank" rel="noopener noreferrer">Guiding treatment for individuals with eating disorders and dementia using masticatory efficiency</a></h4>
+        <p class="grant-meta"><strong>Funder:</strong> Engineering and Physical Sciences Research Council<br>
+        <strong>People funded:</strong> Ang CSJ, Branley-Bell D, Dawes H, Matcham F</p>
+    </li>
+    <li class="grant-item">
+        <span class="grant-years">1 Sep 2022 – 31 Aug 2025</span>
+        <h4 class="grant-name">Digital Health: A Digital Twin to improve holistic community-based diagnosis of heart disease</h4>
+        <p class="grant-meta"><strong>Funder:</strong> EPSRC – Engineering &amp; Physical Sciences Research Council<br>
+        <strong>People funded:</strong> Matcham F</p>
+    </li>
+    <li class="grant-item">
+        <span class="grant-years">1 Sep 2022 – 31 Aug 2024</span>
+        <h4 class="grant-name">Unpacking the black box of interventions such as peer support designed to optimize mental health outcomes of family caregivers</h4>
+        <p class="grant-meta"><strong>Funder:</strong> EPSRC – Engineering &amp; Physical Sciences Research Council<br>
+        <strong>People funded:</strong> Matcham F</p>
+    </li>
+    <li class="grant-item">
+        <span class="grant-years">2 May 2022 – 18 Nov 2025</span>
+        <h4 class="grant-name">Design for healthy aging: a smart system to decrease LONELINESS for older people (DELONELINESS)</h4>
+        <p class="grant-meta"><strong>Funder:</strong> EPSRC – Engineering &amp; Physical Sciences Research Council<br>
+        <strong>People funded:</strong> Matcham F</p>
+    </li>
+    <li class="grant-item">
+        <span class="grant-years">From 1 Jan 2022</span>
+        <h4 class="grant-name"><a href="https://gepris.dfg.de/gepris/projekt/505386714?language=en" target="_blank" rel="noopener noreferrer">The role of motivational processes and physical activity in smartphone-based relapse prevention in depression</a></h4>
+        <p class="grant-meta"><strong>Funder:</strong> Deutsche Forschungsgemeinschaft<br>
+        <strong>People funded:</strong> Wilbertz G, Heinzel S</p>
+    </li>
+    <li class="grant-item">
+        <span class="grant-years">15 Sep 2019 – 31 Dec 2021</span>
+        <h4 class="grant-name"><a href="https://gtr.ukri.org/projects?ref=MR%2FS028188%2F1" target="_blank" rel="noopener noreferrer">Mechanisms and consequences of depression-related multimorbidity over the life course: coordinated analysis of population and primary care data</a></h4>
+        <p class="grant-meta"><strong>Funder:</strong> Medical Research Council<br>
+        <strong>People funded:</strong> Armstrong D, Dregan A, Hatch S, Hotopf M, Matcham F, Pickles A, Prina M, Rayner L</p>
+    </li>
+</ul>
+        <a href="https://profiles.sussex.ac.uk/p199181-faith-matcham/grants" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-external-link-alt"></i> View full grants list
+        </a>
+    </div>
+</div>
         </div>
     </section>
 
@@ -936,7 +997,13 @@
                 }
             });
         });
+                // Grants card toggle
+        var gBtn = document.querySelector('.grants-toggle');
+        if (gBtn) gBtn.addEventListener('click', function () {
+            var open = document.getElementById('grants').classList.toggle('open');
+            gBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
     </script>
     <script src="js/main.js"></script>
+    <script src="js/darkmode.js"></script>
 </body>
-</html>
