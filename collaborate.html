@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>try{var m=localStorage.getItem('thrive-mode');if(!m&&matchMedia('(prefers-color-scheme: dark)').matches)m='night';document.documentElement.setAttribute('data-mode',m||'day')}catch(e){}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THRIVE Lab - Collaborate</title>
@@ -27,7 +28,8 @@
                     </div>
                     <p style="margin-top: var(--space-lg);">Our industry partners value THRIVE's ability to combine human-centred design, rigorous scientific methods, and practical insight into how people engage with technology in their daily lives. We specialise in bridging the gap between innovative ideas and usable, effective tools that make a genuine difference to health and wellbeing.</p>
                     <div style="margin-top: var(--space-xl);"><p style="font-style: italic; color: var(--tiger-orange); font-weight: 600;">If you are an industry collaborator interested in evidence-based development, user experience refinement, or robust evaluation of digital health products, THRIVE offers a uniquely interdisciplinary and impact-focused partnership model.</p></div>
-                    <div style="margin-top: var(--space-xl);"><a href="mailto:F.Matcham@sussex.ac.uk" class="btn btn-primary"><i class="fas fa-handshake"></i> Discuss Collaboration</a></div>
+                    <div style="margin-top: var(--space-xl);"><a href="mailto:F.Matcham@sussex.ac.uk?subject=THRIVE%20Lab%20collaboration%20enquiry" class="btn btn-primary"><i class="fas fa-handshake"></i> Discuss Collaboration</a>
+<p class="collab-email">Or email us directly at <a href="mailto:F.Matcham@sussex.ac.uk">F.Matcham@sussex.ac.uk</a></p></div>
                 </div>
                 <div class="industry-partners">
                     <span class="partner-tag">Pfizer</span><span class="partner-tag">Clean Slate Clinic</span><span class="partner-tag">RADAR-CNS</span><span class="partner-tag">Digital Health Start-ups</span>
@@ -40,5 +42,6 @@
 
     <script src="js/template.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/darkmode.js"></script>
 </body>
 </html>
