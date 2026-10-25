@@ -1,108 +1,78 @@
-/* THRIVE Lab — Day/Night toggle + subtle night stars */
+// THRIVE Lab – day/night (dark mode) toggle
 (function () {
-  const root = document.documentElement;
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var KEY = 'thrive-mode';
+  var root = document.documentElement;
+  var btn = document.getElementById('mode-toggle');
+  var canvas = document.getElementById('night-canvas');
+  var ctx = canvas ? canvas.getContext('2d') : null;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stars = [], raf = null;
 
-  /* ---------- 1. Restore saved mode ASAP (before navbar loads) ---------- */
-  const saved = localStorage.getItem('thrive-mode');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  root.dataset.mode = saved || (prefersDark ? 'night' : 'day');
+  function saved() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function save(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function systemMode() {
+    return window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
+  }
 
-  /* ---------- 2. Stars (runs independently of navbar) ---------- */
-  const canvas = document.getElementById('night-canvas');
-  let starsReady = false;
-  let ctx, W, H, stars = [], raf;
-
-  function resizeStars() {
+  /* ---------- stars ---------- */
+  function resize() {
     if (!canvas) return;
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var n = Math.min(160, Math.floor(canvas.width * canvas.height / 9000));
+    stars = [];
+    for (var i = 0; i < n; i++) {
+      stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+                   r: Math.random() * 1.4 + 0.3, p: Math.random() * 6.28, s: Math.random() * 0.02 + 0.005 });
+    }
+    draw(0);
   }
-  function makeStar() {
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: Math.random() * 1.4 + 0.3,
-      alpha: Math.random() * 0.6 + 0.2,
-      twinkle: Math.random() * Math.PI * 2,
-      speed: 0.005 + Math.random() * 0.01,
-    };
-  }
-  function animate() {
+  function draw(t) {
     if (!ctx) return;
-    ctx.clearRect(0, 0, W, H);
-    if (root.dataset.mode === 'night') {
-      stars.forEach((s) => {
-        s.twinkle += s.speed;
-        const a = s.alpha + Math.sin(s.twinkle) * 0.2;
-        ctx.globalAlpha = Math.max(0, Math.min(1, a));
-        ctx.fillStyle = '#E6EEF7';
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      ctx.globalAlpha = 1;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < stars.length; i++) {
+      var st = stars[i];
+      var a = reduce ? 0.8 : 0.45 + 0.45 * Math.sin(st.p + t * st.s);
+      ctx.globalAlpha = a;
+      ctx.fillStyle = '#eaf3e4';
+      ctx.beginPath(); ctx.arc(st.x, st.y, st.r, 0, 6.283); ctx.fill();
     }
-    raf = requestAnimationFrame(animate);
+    ctx.globalAlpha = 1;
   }
-  function updateStars() {
-    if (!starsReady) return;
-    cancelAnimationFrame(raf);
-    if (root.dataset.mode !== 'night') {
-      ctx.clearRect(0, 0, W, H);
-      return;
+  function loop(t) { draw(t); raf = requestAnimationFrame(loop); }
+  function startStars() { if (!canvas || reduce || raf) return; raf = requestAnimationFrame(loop); }
+  function stopStars() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+
+  /* ---------- mode ---------- */
+  function apply(mode) {
+    root.setAttribute('data-mode', mode);
+    var night = mode === 'night';
+    if (btn) {
+      var icon = btn.querySelector('i');
+      if (icon) icon.className = night ? 'fas fa-sun' : 'fas fa-moon';
+      btn.setAttribute('aria-pressed', night ? 'true' : 'false');
+      btn.setAttribute('title', night ? 'Switch to day mode' : 'Switch to night mode');
     }
-    const count = Math.min(80, Math.floor(window.innerWidth / 20));
-    stars = Array.from({ length: count }, makeStar);
-    animate();
-  }
-  function initStars() {
-    if (!canvas || reduceMotion) return;
-    ctx = canvas.getContext('2d');
-    starsReady = true;
-    resizeStars();
-    updateStars();
-    window.addEventListener('resize', () => { resizeStars(); updateStars(); });
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', night ? '#0f1a0f' : '#f7faf4');
+    if (night) startStars(); else stopStars();
   }
 
-  /* ---------- 3. Toggle button (appears when navbar loads) ---------- */
-  function attachToggle() {
-    const modeBtn = document.getElementById('mode-toggle');
-    if (!modeBtn || modeBtn.dataset.bound === 'true') return;
-    modeBtn.dataset.bound = 'true';
+  window.addEventListener('resize', resize);
+  resize();
+  apply(saved() || systemMode());
 
-    function updateIcon() {
-      const isNight = root.dataset.mode === 'night';
-      modeBtn.innerHTML = `<i class="fas fa-${isNight ? 'sun' : 'moon'}" aria-hidden="true"></i>`;
-      modeBtn.setAttribute('aria-label', isNight ? 'Switch to day mode' : 'Switch to night mode');
-    }
-
-    modeBtn.addEventListener('click', () => {
-      root.dataset.mode = root.dataset.mode === 'day' ? 'night' : 'day';
-      localStorage.setItem('thrive-mode', root.dataset.mode);
-      updateIcon();
-      updateStars();
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-mode') === 'night' ? 'day' : 'night';
+      apply(next); save(next);
     });
-
-    updateIcon();
   }
 
-  /* ---------- 4. Wire it all up ---------- */
-  document.addEventListener('navbar:loaded', () => {
-    attachToggle();
-    updateStars();
-  });
-
-  // Fallback: if the event never fires (e.g. someone forgets the template
-  // edit), poll for the button for up to ~3 seconds.
-  let attempts = 0;
-  const poll = setInterval(() => {
-    attempts++;
-    if (document.getElementById('mode-toggle') || attempts > 30) {
-      clearInterval(poll);
-      attachToggle();
-    }
-  }, 100);
-
-  initStars();
+  // follow system changes only if the visitor hasn't chosen manually
+  if (window.matchMedia) {
+    var mq = matchMedia('(prefers-color-scheme: dark)');
+    var onChange = function (e) { if (!saved()) apply(e.matches ? 'night' : 'day'); };
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+  }
 })();
