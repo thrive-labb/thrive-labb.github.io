@@ -1742,3 +1742,7 @@ html[data-mode="night"] .no-results { color: var(--night-text-muted); }
 .grant-name a:hover { color: var(--tiger-orange); }
 html[data-mode="night"] .grant-name a { color: var(--night-heading); }
 html[data-mode="night"] .grant-name a:hover { color: var(--night-accent); }
+
+.collab-email { margin-top: var(--space-sm); font-size: .95rem; color: var(--gray-600); }
+.collab-email a { font-weight: 600; text-decoration: underline; }
+html[data-mode="night"] .collab-email { color: var(--night-text-muted); }
