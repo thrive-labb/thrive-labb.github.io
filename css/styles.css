@@ -1638,3 +1638,84 @@ html[data-mode="night"] body > .theme-controls {
 
 html[data-mode="night"] .journey-card { background: var(--night-surface); border: 1px solid var(--night-border); }
 html[data-mode="night"] .journey-card h3 { color: var(--night-accent); }
+
+/* =============================================================
+   RESEARCH PAGE – FUTURISTIC CIRCULAR CARDS
+   Paste at the END of css/styles.css (top level, not inside @media)
+   ============================================================= */
+
+@property --ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@keyframes ringspin { to { --ang: 360deg; } }
+
+.section-lead { text-align: center; max-width: 800px; margin: 0 auto var(--space-sm); color: var(--gray-700); }
+.orbit-hint { text-align: center; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase;
+              color: var(--fern-green); margin-bottom: var(--space-md); }
+.orbit-hint i { color: var(--tiger-orange); margin-right: 6px; }
+
+.research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                 justify-items: center; gap: 2.8rem 2rem; margin-top: var(--space-xl); }
+
+.research-card {
+    --ring: conic-gradient(from var(--ang), var(--tiger-orange), var(--fern-green), var(--tiger-orange-light), var(--fern-green-light), var(--tiger-orange));
+    --inner: var(--white);
+    position: relative; isolation: isolate;
+    width: min(340px, 86vw); aspect-ratio: 1 / 1; height: auto;
+    border-radius: 50%; border: none; padding: 13% 12%;
+    background: var(--ring); animation: ringspin 9s linear infinite;
+    box-shadow: 0 0 26px rgba(233,122,41,.28), 0 0 60px rgba(79,121,66,.18);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    cursor: pointer; outline: none;
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+.research-card::before {                 /* inner glass disc */
+    content: ''; position: absolute; inset: 5px; border-radius: 50%; z-index: -1;
+    background: radial-gradient(circle at 30% 25%, rgba(233,122,41,.10), transparent 55%), var(--inner);
+}
+.research-card::after {                  /* orbiting dot */
+    content: ''; position: absolute; width: 10px; height: 10px; border-radius: 50%; z-index: 2;
+    background: var(--tiger-orange); box-shadow: 0 0 12px var(--tiger-orange);
+    top: 50%; left: 50%; margin: -5px 0 0 -5px;
+    transform: rotate(0deg) translateY(calc(min(340px, 86vw) / -2 + 2px));
+    animation: orbit 9s linear infinite;
+}
+@keyframes orbit { to { transform: rotate(360deg) translateY(calc(min(340px, 86vw) / -2 + 2px)); } }
+
+.research-card:hover, .research-card:focus-visible, .research-card.is-open {
+    transform: scale(1.05);
+    box-shadow: 0 0 34px rgba(233,122,41,.5), 0 0 80px rgba(79,121,66,.35);
+}
+
+.research-icon { font-size: 2.4rem; margin-bottom: .6rem; color: var(--tiger-orange);
+                 transition: opacity .3s, max-height .4s, margin .4s; max-height: 3.5rem; }
+.research-title { font-size: 1.12rem; line-height: 1.3; margin: 0; color: var(--fern-green); }
+
+.research-desc, .research-tags { max-height: 0; opacity: 0; overflow: hidden; margin: 0;
+                                 transition: max-height .5s ease, opacity .4s ease, margin .4s ease; }
+.research-desc { font-size: .8rem; line-height: 1.45; color: var(--gray-700); flex-grow: 0; }
+.research-tags { justify-content: center; gap: 4px; }
+.research-tags .tag { font-size: .66rem; padding: .18rem .5rem; }
+
+.research-card:hover .research-icon, .research-card:focus-visible .research-icon,
+.research-card.is-open .research-icon { opacity: 0; max-height: 0; margin: 0; }
+.research-card:hover .research-title, .research-card:focus-visible .research-title,
+.research-card.is-open .research-title { font-size: .98rem; }
+.research-card:hover .research-desc, .research-card:focus-visible .research-desc,
+.research-card.is-open .research-desc { max-height: 9rem; opacity: 1; margin: .55rem 0 .5rem; }
+.research-card:hover .research-tags, .research-card:focus-visible .research-tags,
+.research-card.is-open .research-tags { max-height: 5rem; opacity: 1; }
+
+/* ---------- night ---------- */
+html[data-mode="night"] .research-card { --inner: #1b1b14; background: var(--ring);
+    box-shadow: 0 0 28px rgba(233,122,41,.35), 0 0 70px rgba(79,121,66,.25); border: none; }
+html[data-mode="night"] .research-card:hover, html[data-mode="night"] .research-card.is-open {
+    box-shadow: 0 0 40px rgba(233,122,41,.6), 0 0 90px rgba(79,121,66,.45); }
+html[data-mode="night"] .research-title { color: var(--night-heading); }
+html[data-mode="night"] .research-desc { color: var(--night-text); }
+html[data-mode="night"] .research-icon { color: var(--night-accent); }
+html[data-mode="night"] .section-lead { color: var(--night-text-muted); }
+html[data-mode="night"] .orbit-hint { color: var(--night-heading); }
+
+@media (prefers-reduced-motion: reduce) {
+    .research-card, .research-card::after { animation: none; }
+    .research-card::after { display: none; }
+}
