@@ -1733,3 +1733,7 @@ html[data-mode="night"] .alumni-bio { color: var(--night-text-muted); }
 html[data-mode="night"] .alumni-period { color: var(--night-accent); background-color: rgba(233, 122, 41, 0.15); }
 html[data-mode="night"] .alumni-link { background: var(--night-surface-solid); border-color: var(--night-border); color: var(--night-heading); }
 html[data-mode="night"] .alumni-link:hover { background: var(--fern-green); color: var(--white); border-color: var(--fern-green); }
+
+/* ---- Archive page ---- */
+.no-results { display: none; text-align: center; padding: 40px; font-size: 1.2rem; color: var(--gray-600); }
+html[data-mode="night"] .no-results { color: var(--night-text-muted); }
