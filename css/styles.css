@@ -1631,3 +1631,10 @@ html[data-mode="night"] body > .theme-controls {
         right: 12px !important;
     }
 }
+
+.journey-card { background-color: var(--white); border-radius: var(--radius-lg); padding: var(--space-xl); margin-top: var(--space-xl); box-shadow: var(--shadow-md); }
+.journey-card h3 { color: var(--tiger-orange); margin-bottom: var(--space-md); }
+.mission-heading { text-align: center; margin-bottom: var(--space-lg); }
+
+html[data-mode="night"] .journey-card { background: var(--night-surface); border: 1px solid var(--night-border); }
+html[data-mode="night"] .journey-card h3 { color: var(--night-accent); }
